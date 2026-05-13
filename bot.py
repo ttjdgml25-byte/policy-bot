@@ -29,27 +29,39 @@ KEYWORDS = [
     "무료", "무상", "선착순",
 ]
 
-# ✅ RSS 피드 목록
+# ✅ RSS 피드 목록 (검증된 주소)
 RSS_SITES = [
     {
-        "name": "정책브리핑",
+        "name": "정책브리핑 - 정책뉴스",
         "url": "https://www.korea.kr/rss/policy.xml",
     },
     {
-        "name": "복지로",
-        "url": "https://www.bokjiro.go.kr/ssis-tbu/rss/wlfareInfo.do",
+        "name": "정책브리핑 - 보도자료",
+        "url": "https://www.korea.kr/rss/pressRelease.xml",
     },
     {
-        "name": "정부24",
-        "url": "https://www.gov.kr/rss/gov/portalRss.do",
+        "name": "보건복지부",
+        "url": "https://www.mohw.go.kr/rssMohw.do",
     },
     {
-        "name": "창업진흥원(K-Startup)",
-        "url": "https://www.k-startup.go.kr/rss/board.do?menuNo=200063",
+        "name": "고용노동부",
+        "url": "https://www.moel.go.kr/rss/rssMain.do",
+    },
+    {
+        "name": "여성가족부",
+        "url": "https://www.mogef.go.kr/rss/rssNews.do",
+    },
+    {
+        "name": "국토교통부",
+        "url": "https://www.molit.go.kr/rss/rssMain.do",
+    },
+    {
+        "name": "중소벤처기업부",
+        "url": "https://www.mss.go.kr/rss/rssMss.do",
     },
 ]
 
-# ✅ HTML 크롤링 사이트
+# ✅ HTML 직접 크롤링 사이트
 CRAWL_SITES = [
     {
         "name": "고용24(Work24)",
@@ -86,6 +98,13 @@ CRAWL_SITES = [
         "title_selector": ".tit, .title, h3, h4",
         "link_prefix": "https://plus.gov.kr",
     },
+    {
+        "name": "창업진흥원(K-Startup)",
+        "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do",
+        "item_selector": ".list-type02 li, .board-list li",
+        "title_selector": ".tit, .title, a",
+        "link_prefix": "https://www.k-startup.go.kr",
+    },
 ]
 
 HEADERS = {
@@ -117,7 +136,7 @@ def crawl_rss(site):
             if any(kw in title for kw in KEYWORDS):
                 results.append(f"• {title}\n  🔗 {link}")
         return results
-    except Exception as e:
+    except Exception:
         return []
 
 
@@ -156,7 +175,7 @@ def crawl_html(site):
             if any(kw in title for kw in KEYWORDS):
                 results.append(f"• {title}\n  🔗 {link}")
         return results
-    except Exception as e:
+    except Exception:
         return []
 
 
