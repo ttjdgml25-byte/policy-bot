@@ -4,7 +4,11 @@ import os
 from datetime import datetime
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
-CHAT_ID   = os.environ["CHAT_ID"]
+CHAT_IDS = [
+    os.environ["CHAT_ID"],
+    os.environ.get("CHAT_ID_2", ""),
+]
+CHAT_IDS = [c for c in CHAT_IDS if c]
 
 # ✅ 전체 키워드 목록
 KEYWORDS = [
@@ -181,12 +185,10 @@ def crawl_html(site):
 
 def send_telegram(message):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    max_len = 4000
-    chunks = [message[i:i+max_len] for i in range(0, len(message), max_len)]
-    for chunk in chunks:
+    for chat_id in CHAT_IDS:          # ← 모든 사람에게 전송
         requests.post(url, data={
-            "chat_id": CHAT_ID,
-            "text": chunk,
+            "chat_id": chat_id,
+            "text": message,
             "parse_mode": "Markdown",
             "disable_web_page_preview": True
         })
