@@ -44,49 +44,49 @@ RSS_SITES = [
     {"name": "중소벤처기업부", "url": "https://www.mss.go.kr/rss/rssMss.do"},
 ]
 
-# ✅ HTML 직접 크롤링 사이트
+# ✅ HTML 직접 크롤링 사이트 (공지사항 페이지로 직접 연결)
 CRAWL_SITES = [
     {
-        "name": "고용24(Work24)",
-        "url": "https://www.work24.go.kr/cm/main.do",
-        "item_selector": ".board-list li, .news-list li, .list li",
-        "title_selector": ".tit, .title, a",
+        "name": "고용24(Work24) - 고용지원공고",
+        "url": "https://www.work24.go.kr/wk/a/b/1200/retriveDtlEmpSptBizList.do",
+        "item_selector": "table tbody tr, .list-wrap li, .board_list tr",
+        "title_selector": "td.tit a, td.subject a, .tit a, a.link",
         "link_prefix": "https://www.work24.go.kr",
     },
     {
-        "name": "가족센터",
+        "name": "가족센터 - 공지사항",
         "url": "https://www.familynet.or.kr/web/board/BD_board.list.do?bbsCd=1001",
         "item_selector": "table tbody tr",
-        "title_selector": "td.subject a, td a",
+        "title_selector": "td.subject a, td.title a",
         "link_prefix": "https://www.familynet.or.kr",
     },
     {
-        "name": "서울복지포털",
+        "name": "서울복지포털 - 복지뉴스",
         "url": "https://wis.seoul.go.kr/news/newsList.do",
-        "item_selector": ".board_list tbody tr, .list tbody tr",
+        "item_selector": ".board_list tbody tr",
         "title_selector": "td.title a, td.subject a",
         "link_prefix": "https://wis.seoul.go.kr",
     },
     {
-        "name": "청년센터",
+        "name": "청년센터 - 청년정책",
         "url": "https://www.youthcenter.go.kr/youngPlcyUnif/youngPlcyUnifList.do",
-        "item_selector": ".list_area li, .policy_list li",
-        "title_selector": ".tit, .title, a",
+        "item_selector": ".list_area li, .policy_list li, .card-list li",
+        "title_selector": ".tit, .title, .name, a",
         "link_prefix": "https://www.youthcenter.go.kr",
     },
     {
-        "name": "복지멤버십(plus.gov.kr)",
-        "url": "https://plus.gov.kr/",
-        "item_selector": ".board-list li, .news-list li, .list-item",
-        "title_selector": ".tit, .title, h3, h4",
-        "link_prefix": "https://plus.gov.kr",
+        "name": "창업진흥원(K-Startup) - 사업공고",
+        "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do",
+        "item_selector": ".list-type02 li, .board-list li, tbody tr",
+        "title_selector": ".tit, .title, td.subject a, a",
+        "link_prefix": "https://www.k-startup.go.kr",
     },
     {
-        "name": "창업진흥원(K-Startup)",
-        "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do",
-        "item_selector": ".list-type02 li, .board-list li",
-        "title_selector": ".tit, .title, a",
-        "link_prefix": "https://www.k-startup.go.kr",
+        "name": "복지로 - 복지소식",
+        "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do",
+        "item_selector": ".welfare-list li, .list-wrap li, tbody tr",
+        "title_selector": ".tit a, .title a, td.subject a",
+        "link_prefix": "https://www.bokjiro.go.kr",
     },
 ]
 
@@ -95,21 +95,28 @@ HEADERS = {
                   "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept-Language": "ko-KR,ko;q=0.9",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Referer": "https://www.google.com/",
 }
 
 
 def clean_text(text, max_len=120):
-    """텍스트 정리 및 길이 제한"""
     if not text:
         return ""
-    # HTML 태그 제거
     text = BeautifulSoup(text, "html.parser").get_text()
-    # 공백 정리
     text = " ".join(text.split())
-    # 길이 제한
     if len(text) > max_len:
         text = text[:max_len] + "..."
     return text
+
+
+def is_valid_title(title):
+    """너무 짧거나 URL/버튼 텍스트인 경우 제외"""
+    if len(title) < 6:
+        return False
+    skip = ["바로가기", "더보기", "자세히", "클릭", "http", "www", "공단", "포털"]
+    if any(s == title for s in skip):
+        return False
+    return True
 
 
 def crawl_rss(site):
@@ -124,7 +131,7 @@ def crawl_rss(site):
         for item in items:
             title_tag = item.find("title")
             link_tag = item.find("link")
-            desc_tag = item.find("description")  # ← 내용 요약 추출
+            desc_tag = item.find("description")
             date_tag = item.find("pubDate") or item.find("dc:date")
 
             if not title_tag:
@@ -135,11 +142,10 @@ def crawl_rss(site):
             desc = clean_text(desc_tag.get_text() if desc_tag else "")
             date = ""
             if date_tag:
-                raw_date = date_tag.get_text(strip=True)
-                # 날짜 간략화 (앞 16자만)
-                date = raw_date[:16] if len(raw_date) > 16 else raw_date
+                raw = date_tag.get_text(strip=True)
+                date = raw[:16] if len(raw) > 16 else raw
 
-            if title in seen:
+            if title in seen or not is_valid_title(title):
                 continue
             seen.add(title)
 
@@ -147,7 +153,7 @@ def crawl_rss(site):
                 entry = f"• *{title}*"
                 if date:
                     entry += f"\n  📅 {date}"
-                if desc:
+                if desc and desc != title:
                     entry += f"\n  📝 {desc}"
                 entry += f"\n  🔗 {link}"
                 results.append(entry)
@@ -162,10 +168,11 @@ def crawl_html(site):
         res = requests.get(site["url"], headers=HEADERS, timeout=15)
         res.encoding = res.apparent_encoding
         soup = BeautifulSoup(res.text, "html.parser")
+
         items = []
         for sel in site["item_selector"].split(", "):
             items = soup.select(sel)
-            if items:
+            if len(items) >= 2:
                 break
 
         results = []
@@ -175,13 +182,13 @@ def crawl_html(site):
             title_tag = None
             for t_sel in site["title_selector"].split(", "):
                 title_tag = item.select_one(t_sel)
-                if title_tag:
+                if title_tag and title_tag.get_text(strip=True):
                     break
             if not title_tag:
                 continue
 
             title = title_tag.get_text(strip=True)
-            if not title or title in seen:
+            if not title or title in seen or not is_valid_title(title):
                 continue
             seen.add(title)
 
@@ -194,19 +201,19 @@ def crawl_html(site):
             else:
                 link = site["link_prefix"] + "/" + href
 
-            # 날짜 추출 시도
-            date_tag = item.select_one(".date, .reg-date, td.date, .period, .d-day")
+            # 날짜 추출
+            date_tag = item.select_one(".date, .reg-date, td.date, .period, .d-day, .regdate")
             date = date_tag.get_text(strip=True) if date_tag else ""
 
-            # 설명 추출 시도
-            desc_tag = item.select_one(".desc, .summary, .txt, .content, p")
+            # 요약 추출
+            desc_tag = item.select_one(".desc, .summary, .txt, .content, .summary-txt, p")
             desc = clean_text(desc_tag.get_text() if desc_tag else "")
 
             if any(kw in title for kw in KEYWORDS):
                 entry = f"• *{title}*"
                 if date:
                     entry += f"\n  📅 {date}"
-                if desc:
+                if desc and desc != title:
                     entry += f"\n  📝 {desc}"
                 entry += f"\n  🔗 {link}"
                 results.append(entry)
