@@ -33,36 +33,15 @@ KEYWORDS = [
     "무료", "무상", "선착순",
 ]
 
-# ✅ RSS 피드 목록 (검증된 주소)
+# ✅ RSS 피드 목록
 RSS_SITES = [
-    {
-        "name": "정책브리핑 - 정책뉴스",
-        "url": "https://www.korea.kr/rss/policy.xml",
-    },
-    {
-        "name": "정책브리핑 - 보도자료",
-        "url": "https://www.korea.kr/rss/pressRelease.xml",
-    },
-    {
-        "name": "보건복지부",
-        "url": "https://www.mohw.go.kr/rssMohw.do",
-    },
-    {
-        "name": "고용노동부",
-        "url": "https://www.moel.go.kr/rss/rssMain.do",
-    },
-    {
-        "name": "여성가족부",
-        "url": "https://www.mogef.go.kr/rss/rssNews.do",
-    },
-    {
-        "name": "국토교통부",
-        "url": "https://www.molit.go.kr/rss/rssMain.do",
-    },
-    {
-        "name": "중소벤처기업부",
-        "url": "https://www.mss.go.kr/rss/rssMss.do",
-    },
+    {"name": "정책브리핑 - 정책뉴스", "url": "https://www.korea.kr/rss/policy.xml"},
+    {"name": "정책브리핑 - 보도자료", "url": "https://www.korea.kr/rss/pressRelease.xml"},
+    {"name": "보건복지부", "url": "https://www.mohw.go.kr/rssMohw.do"},
+    {"name": "고용노동부", "url": "https://www.moel.go.kr/rss/rssMain.do"},
+    {"name": "여성가족부", "url": "https://www.mogef.go.kr/rss/rssNews.do"},
+    {"name": "국토교통부", "url": "https://www.molit.go.kr/rss/rssMain.do"},
+    {"name": "중소벤처기업부", "url": "https://www.mss.go.kr/rss/rssMss.do"},
 ]
 
 # ✅ HTML 직접 크롤링 사이트
@@ -119,6 +98,20 @@ HEADERS = {
 }
 
 
+def clean_text(text, max_len=120):
+    """텍스트 정리 및 길이 제한"""
+    if not text:
+        return ""
+    # HTML 태그 제거
+    text = BeautifulSoup(text, "html.parser").get_text()
+    # 공백 정리
+    text = " ".join(text.split())
+    # 길이 제한
+    if len(text) > max_len:
+        text = text[:max_len] + "..."
+    return text
+
+
 def crawl_rss(site):
     try:
         res = requests.get(site["url"], headers=HEADERS, timeout=15)
@@ -127,18 +120,38 @@ def crawl_rss(site):
         items = soup.find_all("item")[:20]
         results = []
         seen = set()
+
         for item in items:
             title_tag = item.find("title")
             link_tag = item.find("link")
+            desc_tag = item.find("description")  # ← 내용 요약 추출
+            date_tag = item.find("pubDate") or item.find("dc:date")
+
             if not title_tag:
                 continue
+
             title = title_tag.get_text(strip=True)
             link = link_tag.get_text(strip=True) if link_tag else ""
+            desc = clean_text(desc_tag.get_text() if desc_tag else "")
+            date = ""
+            if date_tag:
+                raw_date = date_tag.get_text(strip=True)
+                # 날짜 간략화 (앞 16자만)
+                date = raw_date[:16] if len(raw_date) > 16 else raw_date
+
             if title in seen:
                 continue
             seen.add(title)
+
             if any(kw in title for kw in KEYWORDS):
-                results.append(f"• {title}\n  🔗 {link}")
+                entry = f"• *{title}*"
+                if date:
+                    entry += f"\n  📅 {date}"
+                if desc:
+                    entry += f"\n  📝 {desc}"
+                entry += f"\n  🔗 {link}"
+                results.append(entry)
+
         return results
     except Exception:
         return []
@@ -154,8 +167,10 @@ def crawl_html(site):
             items = soup.select(sel)
             if items:
                 break
+
         results = []
         seen = set()
+
         for item in items[:20]:
             title_tag = None
             for t_sel in site["title_selector"].split(", "):
@@ -164,10 +179,12 @@ def crawl_html(site):
                     break
             if not title_tag:
                 continue
+
             title = title_tag.get_text(strip=True)
             if not title or title in seen:
                 continue
             seen.add(title)
+
             a_tag = title_tag if title_tag.name == "a" else item.select_one("a")
             href = a_tag.get("href", "") if a_tag else ""
             if href.startswith("http"):
@@ -176,8 +193,24 @@ def crawl_html(site):
                 link = site["link_prefix"] + href
             else:
                 link = site["link_prefix"] + "/" + href
+
+            # 날짜 추출 시도
+            date_tag = item.select_one(".date, .reg-date, td.date, .period, .d-day")
+            date = date_tag.get_text(strip=True) if date_tag else ""
+
+            # 설명 추출 시도
+            desc_tag = item.select_one(".desc, .summary, .txt, .content, p")
+            desc = clean_text(desc_tag.get_text() if desc_tag else "")
+
             if any(kw in title for kw in KEYWORDS):
-                results.append(f"• {title}\n  🔗 {link}")
+                entry = f"• *{title}*"
+                if date:
+                    entry += f"\n  📅 {date}"
+                if desc:
+                    entry += f"\n  📝 {desc}"
+                entry += f"\n  🔗 {link}"
+                results.append(entry)
+
         return results
     except Exception:
         return []
@@ -185,13 +218,16 @@ def crawl_html(site):
 
 def send_telegram(message):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    for chat_id in CHAT_IDS:          # ← 모든 사람에게 전송
-        requests.post(url, data={
-            "chat_id": chat_id,
-            "text": message,
-            "parse_mode": "Markdown",
-            "disable_web_page_preview": True
-        })
+    max_len = 4000
+    chunks = [message[i:i+max_len] for i in range(0, len(message), max_len)]
+    for chat_id in CHAT_IDS:
+        for chunk in chunks:
+            requests.post(url, data={
+                "chat_id": chat_id,
+                "text": chunk,
+                "parse_mode": "Markdown",
+                "disable_web_page_preview": True
+            })
 
 
 def main():
@@ -211,14 +247,14 @@ def main():
         results = crawl_rss(site)
         if results:
             msg += f"📋 *[{site['name']}]*\n"
-            msg += "\n".join(results) + "\n\n"
+            msg += "\n\n".join(results) + "\n\n"
             total_count += len(results)
 
     for site in CRAWL_SITES:
         results = crawl_html(site)
         if results:
             msg += f"📋 *[{site['name']}]*\n"
-            msg += "\n".join(results) + "\n\n"
+            msg += "\n\n".join(results) + "\n\n"
             total_count += len(results)
 
     if total_count == 0:
