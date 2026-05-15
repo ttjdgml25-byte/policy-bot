@@ -2,7 +2,7 @@ name: 🌅 Morning Policy Bot
 
 on:
   schedule:
-    - cron: '0 23 * * *'   # UTC 23:00 = 한국시간 오전 08:00 (KST)
+    - cron: '0 22 * * *'   # UTC 23:00 = 한국시간 오전 08:00 (KST)
   workflow_dispatch:         # 수동 실행 버튼도 활성화
 
 jobs:
