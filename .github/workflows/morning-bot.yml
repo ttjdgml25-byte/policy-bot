@@ -1,28 +1,21 @@
-name: 🌅 Morning Policy Bot
+name: 🌅 Morning Policy Bot v3
 
 on:
   schedule:
-    - cron: '0 22 * * *'   # UTC 23:00 = 한국시간 오전 08:00 (KST)
-  workflow_dispatch:         # 수동 실행 버튼도 활성화
+    - cron: '0 22 * * *'
+  workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-
     steps:
-      - name: 저장소 체크아웃
-        uses: actions/checkout@v4
-
-      - name: Python 3.11 설치
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: 필요 패키지 설치
-        run: pip install requests beautifulsoup4
-
-      - name: 🤖 봇 실행
-        run: python bot.py
+      - run: pip install requests beautifulsoup4
+      - run: python bot.py
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
+          CHAT_ID_2: ${{ secrets.CHAT_ID_2 }}
