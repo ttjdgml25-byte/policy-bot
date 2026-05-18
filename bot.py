@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup
 import os
 from datetime import datetime
 
-BOT_TOKEN = os.environ["BOT_TOKEN"]
+BOT_TOKEN = os.environ["8891131461:AAFPBtrMdtkNinCsLCRANKCIoVEOzbL0QHE"]
 CHAT_IDS = [
-    os.environ["CHAT_ID"],
-    os.environ.get("CHAT_ID_2", ""),
+    os.environ["1241816819"],
+    os.environ.get("112169927", ""),
 ]
 CHAT_IDS = [c for c in CHAT_IDS if c]
 
@@ -35,6 +35,7 @@ KEYWORDS = [
 
 # ✅ RSS 피드 목록
 RSS_SITES = [
+    # 중앙부처
     {"name": "정책브리핑 - 정책뉴스", "url": "https://www.korea.kr/rss/policy.xml"},
     {"name": "정책브리핑 - 보도자료", "url": "https://www.korea.kr/rss/pressRelease.xml"},
     {"name": "보건복지부", "url": "https://www.mohw.go.kr/rssMohw.do"},
@@ -42,9 +43,14 @@ RSS_SITES = [
     {"name": "여성가족부", "url": "https://www.mogef.go.kr/rss/rssNews.do"},
     {"name": "국토교통부", "url": "https://www.molit.go.kr/rss/rssMain.do"},
     {"name": "중소벤처기업부", "url": "https://www.mss.go.kr/rss/rssMss.do"},
+    # 서울시
+    {"name": "서울시 - 복지뉴스", "url": "https://news.seoul.go.kr/welfare/feed"},
+    {"name": "서울시 - 전체뉴스", "url": "https://www.seoul.go.kr/rss/news.do"},
+    # 경기도
+    {"name": "경기도 뉴스포털", "url": "https://gnews.gg.go.kr/rss/gnews_rss_main.do"},
 ]
 
-# ✅ HTML 직접 크롤링 사이트 (공지사항 페이지로 직접 연결)
+# ✅ HTML 직접 크롤링 사이트
 CRAWL_SITES = [
     {
         "name": "고용24(Work24) - 고용지원공고",
@@ -66,6 +72,41 @@ CRAWL_SITES = [
         "item_selector": ".board_list tbody tr",
         "title_selector": "td.title a, td.subject a",
         "link_prefix": "https://wis.seoul.go.kr",
+    },
+    {
+        "name": "서울시 복지정책",
+        "url": "https://news.seoul.go.kr/welfare/",
+        "item_selector": ".view-list li, .news-list li, article",
+        "title_selector": ".entry-title a, .tit a, h2 a, h3 a",
+        "link_prefix": "https://news.seoul.go.kr",
+    },
+    {
+        "name": "경기복지재단",
+        "url": "https://ggwf.gg.go.kr/",
+        "item_selector": ".board-list li, .news-list li, tbody tr",
+        "title_selector": ".tit a, .title a, td.subject a",
+        "link_prefix": "https://ggwf.gg.go.kr",
+    },
+    {
+        "name": "경기도청 - 복지공지",
+        "url": "https://www.gg.go.kr/bbs/board.do?bsIdx=792&menuId=3298",
+        "item_selector": "table tbody tr, .board-list li",
+        "title_selector": "td.subject a, td.title a, .tit a",
+        "link_prefix": "https://www.gg.go.kr",
+    },
+    {
+        "name": "과천시청 - 공지사항",
+        "url": "https://www.gccity.go.kr/board/list.do?boardId=BD_0000000000000030&menuCd=DOM_000000103001001000",
+        "item_selector": "table tbody tr, .board-list li",
+        "title_selector": "td.subject a, td.title a, .tit a",
+        "link_prefix": "https://www.gccity.go.kr",
+    },
+    {
+        "name": "과천시청 - 복지",
+        "url": "https://www.gccity.go.kr/welfare/index.do",
+        "item_selector": ".board-list li, .news-list li, tbody tr",
+        "title_selector": ".tit a, .title a, td.subject a",
+        "link_prefix": "https://www.gccity.go.kr",
     },
     {
         "name": "청년센터 - 청년정책",
@@ -110,7 +151,6 @@ def clean_text(text, max_len=120):
 
 
 def is_valid_title(title):
-    """너무 짧거나 URL/버튼 텍스트인 경우 제외"""
     if len(title) < 6:
         return False
     skip = ["바로가기", "더보기", "자세히", "클릭", "http", "www", "공단", "포털"]
@@ -127,16 +167,13 @@ def crawl_rss(site):
         items = soup.find_all("item")[:20]
         results = []
         seen = set()
-
         for item in items:
             title_tag = item.find("title")
             link_tag = item.find("link")
             desc_tag = item.find("description")
             date_tag = item.find("pubDate") or item.find("dc:date")
-
             if not title_tag:
                 continue
-
             title = title_tag.get_text(strip=True)
             link = link_tag.get_text(strip=True) if link_tag else ""
             desc = clean_text(desc_tag.get_text() if desc_tag else "")
@@ -144,11 +181,9 @@ def crawl_rss(site):
             if date_tag:
                 raw = date_tag.get_text(strip=True)
                 date = raw[:16] if len(raw) > 16 else raw
-
             if title in seen or not is_valid_title(title):
                 continue
             seen.add(title)
-
             if any(kw in title for kw in KEYWORDS):
                 entry = f"• *{title}*"
                 if date:
@@ -157,7 +192,6 @@ def crawl_rss(site):
                     entry += f"\n  📝 {desc}"
                 entry += f"\n  🔗 {link}"
                 results.append(entry)
-
         return results
     except Exception:
         return []
@@ -168,16 +202,13 @@ def crawl_html(site):
         res = requests.get(site["url"], headers=HEADERS, timeout=15)
         res.encoding = res.apparent_encoding
         soup = BeautifulSoup(res.text, "html.parser")
-
         items = []
         for sel in site["item_selector"].split(", "):
             items = soup.select(sel)
             if len(items) >= 2:
                 break
-
         results = []
         seen = set()
-
         for item in items[:20]:
             title_tag = None
             for t_sel in site["title_selector"].split(", "):
@@ -186,12 +217,10 @@ def crawl_html(site):
                     break
             if not title_tag:
                 continue
-
             title = title_tag.get_text(strip=True)
             if not title or title in seen or not is_valid_title(title):
                 continue
             seen.add(title)
-
             a_tag = title_tag if title_tag.name == "a" else item.select_one("a")
             href = a_tag.get("href", "") if a_tag else ""
             if href.startswith("http"):
@@ -200,15 +229,10 @@ def crawl_html(site):
                 link = site["link_prefix"] + href
             else:
                 link = site["link_prefix"] + "/" + href
-
-            # 날짜 추출
             date_tag = item.select_one(".date, .reg-date, td.date, .period, .d-day, .regdate")
             date = date_tag.get_text(strip=True) if date_tag else ""
-
-            # 요약 추출
-            desc_tag = item.select_one(".desc, .summary, .txt, .content, .summary-txt, p")
+            desc_tag = item.select_one(".desc, .summary, .txt, .content, p")
             desc = clean_text(desc_tag.get_text() if desc_tag else "")
-
             if any(kw in title for kw in KEYWORDS):
                 entry = f"• *{title}*"
                 if date:
@@ -217,7 +241,6 @@ def crawl_html(site):
                     entry += f"\n  📝 {desc}"
                 entry += f"\n  🔗 {link}"
                 results.append(entry)
-
         return results
     except Exception:
         return []
