@@ -2,7 +2,7 @@ name: 🌅 Morning Policy Bot v3
 
 on:
   schedule:
-    - cron: '0 22 * * *'
+    - cron: '0 23 * * *'
   workflow_dispatch:
 
 jobs:
