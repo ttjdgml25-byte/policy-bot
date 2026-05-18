@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup
 import os
 from datetime import datetime
 
-BOT_TOKEN = os.environ["8891131461:AAFPBtrMdtkNinCsLCRANKCIoVEOzbL0QHE"]
+BOT_TOKEN = os.environ["BOT_TOKEN"]
 CHAT_IDS = [
-    os.environ["1241816819"],
-    os.environ.get("112169927", ""),
+    os.environ["CHAT_ID"],
+    os.environ.get("CHAT_ID_2", ""),
 ]
 CHAT_IDS = [c for c in CHAT_IDS if c]
 
