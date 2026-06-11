@@ -9,8 +9,7 @@ CHAT_IDS = [
 ]
 CHAT_IDS = [c for c in CHAT_IDS if c]
 
-CENTRAL_KEY = os.environ["BOKJIRO_CENTRAL_KEY"]
-LOCAL_KEY   = os.environ["BOKJIRO_LOCAL_KEY"]
+API_KEY = os.environ["DATA_API_KEY"]  # data.go.kr 인증키 하나로 통일
 
 KEYWORDS = [
     "지원사업", "지원금", "복지서비스", "혜택", "바우처", "수당", "장려금", "급여", "연금",
@@ -55,26 +54,26 @@ def send_telegram(message):
 
 
 def test_api():
-    """API 응답 구조 확인용 테스트 함수"""
+    """API 응답 구조 확인용"""
     # 중앙부처 API 테스트
-    url = "https://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelistInformation"
-    params = {
-        "serviceKey": CENTRAL_KEY,
+    url1 = "https://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelistInformation"
+    params1 = {
+        "serviceKey": API_KEY,
         "callTp": "L",
         "pageNo": "1",
         "numOfRows": "3",
         "returnType": "json",
     }
     try:
-        res = requests.get(url, params=params, timeout=15)
-        send_telegram(f"🔍 중앙부처 API 테스트\n상태코드: {res.status_code}\n응답:\n{res.text[:800]}")
+        res1 = requests.get(url1, params=params1, timeout=15)
+        send_telegram(f"🔍 중앙부처 API\n상태: {res1.status_code}\n응답:\n{res1.text[:600]}")
     except Exception as e:
-        send_telegram(f"❌ 중앙부처 API 오류: {str(e)}")
+        send_telegram(f"❌ 중앙부처 오류: {str(e)}")
 
     # 지자체 API 테스트
     url2 = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfareInfo"
     params2 = {
-        "serviceKey": LOCAL_KEY,
+        "serviceKey": API_KEY,
         "callTp": "L",
         "pageNo": "1",
         "numOfRows": "3",
@@ -82,17 +81,17 @@ def test_api():
     }
     try:
         res2 = requests.get(url2, params=params2, timeout=15)
-        send_telegram(f"🔍 지자체 API 테스트\n상태코드: {res2.status_code}\n응답:\n{res2.text[:800]}")
+        send_telegram(f"🔍 지자체 API\n상태: {res2.status_code}\n응답:\n{res2.text[:600]}")
     except Exception as e:
-        send_telegram(f"❌ 지자체 API 오류: {str(e)}")
+        send_telegram(f"❌ 지자체 오류: {str(e)}")
 
 
-def get_central_welfare(api_key):
+def get_central_welfare():
     results = []
     try:
         url = "https://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelistInformation"
         params = {
-            "serviceKey": api_key,
+            "serviceKey": API_KEY,
             "callTp": "L",
             "pageNo": "1",
             "numOfRows": "100",
@@ -125,16 +124,16 @@ def get_central_welfare(api_key):
                     entry += f"\n  🔗 {link}"
                 results.append(entry)
     except Exception as e:
-        print(f"중앙부처 API 오류: {e}")
+        print(f"중앙부처 오류: {e}")
     return results
 
 
-def get_local_welfare(api_key):
+def get_local_welfare():
     results = []
     try:
         url = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfareInfo"
         params = {
-            "serviceKey": api_key,
+            "serviceKey": API_KEY,
             "callTp": "L",
             "pageNo": "1",
             "numOfRows": "100",
@@ -172,7 +171,7 @@ def get_local_welfare(api_key):
                     entry += f"\n  🔗 {link}"
                 results.append(entry)
     except Exception as e:
-        print(f"지자체 API 오류: {e}")
+        print(f"지자체 오류: {e}")
     return results
 
 
@@ -189,13 +188,13 @@ def main():
     msg += "━━━━━━━━━━━━━━━━━━━━\n\n"
     total_count = 0
 
-    central = get_central_welfare(CENTRAL_KEY)
+    central = get_central_welfare()
     if central:
         msg += f"📋 *[중앙부처 복지서비스]*\n"
         msg += "\n\n".join(central[:10]) + "\n\n"
         total_count += len(central)
 
-    local = get_local_welfare(LOCAL_KEY)
+    local = get_local_welfare()
     if local:
         msg += f"📋 *[서울·경기·과천 복지서비스]*\n"
         msg += "\n\n".join(local[:10]) + "\n\n"
@@ -212,5 +211,5 @@ def main():
 
 
 if __name__ == "__main__":
-    test_api()   # ← API 응답 확인용 (확인 후 이 줄 삭제 예정)
+    test_api()   # API 확인용 (정상 작동 확인 후 이 줄 삭제)
     main()
