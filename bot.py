@@ -1,6 +1,6 @@
 import requests
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 CHAT_IDS = [
@@ -9,11 +9,9 @@ CHAT_IDS = [
 ]
 CHAT_IDS = [c for c in CHAT_IDS if c]
 
-# ✅ 공공데이터포털 API 키
-CENTRAL_KEY = os.environ["BOKJIRO_CENTRAL_KEY"]   # 중앙부처 복지서비스
-LOCAL_KEY   = os.environ["BOKJIRO_LOCAL_KEY"]      # 지자체 복지서비스
+CENTRAL_KEY = os.environ["BOKJIRO_CENTRAL_KEY"]
+LOCAL_KEY   = os.environ["BOKJIRO_LOCAL_KEY"]
 
-# ✅ 전체 키워드 목록
 KEYWORDS = [
     "지원사업", "지원금", "복지서비스", "혜택", "바우처", "수당", "장려금", "급여", "연금",
     "환급", "감면", "면제", "할인", "쿠폰", "포인트", "금융지원", "이자지원",
@@ -35,116 +33,11 @@ KEYWORDS = [
     "무료", "무상", "선착순",
 ]
 
-# ✅ 관심 지역 (지자체 서비스 필터용)
 TARGET_REGIONS = ["서울", "경기", "과천"]
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
 }
-
-
-def get_central_welfare(api_key):
-    """중앙부처 복지서비스 목록 조회"""
-    results = []
-    try:
-        url = "https://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelistInformation"
-        params = {
-            "serviceKey": api_key,
-            "callTp": "L",
-            "pageNo": "1",
-            "numOfRows": "100",
-            "returnType": "json",
-        }
-        res = requests.get(url, params=params, headers=HEADERS, timeout=15)
-        data = res.json()
-
-        items = data.get("body", {}).get("items", [])
-        if isinstance(items, dict):
-            items = items.get("item", [])
-        if isinstance(items, dict):
-            items = [items]
-
-        for item in items:
-            title = item.get("servNm", "")
-            desc = item.get("servDgst", "")[:100]
-            target = item.get("tgtrDsc", "")
-            dept = item.get("jurMnofNm", "")
-            link = item.get("servDtlLink", "")
-
-            if not title:
-                continue
-            if any(kw in title or kw in desc for kw in KEYWORDS):
-                entry = f"• *{title}*"
-                if dept:
-                    entry += f"\n  🏛 {dept}"
-                if target:
-                    entry += f"\n  👥 대상: {target[:60]}"
-                if desc:
-                    entry += f"\n  📝 {desc}"
-                if link:
-                    entry += f"\n  🔗 {link}"
-                results.append(entry)
-
-    except Exception as e:
-        print(f"중앙부처 API 오류: {e}")
-
-    return results
-
-
-def get_local_welfare(api_key):
-    """지자체 복지서비스 목록 조회 (서울/경기/과천)"""
-    results = []
-    try:
-        url = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfareInfo"
-        params = {
-            "serviceKey": api_key,
-            "callTp": "L",
-            "pageNo": "1",
-            "numOfRows": "100",
-            "returnType": "json",
-        }
-        res = requests.get(url, params=params, headers=HEADERS, timeout=15)
-        data = res.json()
-
-        items = data.get("body", {}).get("items", [])
-        if isinstance(items, dict):
-            items = items.get("item", [])
-        if isinstance(items, dict):
-            items = [items]
-
-        for item in items:
-            title = item.get("servNm", "")
-            desc = item.get("servDgst", "")[:100]
-            region = item.get("sigunguNm", "") or item.get("ctpvNm", "")
-            target = item.get("tgtrDsc", "")
-            dept = item.get("jurMnofNm", "")
-            link = item.get("servDtlLink", "")
-
-            if not title:
-                continue
-
-            # 관심 지역 필터
-            region_match = any(r in region for r in TARGET_REGIONS)
-            keyword_match = any(kw in title or kw in desc for kw in KEYWORDS)
-
-            if region_match and keyword_match:
-                entry = f"• *{title}*"
-                if region:
-                    entry += f"\n  📍 {region}"
-                if dept:
-                    entry += f"\n  🏛 {dept}"
-                if target:
-                    entry += f"\n  👥 대상: {target[:60]}"
-                if desc:
-                    entry += f"\n  📝 {desc}"
-                if link:
-                    entry += f"\n  🔗 {link}"
-                results.append(entry)
-
-    except Exception as e:
-        print(f"지자체 API 오류: {e}")
-
-    return results
 
 
 def send_telegram(message):
@@ -161,6 +54,128 @@ def send_telegram(message):
             })
 
 
+def test_api():
+    """API 응답 구조 확인용 테스트 함수"""
+    # 중앙부처 API 테스트
+    url = "https://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelistInformation"
+    params = {
+        "serviceKey": CENTRAL_KEY,
+        "callTp": "L",
+        "pageNo": "1",
+        "numOfRows": "3",
+        "returnType": "json",
+    }
+    try:
+        res = requests.get(url, params=params, timeout=15)
+        send_telegram(f"🔍 중앙부처 API 테스트\n상태코드: {res.status_code}\n응답:\n{res.text[:800]}")
+    except Exception as e:
+        send_telegram(f"❌ 중앙부처 API 오류: {str(e)}")
+
+    # 지자체 API 테스트
+    url2 = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfareInfo"
+    params2 = {
+        "serviceKey": LOCAL_KEY,
+        "callTp": "L",
+        "pageNo": "1",
+        "numOfRows": "3",
+        "returnType": "json",
+    }
+    try:
+        res2 = requests.get(url2, params=params2, timeout=15)
+        send_telegram(f"🔍 지자체 API 테스트\n상태코드: {res2.status_code}\n응답:\n{res2.text[:800]}")
+    except Exception as e:
+        send_telegram(f"❌ 지자체 API 오류: {str(e)}")
+
+
+def get_central_welfare(api_key):
+    results = []
+    try:
+        url = "https://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelistInformation"
+        params = {
+            "serviceKey": api_key,
+            "callTp": "L",
+            "pageNo": "1",
+            "numOfRows": "100",
+            "returnType": "json",
+        }
+        res = requests.get(url, params=params, headers=HEADERS, timeout=15)
+        data = res.json()
+        items = data.get("body", {}).get("items", [])
+        if isinstance(items, dict):
+            items = items.get("item", [])
+        if isinstance(items, dict):
+            items = [items]
+        for item in items:
+            title = item.get("servNm", "")
+            desc = item.get("servDgst", "")[:100]
+            target = item.get("tgtrDsc", "")
+            dept = item.get("jurMnofNm", "")
+            link = item.get("servDtlLink", "")
+            if not title:
+                continue
+            if any(kw in title or kw in desc for kw in KEYWORDS):
+                entry = f"• *{title}*"
+                if dept:
+                    entry += f"\n  🏛 {dept}"
+                if target:
+                    entry += f"\n  👥 대상: {target[:60]}"
+                if desc:
+                    entry += f"\n  📝 {desc}"
+                if link:
+                    entry += f"\n  🔗 {link}"
+                results.append(entry)
+    except Exception as e:
+        print(f"중앙부처 API 오류: {e}")
+    return results
+
+
+def get_local_welfare(api_key):
+    results = []
+    try:
+        url = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfareInfo"
+        params = {
+            "serviceKey": api_key,
+            "callTp": "L",
+            "pageNo": "1",
+            "numOfRows": "100",
+            "returnType": "json",
+        }
+        res = requests.get(url, params=params, headers=HEADERS, timeout=15)
+        data = res.json()
+        items = data.get("body", {}).get("items", [])
+        if isinstance(items, dict):
+            items = items.get("item", [])
+        if isinstance(items, dict):
+            items = [items]
+        for item in items:
+            title = item.get("servNm", "")
+            desc = item.get("servDgst", "")[:100]
+            region = item.get("sigunguNm", "") or item.get("ctpvNm", "")
+            target = item.get("tgtrDsc", "")
+            dept = item.get("jurMnofNm", "")
+            link = item.get("servDtlLink", "")
+            if not title:
+                continue
+            region_match = any(r in region for r in TARGET_REGIONS)
+            keyword_match = any(kw in title or kw in desc for kw in KEYWORDS)
+            if region_match and keyword_match:
+                entry = f"• *{title}*"
+                if region:
+                    entry += f"\n  📍 {region}"
+                if dept:
+                    entry += f"\n  🏛 {dept}"
+                if target:
+                    entry += f"\n  👥 대상: {target[:60]}"
+                if desc:
+                    entry += f"\n  📝 {desc}"
+                if link:
+                    entry += f"\n  🔗 {link}"
+                results.append(entry)
+    except Exception as e:
+        print(f"지자체 API 오류: {e}")
+    return results
+
+
 def main():
     today = datetime.now().strftime("%Y년 %m월 %d일 (%A)")
     day_map = {
@@ -174,18 +189,16 @@ def main():
     msg += "━━━━━━━━━━━━━━━━━━━━\n\n"
     total_count = 0
 
-    # 중앙부처 복지서비스
     central = get_central_welfare(CENTRAL_KEY)
     if central:
         msg += f"📋 *[중앙부처 복지서비스]*\n"
-        msg += "\n\n".join(central[:10]) + "\n\n"  # 최대 10건
+        msg += "\n\n".join(central[:10]) + "\n\n"
         total_count += len(central)
 
-    # 지자체 복지서비스 (서울/경기/과천)
     local = get_local_welfare(LOCAL_KEY)
     if local:
         msg += f"📋 *[서울·경기·과천 복지서비스]*\n"
-        msg += "\n\n".join(local[:10]) + "\n\n"  # 최대 10건
+        msg += "\n\n".join(local[:10]) + "\n\n"
         total_count += len(local)
 
     if total_count == 0:
@@ -199,4 +212,5 @@ def main():
 
 
 if __name__ == "__main__":
+    test_api()   # ← API 응답 확인용 (확인 후 이 줄 삭제 예정)
     main()
