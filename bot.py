@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 import os
 from datetime import datetime
 
@@ -9,7 +10,7 @@ CHAT_IDS = [
 ]
 CHAT_IDS = [c for c in CHAT_IDS if c]
 
-API_KEY = os.environ["DATA_API_KEY"]  # data.go.kr 인증키 하나로 통일
+API_KEY = os.environ["DATA_API_KEY"]
 
 KEYWORDS = [
     "지원사업", "지원금", "복지서비스", "혜택", "바우처", "수당", "장려금", "급여", "연금",
@@ -18,9 +19,7 @@ KEYWORDS = [
     "민생지원", "민생안정", "생활안정", "추가지원", "특별지원",
     "대상자", "신청", "접수", "모집", "신청기간", "신청방법", "지급", "지급일정",
     "시행", "추진", "확대", "신설", "개편", "운영", "발표", "안내",
-    "보도자료", "공고", "고시", "행정예고", "지침", "시범사업",
     "전국민", "전 국민", "누구나", "전국 대상", "대상 확대",
-    "신청 시작", "기간 연장", "추가 모집", "신규사업",
     "청년", "청년월세", "청년도약계좌", "청년주거", "청년지원", "구직", "취업지원",
     "출산", "육아", "보육", "부모급여", "아동수당", "양육수당", "아이돌봄", "다자녀", "임산부",
     "노인", "기초연금", "노인일자리", "독거노인", "치매", "장기요양",
@@ -34,9 +33,7 @@ KEYWORDS = [
 
 TARGET_REGIONS = ["서울", "경기", "과천"]
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
-}
+BASE_URL = "https://apis.data.go.kr/B554287/NationalWelfareInformationsV001"
 
 
 def send_telegram(message):
@@ -54,62 +51,49 @@ def send_telegram(message):
 
 
 def test_api():
-    """API 응답 구조 확인용"""
-    # 중앙부처 API 테스트
-    url1 = "https://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelistInformation"
-    params1 = {
+    """API 응답 확인용"""
+    url = f"{BASE_URL}/NationalWelfarelistV001"
+    params = {
         "serviceKey": API_KEY,
         "callTp": "L",
         "pageNo": "1",
         "numOfRows": "3",
-        "returnType": "json",
     }
     try:
-        res1 = requests.get(url1, params=params1, timeout=15)
-        send_telegram(f"🔍 중앙부처 API\n상태: {res1.status_code}\n응답:\n{res1.text[:600]}")
+        res = requests.get(url, params=params, timeout=15)
+        send_telegram(f"🔍 API 테스트\n상태: {res.status_code}\n응답:\n{res.text[:600]}")
     except Exception as e:
-        send_telegram(f"❌ 중앙부처 오류: {str(e)}")
-
-    # 지자체 API 테스트
-    url2 = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfareInfo"
-    params2 = {
-        "serviceKey": API_KEY,
-        "callTp": "L",
-        "pageNo": "1",
-        "numOfRows": "3",
-        "returnType": "json",
-    }
-    try:
-        res2 = requests.get(url2, params=params2, timeout=15)
-        send_telegram(f"🔍 지자체 API\n상태: {res2.status_code}\n응답:\n{res2.text[:600]}")
-    except Exception as e:
-        send_telegram(f"❌ 지자체 오류: {str(e)}")
+        send_telegram(f"❌ 오류: {str(e)}")
 
 
 def get_central_welfare():
+    """중앙부처 복지서비스 목록 조회 (XML)"""
     results = []
     try:
-        url = "https://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelistInformation"
+        url = f"{BASE_URL}/NationalWelfarelistV001"
         params = {
             "serviceKey": API_KEY,
             "callTp": "L",
             "pageNo": "1",
             "numOfRows": "100",
-            "returnType": "json",
         }
-        res = requests.get(url, params=params, headers=HEADERS, timeout=15)
-        data = res.json()
-        items = data.get("body", {}).get("items", [])
-        if isinstance(items, dict):
-            items = items.get("item", [])
-        if isinstance(items, dict):
-            items = [items]
+        res = requests.get(url, params=params, timeout=15)
+        soup = BeautifulSoup(res.content, "xml")
+
+        items = soup.find_all("item")
         for item in items:
-            title = item.get("servNm", "")
-            desc = item.get("servDgst", "")[:100]
-            target = item.get("tgtrDsc", "")
-            dept = item.get("jurMnofNm", "")
-            link = item.get("servDtlLink", "")
+            title = item.find("servNm")
+            desc = item.find("servDgst")
+            target = item.find("tgtrDsc")
+            dept = item.find("jurMnofNm")
+            link = item.find("servDtlLink")
+
+            title = title.get_text(strip=True) if title else ""
+            desc = desc.get_text(strip=True)[:100] if desc else ""
+            target = target.get_text(strip=True)[:60] if target else ""
+            dept = dept.get_text(strip=True) if dept else ""
+            link = link.get_text(strip=True) if link else ""
+
             if not title:
                 continue
             if any(kw in title or kw in desc for kw in KEYWORDS):
@@ -117,7 +101,7 @@ def get_central_welfare():
                 if dept:
                     entry += f"\n  🏛 {dept}"
                 if target:
-                    entry += f"\n  👥 대상: {target[:60]}"
+                    entry += f"\n  👥 대상: {target}"
                 if desc:
                     entry += f"\n  📝 {desc}"
                 if link:
@@ -129,30 +113,36 @@ def get_central_welfare():
 
 
 def get_local_welfare():
+    """지자체 복지서비스 목록 조회 (XML)"""
     results = []
     try:
-        url = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfareInfo"
+        # 지자체 API End Point 확인 필요 - 일단 동일 패턴으로 시도
+        url = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformationsV001/LcgvWelfareInfoV001"
         params = {
             "serviceKey": API_KEY,
             "callTp": "L",
             "pageNo": "1",
             "numOfRows": "100",
-            "returnType": "json",
         }
-        res = requests.get(url, params=params, headers=HEADERS, timeout=15)
-        data = res.json()
-        items = data.get("body", {}).get("items", [])
-        if isinstance(items, dict):
-            items = items.get("item", [])
-        if isinstance(items, dict):
-            items = [items]
+        res = requests.get(url, params=params, timeout=15)
+        soup = BeautifulSoup(res.content, "xml")
+
+        items = soup.find_all("item")
         for item in items:
-            title = item.get("servNm", "")
-            desc = item.get("servDgst", "")[:100]
-            region = item.get("sigunguNm", "") or item.get("ctpvNm", "")
-            target = item.get("tgtrDsc", "")
-            dept = item.get("jurMnofNm", "")
-            link = item.get("servDtlLink", "")
+            title = item.find("servNm")
+            desc = item.find("servDgst")
+            region = item.find("sigunguNm") or item.find("ctpvNm")
+            target = item.find("tgtrDsc")
+            dept = item.find("jurMnofNm")
+            link = item.find("servDtlLink")
+
+            title = title.get_text(strip=True) if title else ""
+            desc = desc.get_text(strip=True)[:100] if desc else ""
+            region = region.get_text(strip=True) if region else ""
+            target = target.get_text(strip=True)[:60] if target else ""
+            dept = dept.get_text(strip=True) if dept else ""
+            link = link.get_text(strip=True) if link else ""
+
             if not title:
                 continue
             region_match = any(r in region for r in TARGET_REGIONS)
@@ -164,7 +154,7 @@ def get_local_welfare():
                 if dept:
                     entry += f"\n  🏛 {dept}"
                 if target:
-                    entry += f"\n  👥 대상: {target[:60]}"
+                    entry += f"\n  👥 대상: {target}"
                 if desc:
                     entry += f"\n  📝 {desc}"
                 if link:
@@ -211,5 +201,5 @@ def main():
 
 
 if __name__ == "__main__":
-    test_api()   # API 확인용 (정상 작동 확인 후 이 줄 삭제)
+    test_api()   # 확인 후 이 줄 삭제 예정
     main()
