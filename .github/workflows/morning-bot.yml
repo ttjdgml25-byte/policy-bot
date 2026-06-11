@@ -19,5 +19,4 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           CHAT_ID_2: ${{ secrets.CHAT_ID_2 }}
-          BOKJIRO_CENTRAL_KEY: ${{ secrets.BOKJIRO_CENTRAL_KEY }}
-          BOKJIRO_LOCAL_KEY: ${{ secrets.BOKJIRO_LOCAL_KEY }}
+          DATA_API_KEY: ${{ secrets.DATA_API_KEY }}
