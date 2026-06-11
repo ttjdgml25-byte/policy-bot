@@ -1,22 +1,37 @@
-name: 🌅 Morning Policy Bot v4
+name: 🌅 Morning Policy Bot v5
 
 on:
   schedule:
     - cron: '0 23 * * *'   # UTC 23:00 = 한국시간 오전 08:00
   workflow_dispatch:
 
+permissions:
+  contents: write          # HTML 파일을 저장소에 커밋하기 위한 권한
+
 jobs:
   run-bot:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
       - run: pip install requests beautifulsoup4 lxml
-      - run: python bot.py
+
+      - name: 봇 실행 + HTML 생성
+        run: python bot.py
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           CHAT_ID_2: ${{ secrets.CHAT_ID_2 }}
           DATA_API_KEY: ${{ secrets.DATA_API_KEY }}
+
+      - name: HTML 페이지 저장소에 커밋
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add index.html
+          git commit -m "복지서비스 목록 자동 업데이트 $(date +'%Y-%m-%d')" || echo "변경사항 없음"
+          git push || echo "푸시할 내용 없음"
