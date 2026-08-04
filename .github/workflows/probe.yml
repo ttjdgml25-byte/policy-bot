@@ -1,0 +1,18 @@
+name: API Probe (temporary)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -q requests beautifulsoup4 lxml
+      - name: 문화 API 구조 확인
+        env:
+          DATA_API_KEY: ${{ secrets.DATA_API_KEY }}
+        run: python probe.py
