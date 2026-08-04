@@ -3,6 +3,9 @@ name: API Probe (temporary)
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -15,4 +18,11 @@ jobs:
       - name: 문화 API 구조 확인
         env:
           DATA_API_KEY: ${{ secrets.DATA_API_KEY }}
-        run: python probe.py
+        run: python probe.py > probe_result.txt 2>&1 || true
+      - name: 결과 커밋
+        run: |
+          git config user.name "welfare-bot"
+          git config user.email "actions@github.com"
+          git add probe_result.txt
+          git diff --staged --quiet || git commit -m "probe 결과 기록"
+          git push
