@@ -798,11 +798,11 @@ def main():
         print(f"생활 혜택 오류: {e}")
 
     # 6) 무료·저렴한 문화행사 (서울·경기)
+    cul, checked, total = [], 0, 0
     try:
-        cul = culture.fetch_cheap(API_KEY, limit=60)
-    except Exception as e:
-        print(f"문화 API 오류: {e}")
-        cul = []
+        cul, checked, total = culture.fetch_cheap(API_KEY, limit=70)
+    except Exception as ex:
+        print(f"문화 API 오류: {ex}")
     if cul:
         free_n = len([d for d in cul if d.get("price_num") == 0])
         cmsg = "🎟 <b>무료·저렴한 문화행사</b> (서울·경기)\n"
@@ -827,6 +827,13 @@ def main():
                 send_photo_url(d["thumbnail"], cap)
             else:
                 send_message(cap)
+    else:
+        send_message("🎟 <b>무료·저렴한 문화행사</b>\n"
+                     "━━━━━━━━━━━━━━━━━━━━\n\n"
+                     f"오늘은 조건에 맞는 행사를 찾지 못했어요.\n"
+                     f"(서울·경기 후보 {total}건 중 {checked}건 관람료 확인)\n\n"
+                     "🎬 대신 «문화가 있는 날»(매월 둘째·마지막 수요일)에 "
+                     "영화를 1만원에 보실 수 있습니다.")
 
     generate_html(all_data, new_items)
     print(f"✅ 완료 - 전체 {len(all_data)}, 신규 {len(new_items)}, 추천 {len(recs)}")
