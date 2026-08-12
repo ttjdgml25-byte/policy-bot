@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-문화·공연·전시·체육 정보 수집 (한국문화정보원 한눈에보는문화정보 API)
-- 대상 지역: 서울, 경기 (우선 지역: 과천시, 의왕시, 안양시)
-- 실제 응답 필드: serviceName, seq, title, startDate, endDate, place,
-                  realmName, area, sigungu, thumbnail, gpsX, gpsY
+무료·저렴한 문화행사 수집 (한국문화정보원 한눈에보는문화정보 API)
+- 대상 지역: 서울, 경기 (우선: 과천시·의왕시·안양시)
+- 목록(area2)으로 후보를 받고, 상세(detail2)에서 price를 확인해
+  무료 또는 저렴한 행사만 골라낸다.
 """
 import os
+import re
+import time
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta, timezone
@@ -13,16 +15,17 @@ from datetime import datetime, timedelta, timezone
 KST = timezone(timedelta(hours=9))
 BASE = "https://apis.data.go.kr/B553457/cultureinfo"
 
+# 확인 결과 짧은 시도명만 동작한다 (서울 575건 / 경기 125건)
 TARGET_AREAS = ["서울", "경기"]
-PRIORITY_SIGUNGU = ["과천시", "의왕시", "안양시"]
-CULTURE_PORTAL = "https://www.culture.go.kr"
+PRIORITY_SIGUNGU = ["과천시", "의왕시", "안양시", "군포시", "성남시", "수원시"]
+CHEAP_LIMIT = 10000       # 이 금액 이하면 '저렴'으로 본다
 
 
-def _get(path, key, params):
+def _get(path, key, params, timeout=30):
     p = dict(params)
     p["serviceKey"] = key
     try:
-        r = requests.get(BASE + path, params=p, timeout=30)
+        r = requests.get(BASE + path, params=p, timeout=timeout)
         if r.status_code != 200:
             return None
         return BeautifulSoup(r.content, "xml")
@@ -31,118 +34,148 @@ def _get(path, key, params):
         return None
 
 
-def _parse_items(soup):
-    out = []
-    if not soup:
-        return out
-    for it in soup.find_all("item"):
-        def g(tag):
-            t = it.find(tag)
-            return t.get_text(strip=True) if t else ""
-        title = g("title")
-        if not title:
-            continue
-        out.append({
-            "seq": g("seq"),
-            "title": title,
-            "realm": g("realmName") or g("serviceName"),
-            "place": g("place"),
-            "area": g("area"),
-            "sigungu": g("sigungu"),
-            "start": g("startDate"),
-            "end": g("endDate"),
-            "thumbnail": g("thumbnail"),
-        })
-    return out
+def _text(node, tag):
+    t = node.find(tag)
+    return t.get_text(strip=True) if t else ""
 
 
-def _fmt_date(s):
-    if len(s) == 8:
-        return f"{s[4:6]}.{s[6:8]}"
-    return s
+def parse_price(txt):
+    """관람료 문자열에서 가장 싼 금액을 뽑는다. 무료면 0, 알 수 없으면 None."""
+    t = (txt or "").strip()
+    if not t:
+        return None
+    if re.search(r"무료|free", t, re.I) and not re.search(r"유료", t):
+        return 0
+    nums = [int(n.replace(",", "")) for n in re.findall(r"[\d,]+", t)
+            if len(n.replace(",", "")) >= 3]
+    return min(nums) if nums else None
+
+
+def price_label(d):
+    p = d.get("price_num")
+    if p == 0:
+        return "무료"
+    if p is None:
+        return d.get("price_txt") or "관람료 문의"
+    return f"{p:,}원부터"
+
+
+def _fmt(s):
+    return f"{s[4:6]}.{s[6:8]}" if len(s) == 8 else s
 
 
 def period_label(d):
-    st, en = _fmt_date(d["start"]), _fmt_date(d["end"])
+    st, en = _fmt(d.get("start", "")), _fmt(d.get("end", ""))
     if st and en:
         return f"{st} ~ {en}"
     return st or en or "상시"
 
 
-def fetch_culture(api_key, days=30, max_pages=8):
-    """오늘부터 days일 이내 진행되는 서울·경기 문화행사 수집"""
-    if not api_key:
-        return []
-    now = datetime.now(KST)
-    frm = now.strftime("%Y%m%d")
-    to = (now + timedelta(days=days)).strftime("%Y%m%d")
-
-    collected, seen = [], set()
-
-    # 1차 시도: 지역별 조회 (시도명 짧은 형태가 정답)
+def fetch_candidates(api_key, per_area=100):
+    """서울·경기 진행 중 행사 목록"""
+    out, seen = [], set()
+    today = datetime.now(KST).strftime("%Y%m%d")
     for sido in TARGET_AREAS:
-        soup = _get("/area2", api_key,
-                    {"sido": sido, "PageNo": 1, "numOfRows": 100, "sortStdr": 1})
-        for d in _parse_items(soup):
-            if d["seq"] not in seen:
-                seen.add(d["seq"])
-                collected.append(d)
-
-    # 2차(보완): 기간별 조회 후 지역 필터 — area2가 비어 있을 때 대비
-    if len(collected) < 20:
-        for page in range(1, max_pages + 1):
-            soup = _get("/period2", api_key,
-                        {"from": frm, "to": to, "PageNo": page,
-                         "numOfRows": 100, "sortStdr": 1})
-            items = _parse_items(soup)
+        for page in (1, 2, 3):
+            soup = _get("/area2", api_key,
+                        {"sido": sido, "PageNo": page, "numOfRows": per_area, "sortStdr": 1})
+            if not soup:
+                break
+            items = soup.find_all("item")
             if not items:
                 break
-            for d in items:
-                if d["area"] in TARGET_AREAS and d["seq"] not in seen:
-                    seen.add(d["seq"])
-                    collected.append(d)
+            for it in items:
+                seq = _text(it, "seq")
+                end = _text(it, "endDate")
+                if not seq or seq in seen:
+                    continue
+                if end and end < today:
+                    continue
+                seen.add(seq)
+                out.append({
+                    "seq": seq,
+                    "title": _text(it, "title"),
+                    "realm": _text(it, "realmName") or _text(it, "serviceName"),
+                    "place": _text(it, "place"),
+                    "area": _text(it, "area"),
+                    "sigungu": _text(it, "sigungu"),
+                    "start": _text(it, "startDate"),
+                    "end": end,
+                    "thumbnail": _text(it, "thumbnail"),
+                })
+            time.sleep(0.3)
+    return out
 
-    # 종료된 행사 제외
-    today = frm
-    live = [d for d in collected if not d["end"] or d["end"] >= today]
 
-    # 우선 지역 → 그 외 경기 → 서울 순으로 정렬
+def enrich(api_key, items, limit=60):
+    """상세 조회로 관람료·링크를 채운다 (호출 수 제한)."""
+    done = []
+    for d in items[:limit]:
+        soup = _get("/detail2", api_key, {"seq": d["seq"]}, timeout=20)
+        if soup:
+            it = soup.find("item")
+            if it:
+                d["price_txt"] = _text(it, "price")
+                d["price_num"] = parse_price(d["price_txt"])
+                d["url"] = _text(it, "url")
+                d["phone"] = _text(it, "phone")
+                d["addr"] = _text(it, "placeAddr")
+                if not d.get("thumbnail"):
+                    d["thumbnail"] = _text(it, "imgUrl")
+        done.append(d)
+        time.sleep(0.2)
+    return done
+
+
+def fetch_cheap(api_key, limit=60):
+    """무료 또는 저렴한 서울·경기 행사만 반환"""
+    if not api_key:
+        return []
+    cands = fetch_candidates(api_key)
+
     def rank(d):
         if d["sigungu"] in PRIORITY_SIGUNGU:
             return (0, PRIORITY_SIGUNGU.index(d["sigungu"]))
-        if d["area"] == "경기":
-            return (1, 0)
-        return (2, 0)
+        return (1, 0) if d["area"] == "경기" else (2, 0)
 
-    live.sort(key=rank)
-    return live
+    cands.sort(key=rank)
+    # 매일 다른 구간을 조회해 커버리지를 넓힌다
+    if len(cands) > limit:
+        start = (datetime.now(KST).timetuple().tm_yday * limit) % len(cands)
+        cands = (cands[start:] + cands[:start])
+    enriched = enrich(api_key, cands, limit=limit)
+
+    cheap = [d for d in enriched
+             if d.get("price_num") is not None and d["price_num"] <= CHEAP_LIMIT]
+    cheap.sort(key=lambda d: (d.get("price_num", 999999), rank(d)))
+    print(f"문화행사 후보 {len(cands)}건 중 무료·저렴 {len(cheap)}건")
+    return cheap
 
 
-def pick_daily(items, n=3):
-    """날짜 기준 로테이션으로 매일 다른 항목 선정 (우선 지역 우대)"""
+def summary_lines(items, limit=6):
+    lines = []
+    for d in items[:limit]:
+        loc = d.get("sigungu") or d.get("area")
+        tag = "🆓" if d.get("price_num") == 0 else "💸"
+        lines.append(f"{tag} <b>{d['title']}</b> — {price_label(d)}\n"
+                     f"   📍 {loc} {d.get('place','')} · 🗓 {period_label(d)}")
+    return lines
+
+
+def pick_daily(items, n=2):
     if not items:
         return []
-    prio = [d for d in items if d["sigungu"] in PRIORITY_SIGUNGU]
-    rest = [d for d in items if d["sigungu"] not in PRIORITY_SIGUNGU]
-    pool = prio + rest
+    free = [d for d in items if d.get("price_num") == 0]
+    pool = free or items
     day = datetime.now(KST).timetuple().tm_yday
     start = (day * n) % len(pool)
     return [pool[(start + i) % len(pool)] for i in range(min(n, len(pool)))]
 
 
-def summary_lines(items, limit=6):
-    """브리핑 메시지에 넣을 요약 줄 생성"""
-    lines = []
-    for d in items[:limit]:
-        loc = d["sigungu"] or d["area"]
-        lines.append(f"• <b>{d['title']}</b>\n   📍 {loc} {d['place']} · 🗓 {period_label(d)}")
-    return lines
-
-
 if __name__ == "__main__":
     key = os.environ.get("DATA_API_KEY", "")
-    got = fetch_culture(key)
-    print(f"수집 {len(got)}건")
-    for d in got[:15]:
-        print(f"  [{d['area']} {d['sigungu']}] {d['realm']} | {d['title']} | "
-              f"{period_label(d)} | {d['place']} | thumb={'Y' if d['thumbnail'] else 'N'}")
+    got = fetch_cheap(key)
+    print(f"\n무료·저렴 {len(got)}건")
+    for d in got[:20]:
+        print(f"  [{d['area']} {d['sigungu']}] {price_label(d):<12} {d['title'][:34]} | "
+              f"{d.get('place','')[:20]} | {period_label(d)}")
