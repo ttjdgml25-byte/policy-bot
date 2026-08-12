@@ -16,6 +16,8 @@ import html as html_mod
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta, timezone
 from PIL import Image, ImageDraw, ImageFont
+import culture
+import benefits
 
 # ─────────────────────────── 기본 설정 ───────────────────────────
 KST = timezone(timedelta(hours=9))
@@ -82,6 +84,16 @@ def send_photo(path, caption):
             tg_api("sendPhoto",
                    data={"chat_id": chat_id, "caption": caption[:1024], "parse_mode": "HTML"},
                    files={"photo": f})
+
+
+def send_photo_url(url, caption):
+    """이미지 URL을 그대로 전송 (문화행사 썸네일용)"""
+    for chat_id in CHAT_IDS:
+        if DRY_RUN:
+            print(f"[DRY_RUN] sendPhoto(url) {url}")
+            continue
+        tg_api("sendPhoto", data={"chat_id": chat_id, "photo": url,
+                                  "caption": caption[:1024], "parse_mode": "HTML"})
 
 
 def send_album(paths, caption):
@@ -776,6 +788,37 @@ def main():
     online_count = len([d for d in all_data if d["online"] == "Y"])
     send_photo(f, f"✅ <b>지금 온라인으로 신청 가능한 복지 {online_count}건</b>\n"
                   f"🔗 <a href=\"{WEB_URL}?online=1\">전체 목록 · 신청 링크 보기</a>")
+
+    # 5) 생활 혜택 — 소득 기준 없이 누구나
+    try:
+        bmsg = benefits.build_message()
+        if bmsg:
+            send_message(bmsg)
+    except Exception as e:
+        print(f"생활 혜택 오류: {e}")
+
+    # 6) 서울·경기 문화·공연·전시·체육
+    try:
+        cul = culture.fetch_culture(API_KEY, max_pages=25)
+    except Exception as e:
+        print(f"문화 API 오류: {e}")
+        cul = []
+    if cul:
+        cmsg = "🎭 <b>서울·경기 문화행사</b> (소득 기준 없이 누구나)\n"
+        cmsg += "━━━━━━━━━━━━━━━━━━━━\n\n"
+        for line in culture.summary_lines(cul, 5):
+            cmsg += line + "\n\n"
+        cmsg += f"📍 과천·의왕·안양 우선 안내 · 진행 중 {len(cul)}건"
+        send_message(cmsg)
+        for d in culture.pick_daily(cul, 2):
+            cap = (f"🎭 <b>{esc(d['title'])}</b>\n"
+                   f"📍 {esc(d['sigungu'] or d['area'])} · {esc(d['place'])}\n"
+                   f"🗓 {culture.period_label(d)}\n"
+                   f"🎫 {esc(d['realm'])} · 소득 기준 없이 누구나 참여")
+            if d.get("thumbnail"):
+                send_photo_url(d["thumbnail"], cap)
+            else:
+                send_message(cap)
 
     generate_html(all_data, new_items)
     print(f"✅ 완료 - 전체 {len(all_data)}, 신규 {len(new_items)}, 추천 {len(recs)}")
