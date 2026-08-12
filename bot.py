@@ -797,24 +797,32 @@ def main():
     except Exception as e:
         print(f"생활 혜택 오류: {e}")
 
-    # 6) 서울·경기 문화·공연·전시·체육
+    # 6) 무료·저렴한 문화행사 (서울·경기)
     try:
-        cul = culture.fetch_culture(API_KEY, max_pages=25)
+        cul = culture.fetch_cheap(API_KEY, limit=60)
     except Exception as e:
         print(f"문화 API 오류: {e}")
         cul = []
     if cul:
-        cmsg = "🎭 <b>서울·경기 문화행사</b> (소득 기준 없이 누구나)\n"
+        free_n = len([d for d in cul if d.get("price_num") == 0])
+        cmsg = "🎟 <b>무료·저렴한 문화행사</b> (서울·경기)\n"
         cmsg += "━━━━━━━━━━━━━━━━━━━━\n\n"
-        for line in culture.summary_lines(cul, 5):
+        for line in culture.summary_lines(cul, 6):
             cmsg += line + "\n\n"
-        cmsg += f"📍 과천·의왕·안양 우선 안내 · 진행 중 {len(cul)}건"
+        cmsg += f"🆓 무료 {free_n}건 · 💸 1만원 이하 {len(cul) - free_n}건\n"
+        cmsg += "📍 과천·의왕·안양 우선 안내"
         send_message(cmsg)
         for d in culture.pick_daily(cul, 2):
-            cap = (f"🎭 <b>{esc(d['title'])}</b>\n"
-                   f"📍 {esc(d['sigungu'] or d['area'])} · {esc(d['place'])}\n"
-                   f"🗓 {culture.period_label(d)}\n"
-                   f"🎫 {esc(d['realm'])} · 소득 기준 없이 누구나 참여")
+            cap = (f"🎟 <b>{esc(d['title'])}</b>\n"
+                   f"💰 <b>{esc(culture.price_label(d))}</b>\n"
+                   f"📍 {esc(d.get('sigungu') or d.get('area'))} · {esc(d.get('place',''))}\n"
+                   f"🗓 {culture.period_label(d)}")
+            if d.get("addr"):
+                cap += f"\n🗺 {esc(d['addr'])}"
+            if d.get("phone"):
+                cap += f"\n☎ {esc(d['phone'])}"
+            if d.get("url"):
+                cap += f"\n🔗 <a href=\"{esc(d['url'])}\">자세히 보기</a>"
             if d.get("thumbnail"):
                 send_photo_url(d["thumbnail"], cap)
             else:
