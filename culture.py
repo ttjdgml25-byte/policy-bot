@@ -76,7 +76,7 @@ def fetch_candidates(api_key, per_area=100):
     out, seen = [], set()
     today = datetime.now(KST).strftime("%Y%m%d")
     for sido in TARGET_AREAS:
-        for page in (1, 2, 3):
+        for page in (1, 2, 3, 4, 5):
             soup = _get("/area2", api_key,
                         {"sido": sido, "PageNo": page, "numOfRows": per_area, "sortStdr": 1})
             if not soup:
@@ -103,11 +103,11 @@ def fetch_candidates(api_key, per_area=100):
                     "end": end,
                     "thumbnail": _text(it, "thumbnail"),
                 })
-            time.sleep(0.3)
+            time.sleep(0.1)
     return out
 
 
-def enrich(api_key, items, limit=60):
+def enrich(api_key, items, limit=70):
     """상세 조회로 관람료·링크를 채운다 (호출 수 제한)."""
     done = []
     for d in items[:limit]:
@@ -123,33 +123,57 @@ def enrich(api_key, items, limit=60):
                 if not d.get("thumbnail"):
                     d["thumbnail"] = _text(it, "imgUrl")
         done.append(d)
-        time.sleep(0.2)
+        time.sleep(0.05)
     return done
 
 
-def fetch_cheap(api_key, limit=60):
-    """무료 또는 저렴한 서울·경기 행사만 반환"""
+# 무료 가능성이 높은 장소·분야 (국공립 시설은 상시 무료가 많다)
+FREE_VENUE_HINTS = ["국립", "시립", "도립", "구립", "군립", "미술관", "박물관",
+                    "도서관", "문화원", "문화재단", "아트센터", "역사관", "기념관",
+                    "센터", "갤러리", "전시관"]
+FREE_REALM_HINTS = ["전시", "축제", "미술", "박물", "교육", "체험", "강연", "기타"]
+
+
+def free_score(d):
+    """무료일 가능성 점수 — 높을수록 먼저 상세 조회한다."""
+    s = 0
+    place = d.get("place", "") or ""
+    realm = d.get("realm", "") or ""
+    if any(h in place for h in FREE_VENUE_HINTS):
+        s += 3
+    if any(h in realm for h in FREE_REALM_HINTS):
+        s += 2
+    if d.get("sigungu") in PRIORITY_SIGUNGU:
+        s += 2
+    if d.get("area") == "경기":
+        s += 1
+    return s
+
+
+def fetch_cheap(api_key, limit=70):
+    """무료 또는 저렴한 서울·경기 행사. (cheap_list, 조회건수, 후보수) 반환"""
     if not api_key:
-        return []
+        return [], 0, 0
     cands = fetch_candidates(api_key)
+    if not cands:
+        return [], 0, 0
+
+    # 무료 가능성이 높은 순으로 정렬해 상세 조회 적중률을 높인다
+    cands.sort(key=lambda d: -free_score(d))
+    checked = enrich(api_key, cands, limit=limit)
+
+    known = [d for d in checked if d.get("price_num") is not None]
+    cheap = [d for d in known if d["price_num"] <= CHEAP_LIMIT]
 
     def rank(d):
-        if d["sigungu"] in PRIORITY_SIGUNGU:
+        if d.get("sigungu") in PRIORITY_SIGUNGU:
             return (0, PRIORITY_SIGUNGU.index(d["sigungu"]))
-        return (1, 0) if d["area"] == "경기" else (2, 0)
+        return (1, 0) if d.get("area") == "경기" else (2, 0)
 
-    cands.sort(key=rank)
-    # 매일 다른 구간을 조회해 커버리지를 넓힌다
-    if len(cands) > limit:
-        start = (datetime.now(KST).timetuple().tm_yday * limit) % len(cands)
-        cands = (cands[start:] + cands[:start])
-    enriched = enrich(api_key, cands, limit=limit)
-
-    cheap = [d for d in enriched
-             if d.get("price_num") is not None and d["price_num"] <= CHEAP_LIMIT]
-    cheap.sort(key=lambda d: (d.get("price_num", 999999), rank(d)))
-    print(f"문화행사 후보 {len(cands)}건 중 무료·저렴 {len(cheap)}건")
-    return cheap
+    cheap.sort(key=lambda d: (d["price_num"], rank(d)))
+    print(f"문화행사 후보 {len(cands)}건 / 상세확인 {len(checked)}건 / "
+          f"가격확인됨 {len(known)}건 / 무료·저렴 {len(cheap)}건")
+    return cheap, len(checked), len(cands)
 
 
 def summary_lines(items, limit=6):
@@ -174,7 +198,7 @@ def pick_daily(items, n=2):
 
 if __name__ == "__main__":
     key = os.environ.get("DATA_API_KEY", "")
-    got = fetch_cheap(key)
+    got, checked, total = fetch_cheap(key)
     print(f"\n무료·저렴 {len(got)}건")
     for d in got[:20]:
         print(f"  [{d['area']} {d['sigungu']}] {price_label(d):<12} {d['title'][:34]} | "
