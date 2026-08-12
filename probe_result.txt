@@ -1,74 +1,75 @@
+=== 1) 지역별 짧은 시도명 테스트 ===
+  sido='서울' -> totalCount=575
+  sido='경기' -> totalCount=125
+  sido='서울특별시' -> totalCount=0
+  sido='경기도' -> totalCount=0
 
-======================================================================
-[기간별]  GET /period2   params={'numOfRows': 5, 'PageNo': 1, 'from': '20260804', 'to': '20260903', 'sortStdr': 1}
-======================================================================
-HTTP 200 / 4869 bytes
---- 원문 앞부분 ---
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><response><header><resultCode>00</resultCode><resultMsg>정상입니다.</resultMsg></header><body><totalCount>683</totalCount><PageNo>1</PageNo><numOfrows>10</numOfrows><items><item><serviceName>전시</serviceName><seq>369569</seq><title>문신연대기 Moon Shin Chronology</title><startDate>20250422</startDate><endDate>20260830</endDate><place>창원시립마산문신미술관</place><realmName>전시</realmName><area>경남</area><sigungu>창원시</sigungu><thumbnail>http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/a3d9cfc3367f471abe33d2f7fdb32627.jpg</thumbnail><gpsX>128.5689782050479</gpsX><gpsY>35.20631542079396</gpsY></item><item><serviceName>전시</serviceName><seq>373571</seq><title>《우리 이토록 작은 존재들 We, Such Fragile Beings》</title><startDate>20250809</startDate><endDate>20260808</endDate><place>포도뮤지엄</place><realmName>전시</realmName><area>제주</area><sigungu>서귀포시</sigungu><thumbnail>http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202603/8e59b89398244083a65ecb6c2ca09bac.jpg</thumbnail><gpsX>126.3859705</gpsX><gpsY>33.3192679</gpsY></item><item><serviceName>전시</serviceName><seq>354401</seq><title>만인산: 보존과 해체의 기록</title><startDate>20250826</startDate><endDate>20260823</e
-resultCode = 00
-resultMsg = 정상입니다.
-totalCount = 683
+=== 2) 기간별 목록에서 seq 확보 ===
+  10건 확보
+   seq=369569 [경남] 문신연대기 Moon Shin Chronology
+   seq=354401 [경기] 만인산: 보존과 해체의 기록
+   seq=380414 [대전] [뮤지컬] 써니텐
+   seq=350966 [서울] 봄, 여름, 가을, 겨울 - 흔들리는 계절
+   seq=380140 [대전] [대전] 공포스릴러연극 &lt;시그널&gt;
 
->>> <item> 10건 발견. 첫 항목 필드:
-    serviceName              = 전시
-    seq                      = 369569
-    title                    = 문신연대기 Moon Shin Chronology
-    startDate                = 20250422
-    endDate                  = 20260830
-    place                    = 창원시립마산문신미술관
-    realmName                = 전시
-    area                     = 경남
-    sigungu                  = 창원시
-    thumbnail                = http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/a3d9cfc336
-    gpsX                     = 128.5689782050479
-    gpsY                     = 35.20631542079396
+=== 3) detail2 전체 필드 (앞 3건) ===
 
-======================================================================
-[지역별-경기]  GET /area2   params={'numOfRows': 5, 'PageNo': 1, 'sido': '경기도', 'sortStdr': 1}
-======================================================================
-HTTP 200 / 249 bytes
---- 원문 앞부분 ---
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><response><header><resultCode>00</resultCode><resultMsg>정상입니다.</resultMsg></header><body><totalCount>0</totalCount><PageNo>1</PageNo><numOfrows>10</numOfrows><items/></body></response>
-resultCode = 00
-resultMsg = 정상입니다.
-totalCount = 0
+--- seq=369569 [경남] 문신연대기 Moon Shin Chronology / HTTP 200 ---
+    seq                  = 369569
+    title                = 문신연대기 Moon Shin Chronology
+    startDate            = 20250422
+    endDate              = 20260830
+    place                = 창원시립마산문신미술관
+    realmName            = 전시
+    area                 = 경남
+    sigungu              = 창원시
+    price                = 성인 500원 / 어린이, 청소년, 군인, 대학생, 예술인 200원
+    contents1            = 
+    url                  = https://www.changwon.go.kr/moonshin/exhibition/view.php?case=N&amp;idx=48&amp;pageno=1
+    phone                = 창원시립마산문신미술관 055-225-7181
+    imgUrl               = http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202602/a3d9cfc3367f471abe33d2f7fdb326
+    gpsX                 = 128.5689782050479
+    gpsY                 = 35.20631542079396
+    placeUrl             = https://www.changwon.go.kr/depart/contents.do?mId=0306010100
+    placeAddr            = 경상남도 창원시 마산합포구 문신길 147 창원시립마산문신미술관
+    placeSeq             = 3730
 
->>> 반복 아이템 태그를 못 찾음. 전체 태그 목록:
-    response, header, resultCode, resultMsg, body, totalCount, PageNo, numOfrows, items
+--- seq=354401 [경기] 만인산: 보존과 해체의 기록 / HTTP 200 ---
+    seq                  = 354401
+    title                = 만인산: 보존과 해체의 기록
+    startDate            = 20250826
+    endDate              = 20260823
+    place                = 국립민속박물관 파주
+    realmName            = 전시
+    area                 = 경기
+    sigungu              = 파주시
+    price                = 무료
+    contents1            = 
+    url                  = https://www.nfm.go.kr/user/planexhibition/home/62/selectPlanExhibitionNView.do?planExhibit
+    phone                = 국립민속박물관 파주관 031-580-5800~1
+    imgUrl               = http://www.culture.go.kr/upload/rdf/25/11/show_202511511272110911.jpg
+    gpsX                 = 126.69390847888027
+    gpsY                 = 37.78666386359087
+    placeUrl             = https://www.nfm.go.kr/home/subIndex/1241.do
+    placeAddr            = 경기도 파주시 탄현면 헤이리로 30 국립민속박물관 파주
+    placeSeq             = 8098
 
-======================================================================
-[지역별-서울]  GET /area2   params={'numOfRows': 5, 'PageNo': 1, 'sido': '서울특별시', 'sortStdr': 1}
-======================================================================
-HTTP 200 / 249 bytes
---- 원문 앞부분 ---
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><response><header><resultCode>00</resultCode><resultMsg>정상입니다.</resultMsg></header><body><totalCount>0</totalCount><PageNo>1</PageNo><numOfrows>10</numOfrows><items/></body></response>
-resultCode = 00
-resultMsg = 정상입니다.
-totalCount = 0
-
->>> 반복 아이템 태그를 못 찾음. 전체 태그 목록:
-    response, header, resultCode, resultMsg, body, totalCount, PageNo, numOfrows, items
-
-======================================================================
-[분야별]  GET /realm2   params={'numOfRows': 5, 'PageNo': 1, 'sortStdr': 1}
-======================================================================
-HTTP 200 / 4641 bytes
---- 원문 앞부분 ---
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><response><header><resultCode>00</resultCode><resultMsg>정상입니다.</resultMsg></header><body><totalCount>1011</totalCount><PageNo>1</PageNo><numOfrows>10</numOfrows><items><item><serviceName>전시</serviceName><seq>319005</seq><title>패트릭 블랑: 수직정원</title><startDate>20180616</startDate><endDate>20281231</endDate><place>부산현대미술관</place><realmName>전시</realmName><area>부산</area><sigungu>사하구</sigungu><thumbnail>http://www.culture.go.kr/upload/rdf/25/04/show_20250415142925884.jpg</thumbnail><gpsX>128.9427422591895</gpsX><gpsY>35.10921642590141</gpsY></item><item><serviceName>전시</serviceName><seq>267899</seq><title>홍영철의 유산, 부산영화를 담다</title><startDate>20181005</startDate><endDate>20301231</endDate><place>부산영화체험박물관</place><realmName>전시</realmName><area>부산</area><sigungu>중구</sigungu><thumbnail>http://www.culture.go.kr/upload/rdf/24/01/show_2024012616153926131.jpg</thumbnail><gpsX>129.03371136372274</gpsX><gpsY>35.10174011607882</gpsY></item><item><serviceName>전시</serviceName><seq>295979</seq><title>자라는 숲</title><startDate>20200101</startDate><endDate>20291231</endDate><place>화성어린이복합문화센터 아이누리극장</place><realmName>전시</realmName><area>경기</area><sigung
-resultCode = 00
-resultMsg = 정상입니다.
-totalCount = 1011
-
->>> <item> 10건 발견. 첫 항목 필드:
-    serviceName              = 전시
-    seq                      = 319005
-    title                    = 패트릭 블랑: 수직정원
-    startDate                = 20180616
-    endDate                  = 20281231
-    place                    = 부산현대미술관
-    realmName                = 전시
-    area                     = 부산
-    sigungu                  = 사하구
-    thumbnail                = http://www.culture.go.kr/upload/rdf/25/04/show_20250415142925884.jpg
-    gpsX                     = 128.9427422591895
-    gpsY                     = 35.10921642590141
+--- seq=380414 [대전] [뮤지컬] 써니텐 / HTTP 200 ---
+    seq                  = 380414
+    title                = [뮤지컬] 써니텐
+    startDate            = 20250916
+    endDate              = 20260830
+    place                = 런던스테이지
+    realmName            = 뮤지컬/오페라
+    area                 = 대전
+    sigungu              = 서구
+    price                = 정가 40,000원
+    contents1            = 
+    url                  = https://booking.naver.com/booking/12/bizes/1386038
+    phone                = 아신극장 1599-9210
+    imgUrl               = http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/a9f171acf94b4d099779dc7b3b3553
+    gpsX                 = 127.3763274
+    gpsY                 = 36.3496868
+    placeUrl             = https://www.instagram.com/londonstage_dj
+    placeAddr            = 대전광역시 서구 대덕대로175번길 16 지하층 B101호
+    placeSeq             = 10261
