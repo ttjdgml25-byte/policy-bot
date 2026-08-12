@@ -10,6 +10,7 @@
 import requests
 import os
 import re
+import time
 import json
 import html as html_mod
 from bs4 import BeautifulSoup
@@ -112,15 +113,47 @@ def esc(s):
     return html_mod.escape(s or "")
 
 # ─────────────────────────── 데이터 수집 ───────────────────────────
+def _fetch_page(page, rows=100, attempts=4, wait=20):
+    """한 페이지를 재시도하며 가져온다."""
+    for i in range(1, attempts + 1):
+        try:
+            params = {"serviceKey": API_KEY, "pageNo": str(page),
+                      "numOfRows": str(rows), "srchKeyCode": "003"}
+            res = requests.get(URL_LIST, params=params, timeout=60)
+            if res.status_code != 200:
+                raise RuntimeError(f"HTTP {res.status_code}")
+            soup = BeautifulSoup(res.content, "xml")
+            got = soup.find_all("servList")
+            if got:
+                return got
+            code = soup.find("resultCode")
+            msg = soup.find("resultMsg") or soup.find("errMsg")
+            if code and code.get_text(strip=True) in ("00", "0"):
+                return []
+            raise RuntimeError(msg.get_text(strip=True) if msg else "빈 응답")
+        except Exception as e:
+            print(f"  · {page}페이지 {i}차 시도 실패: {type(e).__name__}: {e}")
+            if i < attempts:
+                time.sleep(wait)
+    return None
+
+
 def get_welfare_list():
-    items = []
-    try:
-        params = {"serviceKey": API_KEY, "pageNo": "1", "numOfRows": "500", "srchKeyCode": "003"}
-        res = requests.get(URL_LIST, params=params, timeout=30)
-        soup = BeautifulSoup(res.content, "xml")
-        items = soup.find_all("servList")
-    except Exception as e:
-        print(f"API 오류: {e}")
+    """100건씩 나눠 받고, 실패하면 재시도. 완전 실패 시 None 반환."""
+    items, page = [], 1
+    while page <= 8:
+        got = _fetch_page(page)
+        if got is None:
+            print(f"⚠️ {page}페이지 수집 실패")
+            return items if items else None
+        if not got:
+            break
+        items.extend(got)
+        if len(got) < 100:
+            break
+        page += 1
+        time.sleep(1)
+    print(f"복지로 수집: {len(items)}건")
     return items
 
 
@@ -227,9 +260,23 @@ def detect_new(all_data):
         if is_new:
             new_items.append(d)
     with open(SNAPSHOT_FILE, "w", encoding="utf-8") as f:
-        json.dump({"updated": NOW.strftime("%Y-%m-%d %H:%M"), "items": items_out},
+        json.dump({"updated": NOW.strftime("%Y-%m-%d %H:%M"),
+                   "items": items_out,
+                   "cache": all_data},
                   f, ensure_ascii=False, indent=1)
     return new_items
+
+
+def load_cached_data():
+    """API 장애 시 직전에 저장해둔 복지 목록을 불러온다."""
+    snap = load_snapshot()
+    if not snap:
+        return [], ""
+    cache = snap.get("cache") or []
+    for d in cache:
+        d.setdefault("is_new", False)
+        d.setdefault("first_seen", "")
+    return cache, snap.get("updated", "")
 
 # ─────────────────────────── 카드뉴스 (인포그래픽) ───────────────────────────
 CW, CH = 1080, 1350
@@ -691,17 +738,28 @@ if (params.get('focus') === 'search') document.getElementById('search').focus();
 # ─────────────────────────── 메인 ───────────────────────────
 def main():
     items = get_welfare_list()
-    all_data = [parse_item(it) for it in items if it.find("servNm")]
-    if not all_data:
-        print("⚠️ API 응답 없음")
-        send_message("⚠️ 복지알림봇: 오늘 복지로 API 응답이 없어 브리핑을 만들지 못했어요. 내일 다시 시도합니다.")
-        return
+    all_data = [parse_item(it) for it in items] if items else []
+    all_data = [d for d in all_data if d["title"]]
 
-    new_items = detect_new(all_data)
+    stale_note = ""
+    if not all_data:
+        all_data, updated = load_cached_data()
+        if not all_data:
+            print("⚠️ API 응답 없음 + 캐시도 없음")
+            send_message("⚠️ 복지알림봇: 복지로 서버가 일시적으로 응답하지 않아 오늘 브리핑을 만들지 못했어요. "
+                         "내일 아침 다시 보내드리겠습니다.")
+            return
+        print(f"⚠️ API 장애 → 캐시 사용 ({updated} 기준 {len(all_data)}건)")
+        stale_note = f"\n\nℹ️ 복지로 서버 점검으로 <b>{updated} 기준</b> 자료로 안내드립니다."
+        new_items = [d for d in all_data if d.get("is_new")]
+    else:
+        new_items = detect_new(all_data)
+
     recs = pick_daily_recommendations(all_data, 3)
 
     # 1) 브리핑 메시지 + 메뉴
-    send_message(build_message(all_data, new_items, recs), keyboard=build_keyboard())
+    send_message(build_message(all_data, new_items, recs) + stale_note,
+                 keyboard=build_keyboard())
 
     # 2) 신규 복지 카드뉴스 (최대 5건, 내용에 따라 1~2장)
     for i, d in enumerate(new_items[:5]):
