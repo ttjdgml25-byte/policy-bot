@@ -1,6 +1,10 @@
 {
- "updated": "2026-08-18 07:15",
+ "updated": "2026-08-19 07:14",
  "items": {
+  "WLF00000024": {
+   "title": "아이돌봄서비스",
+   "first_seen": ""
+  },
   "WLF00001104": {
    "title": "한부모가족자녀 교육비 지원",
    "first_seen": ""
@@ -51,10 +55,6 @@
   },
   "WLF00000026": {
    "title": "장애인자립자금대여",
-   "first_seen": ""
-  },
-  "WLF00000024": {
-   "title": "아이돌봄서비스",
    "first_seen": ""
   },
   "WLF00000072": {
@@ -1848,6 +1848,20 @@
  },
  "cache": [
   {
+   "id": "WLF00000024",
+   "title": "아이돌봄서비스",
+   "desc": "맞벌이를 하거나 갑자기 아이를 돌볼 수 없는 일이 생겼을 때 육아 도우미가 방문하여 12세 이하 자녀의 양육을 도와줍니다.",
+   "thema": "보육,보호·돌봄",
+   "dept": "성평등가족부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01",
+   "provide": "기타",
+   "cycle": "수시",
+   "online": "Y",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00001104",
    "title": "한부모가족자녀 교육비 지원",
    "desc": "한부모가족보호대상자에게 고교비(학비)를 지원합니다.",
@@ -2024,20 +2038,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000026&wlfareInfoReldBztpCd=01",
    "provide": "현금대여(융자)",
    "cycle": "1회성",
-   "online": "Y",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00000024",
-   "title": "아이돌봄서비스",
-   "desc": "맞벌이를 하거나 갑자기 아이를 돌볼 수 없는 일이 생겼을 때 육아 도우미가 방문하여 12세 이하 자녀의 양육을 도와줍니다.",
-   "thema": "보육,보호·돌봄",
-   "dept": "성평등가족부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01",
-   "provide": "기타",
-   "cycle": "수시",
    "online": "Y",
    "regdate": "20210903",
    "first_seen": "",
