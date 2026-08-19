@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19 07:14",
+ "updated": "2026-08-20 07:15",
  "items": {
   "WLF00000024": {
    "title": "아이돌봄서비스",
@@ -801,6 +801,10 @@
    "title": "버팀목전세자금대출",
    "first_seen": ""
   },
+  "WLF00003254": {
+   "title": "청소년방과후아카데미운영지원",
+   "first_seen": ""
+  },
   "WLF00001175": {
    "title": "자립준비청년 자립수당 지급",
    "first_seen": ""
@@ -951,10 +955,6 @@
   },
   "WLF00001166": {
    "title": "성폭력피해자 지원사업",
-   "first_seen": ""
-  },
-  "WLF00003254": {
-   "title": "청소년방과후아카데미운영지원",
    "first_seen": ""
   },
   "WLF00003268": {
@@ -4648,6 +4648,20 @@
    "is_new": false
   },
   {
+   "id": "WLF00003254",
+   "title": "청소년방과후아카데미운영지원",
+   "desc": "방과후 돌봄이 필요한 취약계층 청소년에게 체험활동, 학습지원, 급식, 상담 등 종합서비스 제공을 통한 건강한 성장과 자립을 지원합니다.",
+   "thema": "생활지원,교육",
+   "dept": "성평등가족부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003254&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "년",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00001175",
    "title": "자립준비청년 자립수당 지급",
    "desc": "자립준비청년(보호종료아동)에게 자립수당을 지급하여 보호종료 후 경제적 부담을 완화하고 복지향상을 통해 안정적 사회정착 및 성공적 자립을 지원합니다.",
@@ -5174,20 +5188,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001166&wlfareInfoReldBztpCd=01",
    "provide": "현금지급",
    "cycle": "수시",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00003254",
-   "title": "청소년방과후아카데미운영지원",
-   "desc": "방과후 돌봄이 필요한 취약계층 청소년에게 체험활동, 학습지원, 급식, 상담 등 종합서비스 제공을 통한 건강한 성장과 자립을 지원합니다.",
-   "thema": "생활지원,교육",
-   "dept": "성평등가족부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003254&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "년",
    "online": "N",
    "regdate": "20210903",
    "first_seen": "",
