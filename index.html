@@ -43,7 +43,7 @@
 <body>
 <header>
   <h1>🏛 복지서비스 모아보기</h1>
-  <div class="update">마지막 업데이트: 2026-08-21 07:18 (한국시간)</div>
+  <div class="update">마지막 업데이트: 2026-08-22 07:15 (한국시간)</div>
   <div class="controls">
     <input id="search" type="search" placeholder="🔍 복지서비스 검색 (예: 청년, 출산, 의료비)">
     <button id="onlineBtn" class="toggle off" onclick="toggleOnline()">✅ 온라인신청만</button>
@@ -58,6 +58,11 @@
 </div>
 <div class="category" id="cat0">
 <div class="cat-title">👶 임신·출산·육아 <span class="count">(84건)</span></div>
+<div class="item" data-online="Y">
+<div class="item-title">의료급여 임신·출산 진료비 지원<span class="badge badge-online">온라인신청</span><span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">수시</span></div>
+<div class="desc">임신 또는 출산한 의료급여 수급자와 2세미만 자녀에게 의료비를 지원하여 저소득층 국민보건 향상과 사회복지 증진에 기여합니다.</div>
+<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000061&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
+</div>
 <div class="item" data-online="Y">
 <div class="item-title">아이돌봄서비스<span class="badge badge-online">온라인신청</span><span class="badge badge-dept">성평등가족부</span><span class="badge badge-cycle">수시</span></div>
 <div class="desc">맞벌이를 하거나 갑자기 아이를 돌볼 수 없는 일이 생겼을 때 육아 도우미가 방문하여 12세 이하 자녀의 양육을 도와줍니다.</div>
@@ -77,11 +82,6 @@
 <div class="item-title">발달장애인 부모상담지원사업<span class="badge badge-online">온라인신청</span><span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">월</span></div>
 <div class="desc">발달장애인 부모에게 발달장애인의 양육과 부양에 따른 심리적 부담 완화 및 가족기능 향상 도모를 위한 전문 심리상담을 지원합니다.</div>
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000064&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
-</div>
-<div class="item" data-online="Y">
-<div class="item-title">의료급여임신.출산진료비지원<span class="badge badge-online">온라인신청</span><span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">수시</span></div>
-<div class="desc">임신 또는 출산한 의료급여 수급자와 2세미만 자녀에게 의료비를 지원하여 저소득층 국민보건 향상과 사회복지 증진에 기여합니다.</div>
-<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000061&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
 </div>
 <div class="item" data-online="Y">
 <div class="item-title">의료급여(요양비)<span class="badge badge-online">온라인신청</span><span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">수시</span></div>
@@ -333,6 +333,11 @@
 <div class="desc">출산가정에 건강관리사를 파견하여 산후관리를 지원함으로써 산모와 신생아의 건강을 증진하고 출산가정의 경제적 부담 경감을 지원합니다.</div>
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001188&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
 </div>
+<div class="item" data-online="N">
+<div class="item-title">정신건강복지센터 운영<span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">수시</span></div>
+<div class="desc">일반인은 물론 아동&middot;청소년에게 발생할 수 있는 정신건강문제의 예방, 조기발견 및 상담, 치료, 재활을 통해 사회복귀를 도모합니다.</div>
+<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003169&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
+</div>
 <div class="item" data-online="Y">
 <div class="item-title">저소득층 기저귀·조제분유 지원<span class="badge badge-online">온라인신청</span><span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">월</span></div>
 <div class="desc">영아(0~24개월)를 양육하고 있는 저소득층 가정에 기저귀와 조제분유를 지원하여 경제적 부담을 경감합니다.</div>
@@ -362,11 +367,6 @@
 <div class="item-title">양육비 이행 원스톱 종합서비스<span class="badge badge-dept">성평등가족부</span><span class="badge badge-cycle">수시</span></div>
 <div class="desc">양육비를 받지 못해 어려움을 겪고 있는 미혼, 이혼 한부모가 양육비를 원활하게 지급받을 수 있도록 지원합니다.</div>
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003186&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
-</div>
-<div class="item" data-online="N">
-<div class="item-title">정신건강복지센터 운영<span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">수시</span></div>
-<div class="desc">일반인은 물론 아동&middot;청소년에게 발생할 수 있는 정신건강문제의 예방, 조기발견 및 상담, 치료, 재활을 통해 사회복귀를 도모합니다.</div>
-<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003169&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
 </div>
 <div class="item" data-online="N">
 <div class="item-title">다함께 돌봄 사업<span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">수시</span></div>
@@ -1511,6 +1511,11 @@
 </div>
 <div class="category" id="cat4">
 <div class="cat-title">💰 금융·생활지원 <span class="count">(141건)</span></div>
+<div class="item" data-online="N">
+<div class="item-title">폭력피해자 주거지원 사업<span class="badge badge-dept">성평등가족부</span><span class="badge badge-cycle">1회성</span></div>
+<div class="desc">가정폭력, 성폭력 등 폭력피해자들의 자립을 지원하고 사회 적응 여건을 조성하고자, 폭력 피해여성과 그 가족들이 공동으로 생활할 수 있는 주거 공간을 제공합니다.</div>
+<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001101&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
+</div>
 <div class="item" data-online="Y">
 <div class="item-title">여성청소년 생리용품 지원<span class="badge badge-online">온라인신청</span><span class="badge badge-dept">성평등가족부</span><span class="badge badge-cycle">년</span></div>
 <div class="desc">취약계층 여성청소년 대상 생리용품 지원을 통해 여성 청소년의 건강한 성장을 지원합니다.</div>
@@ -1650,11 +1655,6 @@
 <div class="item-title">국가유공자의료급여증발급<span class="badge badge-dept">국가보훈부</span><span class="badge badge-cycle">수시</span></div>
 <div class="desc">저소득 국가유공자와 가족들의 의료비 부담 경감을 위해 국가유공자 의료급여증을 발급합니다.</div>
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001091&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
-</div>
-<div class="item" data-online="N">
-<div class="item-title">폭력피해자 주거지원 사업<span class="badge badge-dept">성평등가족부</span><span class="badge badge-cycle">1회성</span></div>
-<div class="desc">가정폭력, 성폭력 등 폭력피해자들의 자립을 지원하고 사회 적응 여건을 조성하고자, 폭력 피해여성과 그 가족들이 공동으로 생활할 수 있는 주거 공간을 제공합니다.</div>
-<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001101&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
 </div>
 <div class="item" data-online="N">
 <div class="item-title">농어가목돈마련저축 저축장려금 지급<span class="badge badge-dept">금융위원회</span><span class="badge badge-cycle">1회성</span></div>
@@ -2245,6 +2245,11 @@
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001069&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
 </div>
 <div class="item" data-online="N">
+<div class="item-title">가정폭력피해자 치료회복 프로그램 및 의료비지원<span class="badge badge-dept">성평등가족부</span><span class="badge badge-cycle">수시</span></div>
+<div class="desc">가정폭력피해자 등의 정신적, 육체적 회복을 위한 프로그램을 제공하고 의료비를 지원합니다.</div>
+<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001105&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
+</div>
+<div class="item" data-online="N">
 <div class="item-title">청소년상담1388 전화상담<span class="badge badge-dept">성평등가족부</span><span class="badge badge-cycle">수시</span></div>
 <div class="desc">365일 24시간 연중 상시 이용가능한 비대면 청소년상담채널 운영으로 청소년 고민해소 지원 및 위기청소년을 조기발견합니다.</div>
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003236&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
@@ -2265,11 +2270,6 @@
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003206&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
 </div>
 <div class="item" data-online="N">
-<div class="item-title">가정폭력피해자 치료회복 프로그램 및 의료비지원<span class="badge badge-dept">성평등가족부</span><span class="badge badge-cycle">수시</span></div>
-<div class="desc">가정폭력피해자 등의 정신적, 육체적 회복을 위한 프로그램을 제공하고 의료비를 지원합니다.</div>
-<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001105&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
-</div>
-<div class="item" data-online="N">
 <div class="item-title">디지털미디어 피해 청소년 회복 지원 사업(청소년 인터넷·스마트폰 과의존 치료비 지원)<span class="badge badge-dept">성평등가족부</span><span class="badge badge-cycle">1회성</span></div>
 <div class="desc">급격한 미디어 환경의 변화와 청소년의 매체이용 증가로 인한 사이버도박, 인터넷･스마트폰 과의존 등의 디지털미디어 역기능으로부터 청소년을 보호합니다.</div>
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001145&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
@@ -2278,6 +2278,11 @@
 <div class="item-title">차상위본인부담경감대상자지원<span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">수시</span></div>
 <div class="desc">차상위계층의 요양급여비 본인부담비용 경감 지원을 통해 의료보장 강화를 도모합니다.</div>
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001119&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
+</div>
+<div class="item" data-online="N">
+<div class="item-title">외국인근로자 등 의료지원<span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">1회성</span></div>
+<div class="desc">건강보험, 의료급여 등 각종 의료보장 제도에 의해 지원을 받을 수 없는 외국인근로자 등을 대상으로 입원·수술이 필요한 경우에 의료비를 지원하여 최소한의 건강한 삶의 질 보장합니다.</div>
+<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003256&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
 </div>
 <div class="item" data-online="N">
 <div class="item-title">국가예방접종 사업<span class="badge badge-dept">질병관리청</span><span class="badge badge-cycle">수시</span></div>
@@ -2303,11 +2308,6 @@
 <div class="item-title">통합건강증진사업<span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">년</span></div>
 <div class="desc">지역사회를 기반으로 다양한 건강증진사업을 내실 있게 추진하여 지자체 건강수준 향상, 국가 건강수명 및 삶의 질 증대를 도모합니다.</div>
 <a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003264&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
-</div>
-<div class="item" data-online="N">
-<div class="item-title">외국인근로자 등 의료지원<span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">1회성</span></div>
-<div class="desc">건강보험, 의료급여 등 각종 의료보장 제도에 의해 지원을 받을 수 없는 외국인근로자 등을 대상으로 입원·수술이 필요한 경우에 의료비를 지원하여 최소한의 건강한 삶의 질 보장합니다.</div>
-<a class="link" href="https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003256&wlfareInfoReldBztpCd=01" target="_blank">자세히 보기 →</a>
 </div>
 <div class="item" data-online="Y">
 <div class="item-title">정신건강 심리상담 바우처사업<span class="badge badge-online">온라인신청</span><span class="badge badge-dept">보건복지부</span><span class="badge badge-cycle">년</span></div>

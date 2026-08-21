@@ -1,6 +1,14 @@
 {
- "updated": "2026-08-21 07:18",
+ "updated": "2026-08-22 07:15",
  "items": {
+  "WLF00001101": {
+   "title": "폭력피해자 주거지원 사업",
+   "first_seen": ""
+  },
+  "WLF00000061": {
+   "title": "의료급여 임신·출산 진료비 지원",
+   "first_seen": ""
+  },
   "WLF00000024": {
    "title": "아이돌봄서비스",
    "first_seen": ""
@@ -39,10 +47,6 @@
   },
   "WLF00000064": {
    "title": "발달장애인 부모상담지원사업",
-   "first_seen": ""
-  },
-  "WLF00000061": {
-   "title": "의료급여임신.출산진료비지원",
    "first_seen": ""
   },
   "WLF00000060": {
@@ -297,10 +301,6 @@
    "title": "장애인고용증진융자",
    "first_seen": ""
   },
-  "WLF00001101": {
-   "title": "폭력피해자 주거지원 사업",
-   "first_seen": ""
-  },
   "WLF00001092": {
    "title": "요양급여(보조기)-산재보험급여",
    "first_seen": ""
@@ -399,6 +399,10 @@
   },
   "WLF00001100": {
    "title": "큰글자책 보급 지원",
+   "first_seen": ""
+  },
+  "WLF00001105": {
+   "title": "가정폭력피해자 치료회복 프로그램 및 의료비지원",
    "first_seen": ""
   },
   "WLF00001114": {
@@ -669,10 +673,6 @@
    "title": "고난도 보호대상아동 맞춤형 사례관리서비스",
    "first_seen": ""
   },
-  "WLF00001105": {
-   "title": "가정폭력피해자 치료회복 프로그램 및 의료비지원",
-   "first_seen": ""
-  },
   "WLF00001159": {
    "title": "입원 및 격리치료명령 결핵환자 부양가족생활보호비 지원",
    "first_seen": ""
@@ -799,6 +799,10 @@
   },
   "WLF00003222": {
    "title": "버팀목전세자금대출",
+   "first_seen": ""
+  },
+  "WLF00003256": {
+   "title": "외국인근로자 등 의료지원",
    "first_seen": ""
   },
   "WLF00003254": {
@@ -1181,10 +1185,6 @@
    "title": "산림보호지원단",
    "first_seen": ""
   },
-  "WLF00003256": {
-   "title": "외국인근로자 등 의료지원",
-   "first_seen": ""
-  },
   "WLF00003272": {
    "title": "의사상자지원",
    "first_seen": ""
@@ -1201,6 +1201,14 @@
    "title": "장애인 자립지원 시범사업",
    "first_seen": ""
   },
+  "WLF00001188": {
+   "title": "산모·신생아 건강관리 지원사업",
+   "first_seen": ""
+  },
+  "WLF00003169": {
+   "title": "정신건강복지센터 운영",
+   "first_seen": ""
+  },
   "WLF00005567": {
    "title": "정신건강 심리상담 바우처사업",
    "first_seen": ""
@@ -1215,10 +1223,6 @@
   },
   "WLF00005411": {
    "title": "일상돌봄 서비스 사업",
-   "first_seen": ""
-  },
-  "WLF00001188": {
-   "title": "산모·신생아 건강관리 지원사업",
    "first_seen": ""
   },
   "WLF00000867": {
@@ -1339,10 +1343,6 @@
   },
   "WLF00001182": {
    "title": "학교우유급식",
-   "first_seen": ""
-  },
-  "WLF00003169": {
-   "title": "정신건강복지센터 운영",
    "first_seen": ""
   },
   "WLF00000099": {
@@ -1848,6 +1848,34 @@
  },
  "cache": [
   {
+   "id": "WLF00001101",
+   "title": "폭력피해자 주거지원 사업",
+   "desc": "가정폭력, 성폭력 등 폭력피해자들의 자립을 지원하고 사회 적응 여건을 조성하고자, 폭력 피해여성과 그 가족들이 공동으로 생활할 수 있는 주거 공간을 제공합니다.",
+   "thema": "주거,안전·위기",
+   "dept": "성평등가족부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001101&wlfareInfoReldBztpCd=01",
+   "provide": "시설입소,기타",
+   "cycle": "1회성",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00000061",
+   "title": "의료급여 임신·출산 진료비 지원",
+   "desc": "임신 또는 출산한 의료급여 수급자와 2세미만 자녀에게 의료비를 지원하여 저소득층 국민보건 향상과 사회복지 증진에 기여합니다.",
+   "thema": "신체건강,임신·출산",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000061&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "수시",
+   "online": "Y",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00000024",
    "title": "아이돌봄서비스",
    "desc": "맞벌이를 하거나 갑자기 아이를 돌볼 수 없는 일이 생겼을 때 육아 도우미가 방문하여 12세 이하 자녀의 양육을 도와줍니다.",
@@ -1982,20 +2010,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000064&wlfareInfoReldBztpCd=01",
    "provide": "전자바우처(바우처)",
    "cycle": "월",
-   "online": "Y",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00000061",
-   "title": "의료급여임신.출산진료비지원",
-   "desc": "임신 또는 출산한 의료급여 수급자와 2세미만 자녀에게 의료비를 지원하여 저소득층 국민보건 향상과 사회복지 증진에 기여합니다.",
-   "thema": "신체건강,임신·출산",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000061&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "수시",
    "online": "Y",
    "regdate": "20210903",
    "first_seen": "",
@@ -2884,20 +2898,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00001101",
-   "title": "폭력피해자 주거지원 사업",
-   "desc": "가정폭력, 성폭력 등 폭력피해자들의 자립을 지원하고 사회 적응 여건을 조성하고자, 폭력 피해여성과 그 가족들이 공동으로 생활할 수 있는 주거 공간을 제공합니다.",
-   "thema": "주거,안전·위기",
-   "dept": "성평등가족부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001101&wlfareInfoReldBztpCd=01",
-   "provide": "시설입소,기타",
-   "cycle": "1회성",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00001092",
    "title": "요양급여(보조기)-산재보험급여",
    "desc": "근로자의 업무상 사유에 의한 부상 및 질병에 대한 재활보조기구 비용(요양급여)을 지급하여 근로자의 재활 및 사회 복귀를 촉진합니다.",
@@ -3242,6 +3242,20 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001100&wlfareInfoReldBztpCd=01",
    "provide": "기타",
    "cycle": "1회성",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00001105",
+   "title": "가정폭력피해자 치료회복 프로그램 및 의료비지원",
+   "desc": "가정폭력피해자 등의 정신적, 육체적 회복을 위한 프로그램을 제공하고 의료비를 지원합니다.",
+   "thema": "신체건강,정신건강,안전·위기",
+   "dept": "성평등가족부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001105&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
    "online": "N",
    "regdate": "20210903",
    "first_seen": "",
@@ -4186,20 +4200,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00001105",
-   "title": "가정폭력피해자 치료회복 프로그램 및 의료비지원",
-   "desc": "가정폭력피해자 등의 정신적, 육체적 회복을 위한 프로그램을 제공하고 의료비를 지원합니다.",
-   "thema": "신체건강,정신건강,안전·위기",
-   "dept": "성평등가족부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001105&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00001159",
    "title": "입원 및 격리치료명령 결핵환자 부양가족생활보호비 지원",
    "desc": "결핵예방법에 따라 입원 및 격리치료 명령을 받은 결핵환자의 격리기간 동안 발생한 소득상실을 보전하기 위해 환자 본인 또는 그 부양가족에게 생활보호비를 지급합니다.",
@@ -4641,6 +4641,20 @@
    "dept": "국토교통부",
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003222&wlfareInfoReldBztpCd=01",
    "provide": "현금대여(융자)",
+   "cycle": "1회성",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00003256",
+   "title": "외국인근로자 등 의료지원",
+   "desc": "건강보험, 의료급여 등 각종 의료보장 제도에 의해 지원을 받을 수 없는 외국인근로자 등을 대상으로 입원·수술이 필요한 경우에 의료비를 지원하여 최소한의 건강한 삶의 질 보장합니다.",
+   "thema": "신체건강",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003256&wlfareInfoReldBztpCd=01",
+   "provide": "기타",
    "cycle": "1회성",
    "online": "N",
    "regdate": "20210903",
@@ -5978,20 +5992,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00003256",
-   "title": "외국인근로자 등 의료지원",
-   "desc": "건강보험, 의료급여 등 각종 의료보장 제도에 의해 지원을 받을 수 없는 외국인근로자 등을 대상으로 입원·수술이 필요한 경우에 의료비를 지원하여 최소한의 건강한 삶의 질 보장합니다.",
-   "thema": "신체건강",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003256&wlfareInfoReldBztpCd=01",
-   "provide": "기타",
-   "cycle": "1회성",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00003272",
    "title": "의사상자지원",
    "desc": "본인의 직무와는 상관없이 타인의 생명이나 신체 또는 재산을 구하다가 사망하거나 부상을 입은 사람, 그 유족 또는 가족을 예우하고 지원합니다.",
@@ -6048,6 +6048,34 @@
    "is_new": false
   },
   {
+   "id": "WLF00001188",
+   "title": "산모·신생아 건강관리 지원사업",
+   "desc": "출산가정에 건강관리사를 파견하여 산후관리를 지원함으로써 산모와 신생아의 건강을 증진하고 출산가정의 경제적 부담 경감을 지원합니다.",
+   "thema": "신체건강,임신·출산",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001188&wlfareInfoReldBztpCd=01",
+   "provide": "전자바우처(바우처)",
+   "cycle": "1회성",
+   "online": "Y",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00003169",
+   "title": "정신건강복지센터 운영",
+   "desc": "일반인은 물론 아동&middot;청소년에게 발생할 수 있는 정신건강문제의 예방, 조기발견 및 상담, 치료, 재활을 통해 사회복귀를 도모합니다.",
+   "thema": "정신건강",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003169&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00005567",
    "title": "정신건강 심리상담 바우처사업",
    "desc": "우울·불안 등 정서적 어려움으로 인해 심리상담이 필요한 국민에게 전문적인 심리상담 서비스를 제공합니다.",
@@ -6100,20 +6128,6 @@
    "cycle": "월",
    "online": "Y",
    "regdate": "20240105",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00001188",
-   "title": "산모·신생아 건강관리 지원사업",
-   "desc": "출산가정에 건강관리사를 파견하여 산후관리를 지원함으로써 산모와 신생아의 건강을 증진하고 출산가정의 경제적 부담 경감을 지원합니다.",
-   "thema": "신체건강,임신·출산",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001188&wlfareInfoReldBztpCd=01",
-   "provide": "전자바우처(바우처)",
-   "cycle": "1회성",
-   "online": "Y",
-   "regdate": "20210903",
    "first_seen": "",
    "is_new": false
   },
@@ -6531,20 +6545,6 @@
    "dept": "농림축산식품부",
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001182&wlfareInfoReldBztpCd=01",
    "provide": "현물지급",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00003169",
-   "title": "정신건강복지센터 운영",
-   "desc": "일반인은 물론 아동&middot;청소년에게 발생할 수 있는 정신건강문제의 예방, 조기발견 및 상담, 치료, 재활을 통해 사회복귀를 도모합니다.",
-   "thema": "정신건강",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003169&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
    "cycle": "수시",
    "online": "N",
    "regdate": "20210903",
