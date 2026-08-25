@@ -1,6 +1,18 @@
 {
- "updated": "2026-08-22 07:15",
+ "updated": "2026-08-26 07:17",
  "items": {
+  "WLF00001097": {
+   "title": "농업인 연금보험료 지원",
+   "first_seen": ""
+  },
+  "WLF00001099": {
+   "title": "농업인 건강보험료 지원",
+   "first_seen": ""
+  },
+  "WLF00001072": {
+   "title": "가정폭력·성폭력 등 폭력 피해자 무료법률지원",
+   "first_seen": ""
+  },
   "WLF00001101": {
    "title": "폭력피해자 주거지원 사업",
    "first_seen": ""
@@ -133,14 +145,6 @@
    "title": "발달장애인 공공후견지원 사업",
    "first_seen": ""
   },
-  "WLF00001099": {
-   "title": "농업인건강보험료지원",
-   "first_seen": ""
-  },
-  "WLF00001097": {
-   "title": "농업인연금보험료지원",
-   "first_seen": ""
-  },
   "WLF00000076": {
    "title": "스포츠강좌이용권",
    "first_seen": ""
@@ -223,10 +227,6 @@
   },
   "WLF00000041": {
    "title": "어선원 및 어선 재해보상보험",
-   "first_seen": ""
-  },
-  "WLF00001072": {
-   "title": "가정폭력·성폭력 등 폭력 피해자 무료법률지원",
    "first_seen": ""
   },
   "WLF00000062": {
@@ -401,6 +401,10 @@
    "title": "큰글자책 보급 지원",
    "first_seen": ""
   },
+  "WLF00003207": {
+   "title": "영농도우미 지원",
+   "first_seen": ""
+  },
   "WLF00001105": {
    "title": "가정폭력피해자 치료회복 프로그램 및 의료비지원",
    "first_seen": ""
@@ -543,10 +547,6 @@
   },
   "WLF00001117": {
    "title": "장애인문화·예술 지원",
-   "first_seen": ""
-  },
-  "WLF00003207": {
-   "title": "영농도우미 지원",
    "first_seen": ""
   },
   "WLF00003189": {
@@ -799,6 +799,10 @@
   },
   "WLF00003222": {
    "title": "버팀목전세자금대출",
+   "first_seen": ""
+  },
+  "WLF00003264": {
+   "title": "지역사회 통합건강증진사업",
    "first_seen": ""
   },
   "WLF00003256": {
@@ -1143,10 +1147,6 @@
   },
   "WLF00003245": {
    "title": "국민취업지원제도",
-   "first_seen": ""
-  },
-  "WLF00003264": {
-   "title": "통합건강증진사업",
    "first_seen": ""
   },
   "WLF00001021": {
@@ -1848,6 +1848,48 @@
  },
  "cache": [
   {
+   "id": "WLF00001097",
+   "title": "농업인 연금보험료 지원",
+   "desc": "농산물 수입개방 확대로 인한 농업인의 경제적 부담을 경감하기 위해 연금 보험료 일부를 지원하여 안정적인 노후생활을 도모하고, 노후소득을 보장합니다.",
+   "thema": "생활지원",
+   "dept": "농림축산식품부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001097&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "월",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00001099",
+   "title": "농업인 건강보험료 지원",
+   "desc": "의료 이용 접근성이 낮은 농어촌 거주 농업인에 대해 건강보험료 일부를 지원하여 생활안정과 복지증진을 도모합니다.",
+   "thema": "신체건강,정신건강,생활지원",
+   "dept": "농림축산식품부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001099&wlfareInfoReldBztpCd=01",
+   "provide": "감면",
+   "cycle": "월",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00001072",
+   "title": "가정폭력·성폭력 등 폭력 피해자 무료법률지원",
+   "desc": "가정폭력 및 성폭력, 스토킹, 교제폭력 피해자 대상 무료법률지원을 통해 권익을 보호합니다.",
+   "thema": "안전·위기,법률",
+   "dept": "성평등가족부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001072&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00001101",
    "title": "폭력피해자 주거지원 사업",
    "desc": "가정폭력, 성폭력 등 폭력피해자들의 자립을 지원하고 사회 적응 여건을 조성하고자, 폭력 피해여성과 그 가족들이 공동으로 생활할 수 있는 주거 공간을 제공합니다.",
@@ -2310,34 +2352,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00001099",
-   "title": "농업인건강보험료지원",
-   "desc": "의료 이용 접근성이 낮은 농어촌 거주 농업인에 대해 건강보험료 일부를 지원하여 생활안정과 복지증진을 도모합니다.",
-   "thema": "신체건강,정신건강,생활지원",
-   "dept": "농림축산식품부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001099&wlfareInfoReldBztpCd=01",
-   "provide": "감면",
-   "cycle": "월",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00001097",
-   "title": "농업인연금보험료지원",
-   "desc": "농산물 수입개방 확대로 인한 농업인의 경제적 부담을 경감하기 위해 연금 보험료 일부를 지원하여 안정적인 노후생활을 도모하고, 노후소득을 보장합니다.",
-   "thema": "생활지원",
-   "dept": "농림축산식품부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001097&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "월",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00000076",
    "title": "스포츠강좌이용권",
    "desc": "저소득층 유청소년에게 지속적인 스포츠 활동 기회를 보장하여  체력향상과 건전한 여가활동을 지원합니다.",
@@ -2625,20 +2639,6 @@
    "dept": "해양수산부",
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000041&wlfareInfoReldBztpCd=01",
    "provide": "현금지급",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00001072",
-   "title": "가정폭력·성폭력 등 폭력 피해자 무료법률지원",
-   "desc": "가정폭력 및 성폭력, 스토킹, 교제폭력 피해자 대상 무료법률지원을 통해 권익을 보호합니다.",
-   "thema": "안전·위기,법률",
-   "dept": "성평등가족",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001072&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
    "cycle": "수시",
    "online": "N",
    "regdate": "20210903",
@@ -3248,6 +3248,20 @@
    "is_new": false
   },
   {
+   "id": "WLF00003207",
+   "title": "영농도우미 지원",
+   "desc": "사고, 질병 농가에 영농도우미를 지원하여 안정적인 영농활동을 통한 농가소득 증대를 도모합니다.",
+   "thema": "생활지원,보호·돌봄",
+   "dept": "농림축산식품부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003207&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00001105",
    "title": "가정폭력피해자 치료회복 프로그램 및 의료비지원",
    "desc": "가정폭력피해자 등의 정신적, 육체적 회복을 위한 프로그램을 제공하고 의료비를 지원합니다.",
@@ -3746,20 +3760,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001117&wlfareInfoReldBztpCd=01",
    "provide": "프로그램/서비스(서비스)",
    "cycle": "년",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00003207",
-   "title": "영농도우미 지원",
-   "desc": "사고, 질병 농가에 영농도우미를 지원하여 안정적인 영농활동을 통한 농가소득 증대를 도모합니다.",
-   "thema": "생활지원,보호·돌봄",
-   "dept": "농림축산식품부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003207&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "수시",
    "online": "N",
    "regdate": "20210903",
    "first_seen": "",
@@ -4642,6 +4642,20 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003222&wlfareInfoReldBztpCd=01",
    "provide": "현금대여(융자)",
    "cycle": "1회성",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00003264",
+   "title": "지역사회 통합건강증진사업",
+   "desc": "지역사회를 기반으로 다양한 건강증진사업을 내실 있게 추진하여 지자체 건강수준 향상, 국가 건강수명 및 삶의 질 증대를 도모합니다.",
+   "thema": "신체건강,정신건강",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003264&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "년",
    "online": "N",
    "regdate": "20210903",
    "first_seen": "",
@@ -5846,20 +5860,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003245&wlfareInfoReldBztpCd=01",
    "provide": "현금지급,프로그램/서비스(서비스)",
    "cycle": "월",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00003264",
-   "title": "통합건강증진사업",
-   "desc": "지역사회를 기반으로 다양한 건강증진사업을 내실 있게 추진하여 지자체 건강수준 향상, 국가 건강수명 및 삶의 질 증대를 도모합니다.",
-   "thema": "신체건강,정신건강",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003264&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "년",
    "online": "N",
    "regdate": "20210903",
    "first_seen": "",
