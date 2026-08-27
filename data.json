@@ -1,6 +1,14 @@
 {
- "updated": "2026-08-26 07:17",
+ "updated": "2026-08-27 11:27",
  "items": {
+  "WLF00001088": {
+   "title": "고위험 임산부 의료비 지원",
+   "first_seen": ""
+  },
+  "WLF00001103": {
+   "title": "초중고 교육비 지원사업(고교학비 지원)",
+   "first_seen": ""
+  },
   "WLF00001097": {
    "title": "농업인 연금보험료 지원",
    "first_seen": ""
@@ -27,10 +35,6 @@
   },
   "WLF00001104": {
    "title": "한부모가족자녀 교육비 지원",
-   "first_seen": ""
-  },
-  "WLF00001103": {
-   "title": "초중고 교육비 지원사업(고교학비 지원)",
    "first_seen": ""
   },
   "WLF00001089": {
@@ -217,10 +221,6 @@
    "title": "중독관리통합지원센터 지원",
    "first_seen": ""
   },
-  "WLF00001088": {
-   "title": "고위험 임산부 의료비 지원",
-   "first_seen": ""
-  },
   "WLF00001094": {
    "title": "어린이집지원(교사근무환경개선비,교사겸직원장지원비)",
    "first_seen": ""
@@ -401,6 +401,14 @@
    "title": "큰글자책 보급 지원",
    "first_seen": ""
   },
+  "WLF00003213": {
+   "title": "인플루엔자 국가예방접종 지원사업",
+   "first_seen": ""
+  },
+  "WLF00001138": {
+   "title": "자활근로(기초, 차상위)",
+   "first_seen": ""
+  },
   "WLF00003207": {
    "title": "영농도우미 지원",
    "first_seen": ""
@@ -487,10 +495,6 @@
   },
   "WLF00001142": {
    "title": "북한배경학생 교육 지원(멘토링 지원 등)",
-   "first_seen": ""
-  },
-  "WLF00003213": {
-   "title": "인플루엔자 국가예방접종 지원사업",
    "first_seen": ""
   },
   "WLF00001128": {
@@ -745,10 +749,6 @@
    "title": "지역아동센터 지원",
    "first_seen": ""
   },
-  "WLF00001138": {
-   "title": "자활근로(기초, 차상위)",
-   "first_seen": ""
-  },
   "WLF00001156": {
    "title": "재취업지원서비스 시행지원",
    "first_seen": ""
@@ -799,6 +799,14 @@
   },
   "WLF00003222": {
    "title": "버팀목전세자금대출",
+   "first_seen": ""
+  },
+  "WLF00001060": {
+   "title": "대학생 근로장학금 지원",
+   "first_seen": ""
+  },
+  "WLF00004658": {
+   "title": "과학문화 바우처 지원",
    "first_seen": ""
   },
   "WLF00003264": {
@@ -1001,10 +1009,6 @@
    "title": "전기요금 복지할인",
    "first_seen": ""
   },
-  "WLF00004658": {
-   "title": "과학문화 바우처 지원",
-   "first_seen": ""
-  },
   "WLF00005036": {
    "title": "개인채무조정",
    "first_seen": ""
@@ -1079,10 +1083,6 @@
   },
   "WLF00003277": {
    "title": "취업 후 상환 학자금대출",
-   "first_seen": ""
-  },
-  "WLF00001060": {
-   "title": "대학생 근로장학금 지원",
    "first_seen": ""
   },
   "WLF00003283": {
@@ -1201,6 +1201,22 @@
    "title": "장애인 자립지원 시범사업",
    "first_seen": ""
   },
+  "WLF00003178": {
+   "title": "긴급복지 해산비지원",
+   "first_seen": ""
+  },
+  "WLF00000838": {
+   "title": "고용보험 미적용자 출산급여 지원",
+   "first_seen": ""
+  },
+  "WLF00000867": {
+   "title": "방과후학교 자유수강권",
+   "first_seen": ""
+  },
+  "WLF00005440": {
+   "title": "대중교통비 환급 지원(모두의카드)",
+   "first_seen": ""
+  },
   "WLF00001188": {
    "title": "산모·신생아 건강관리 지원사업",
    "first_seen": ""
@@ -1223,10 +1239,6 @@
   },
   "WLF00005411": {
    "title": "일상돌봄 서비스 사업",
-   "first_seen": ""
-  },
-  "WLF00000867": {
-   "title": "방과후학교 자유수강권",
    "first_seen": ""
   },
   "WLF00000092": {
@@ -1299,10 +1311,6 @@
   },
   "WLF00000102": {
    "title": "의료급여(의료급여)",
-   "first_seen": ""
-  },
-  "WLF00005440": {
-   "title": "대중교통비 환급 지원(모두의카드)",
    "first_seen": ""
   },
   "WLF00005444": {
@@ -1577,10 +1585,6 @@
    "title": "보육교직원 인건비 지원",
    "first_seen": ""
   },
-  "WLF00000838": {
-   "title": "고용보험 미적용자 출산급여 지원",
-   "first_seen": ""
-  },
   "WLF00000095": {
    "title": "사회보험사각지대해소 사업(두루누리 사회보험료 지원사업)",
    "first_seen": ""
@@ -1591,10 +1595,6 @@
   },
   "WLF00003179": {
    "title": "긴급복지 의료지원",
-   "first_seen": ""
-  },
-  "WLF00003178": {
-   "title": "긴급복지 해산비지원",
    "first_seen": ""
   },
   "WLF00001183": {
@@ -1848,6 +1848,34 @@
  },
  "cache": [
   {
+   "id": "WLF00001088",
+   "title": "고위험 임산부 의료비 지원",
+   "desc": "고위험 임신의 적정 치료와 관리에 필요한 진료비를 지원하여 경제적 부담을 줄이고, 건강한 출산을 보장합니다.",
+   "thema": "신체건강,임신·출산",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001088&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "1회성",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00001103",
+   "title": "초중고 교육비 지원사업(고교학비 지원)",
+   "desc": "형편이 어려운 저소득층 가정의 자녀에게 교육의 기회를  보장하기 위해서 학비를 지원합니다.",
+   "thema": "교육",
+   "dept": "교육부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001103&wlfareInfoReldBztpCd=01",
+   "provide": "현물지급,감면,실물바우처",
+   "cycle": "수시",
+   "online": "Y",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00001097",
    "title": "농업인 연금보험료 지원",
    "desc": "농산물 수입개방 확대로 인한 농업인의 경제적 부담을 경감하기 위해 연금 보험료 일부를 지원하여 안정적인 노후생활을 도모하고, 노후소득을 보장합니다.",
@@ -1940,20 +1968,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001104&wlfareInfoReldBztpCd=01",
    "provide": "현금지급",
    "cycle": "년",
-   "online": "Y",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00001103",
-   "title": "초중고 교육비 지원사업(고교학비 지원)",
-   "desc": "형편이 어려운 저소득층 가정의 자녀에게 교육의 기회를  보장하기 위해서 학비를 지원합니다.",
-   "thema": "교육",
-   "dept": "교육부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001103&wlfareInfoReldBztpCd=01",
-   "provide": "현물지급,감면,실물바우처",
-   "cycle": "수시",
    "online": "Y",
    "regdate": "20210903",
    "first_seen": "",
@@ -2604,20 +2618,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00001088",
-   "title": "고위험 임산부 의료비 지원",
-   "desc": "고위험 임신의 적정 치료와 관리에 필요한 진료비를 지원하여 경제적 부담을 줄이고, 건강한 출산을 보장합니다.",
-   "thema": "신체건강,임신·출산",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001088&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "1회성",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00001094",
    "title": "어린이집지원(교사근무환경개선비,교사겸직원장지원비)",
    "desc": "어린이집 보육교사와 교사를 겸직하는 원장의 근로여건개선을 위해 근무환경 개선비를 지원합니다.",
@@ -3248,6 +3248,34 @@
    "is_new": false
   },
   {
+   "id": "WLF00003213",
+   "title": "인플루엔자 국가예방접종 지원사업",
+   "desc": "어르신, 임신부 및 어린이의 인플루엔자 접종률 향상과 질병부담 감소를 위해 인플루엔자 예방접종을 국가에서 지원합니다.",
+   "thema": "신체건강,임신·출산",
+   "dept": "질병관리청",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003213&wlfareInfoReldBztpCd=01",
+   "provide": "기타",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00001138",
+   "title": "자활근로(기초, 차상위)",
+   "desc": "국민기초생활보장법에 따른 수급자 및 차상위 계층이 스스로 자립할 수 있도록 자활능력 배양, 기술습득 지원 및 근로기회를 제공합니다.",
+   "thema": "생활지원,일자리",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001138&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "월",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00003207",
    "title": "영농도우미 지원",
    "desc": "사고, 질병 농가에 영농도우미를 지원하여 안정적인 영농활동을 통한 농가소득 증대를 도모합니다.",
@@ -3550,20 +3578,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001142&wlfareInfoReldBztpCd=01",
    "provide": "프로그램/서비스(서비스)",
    "cycle": "년",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00003213",
-   "title": "인플루엔자 국가예방접종 지원사업",
-   "desc": "어르신, 임신부 및 어린이의 인플루엔자 접종률 향상과 질병부담 감소를 위해 인플루엔자 예방접종을 국가에서 지원합니다.",
-   "thema": "신체건강,임신·출산",
-   "dept": "질병관리청",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003213&wlfareInfoReldBztpCd=01",
-   "provide": "기타",
-   "cycle": "수시",
    "online": "N",
    "regdate": "20210903",
    "first_seen": "",
@@ -4452,20 +4466,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00001138",
-   "title": "자활근로(기초, 차상위)",
-   "desc": "국민기초생활보장법에 따른 수급자 및 차상위 계층이 스스로 자립할 수 있도록 자활능력 배양, 기술습득 지원 및 근로기회를 제공합니다.",
-   "thema": "생활지원,일자리",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001138&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "월",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00001156",
    "title": "재취업지원서비스 시행지원",
    "desc": "재취업지원서비스 제도가 현장에 안착할 수 있도록 사업주에게 제도설계 컨설팅, 인사 담당자 교육 등의 서비스를 제공합니다.",
@@ -4644,6 +4644,34 @@
    "cycle": "1회성",
    "online": "N",
    "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00001060",
+   "title": "대학생 근로장학금 지원",
+   "desc": "저소득층 대학생에게 근로 기회를 제공하고 그에 따른 대가(장학금)를 지급하여 안정적인 학업 여건을 조성합니다.",
+   "thema": "생활지원,교육",
+   "dept": "교육부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001060&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "월",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00004658",
+   "title": "과학문화 바우처 지원",
+   "desc": "과학문화 소외지역 및 계층을 대상으로 과학문화 체험 기회 제공을 통한 격차 해소에 기여하고자 합니다.",
+   "thema": "문화·여가,교육",
+   "dept": "과학기술정보통신부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004658&wlfareInfoReldBztpCd=01",
+   "provide": "전자바우처(바우처)",
+   "cycle": "1회성",
+   "online": "N",
+   "regdate": "20220325",
    "first_seen": "",
    "is_new": false
   },
@@ -5348,20 +5376,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00004658",
-   "title": "과학문화 바우처 지원",
-   "desc": "과학문화 소외지역 및 계층을 대상으로 과학문화 체험 기회 제공을 통한 격차 해소에 기여하고자 합니다.",
-   "thema": "문화·여가,교육",
-   "dept": "과학기술정보통신부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004658&wlfareInfoReldBztpCd=01",
-   "provide": "전자바우처(바우처)",
-   "cycle": "1회성",
-   "online": "N",
-   "regdate": "20220325",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00005036",
    "title": "개인채무조정",
    "desc": "채무를 정상적으로 상환하기 어려운 분들을 대상으로 채무감면, 이자율 조정, 장기 분할상환 등의 채무조정을 통해 경제적으로 재기할 수 있도록 지원합니다.",
@@ -5622,20 +5636,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003277&wlfareInfoReldBztpCd=01",
    "provide": "현금대여(융자)",
    "cycle": "반기",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00001060",
-   "title": "대학생 근로장학금 지원",
-   "desc": "저소득층 대학생에게 근로 기회를 제공하고 그에 따른 대가(장학금)를 지급하여 안정적인 학업 여건을 조성합니다.",
-   "thema": "생활지원,교육",
-   "dept": "교육부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001060&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "월",
    "online": "N",
    "regdate": "20210903",
    "first_seen": "",
@@ -6048,6 +6048,62 @@
    "is_new": false
   },
   {
+   "id": "WLF00003178",
+   "title": "긴급복지 해산비지원",
+   "desc": "생계곤란 등의 위기상황에 처하여 도움이 필요한 긴급복지 주지원(생계,주거,의료,시설이용) 중인 대상자(가구구구성원 포함) 중 조산(助産) 및 분만 후의 필요한 조치와 보호를 위해 해산비를 지원합니다.",
+   "thema": "신체건강,임신·출산",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003178&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "1회성",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00000838",
+   "title": "고용보험 미적용자 출산급여 지원",
+   "desc": "소득활동을 하고 있으나 고용보험의 '출산전후휴가급여'를 지원받지 못하는 출산여성에게 출산급여를 지원합니다.",
+   "thema": "생활지원,임신·출산",
+   "dept": "고용노동부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000838&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "1회성",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00000867",
+   "title": "방과후학교 자유수강권",
+   "desc": "방과후학교 수업을 통해 저소득층 자녀의 지속적이며 실직적인 교육기회를 확대하고 공교육 활성화 및 저소득층의 교육격차 해소를 돕습니다.",
+   "thema": "교육,보호·돌봄",
+   "dept": "교육부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000867&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "Y",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00005440",
+   "title": "대중교통비 환급 지원(모두의카드)",
+   "desc": "정기적 대중교통 이용을 지원하여 대중교통을 자주 이용하는 서민·청년층 등의 교통비 부담을 완화하고 대중교통 이용을 촉진합니다.",
+   "thema": "생활지원",
+   "dept": "국토교통부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005440&wlfareInfoReldBztpCd=01",
+   "provide": "기타",
+   "cycle": "월",
+   "online": "N",
+   "regdate": "20240430",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00001188",
    "title": "산모·신생아 건강관리 지원사업",
    "desc": "출산가정에 건강관리사를 파견하여 산후관리를 지원함으로써 산모와 신생아의 건강을 증진하고 출산가정의 경제적 부담 경감을 지원합니다.",
@@ -6128,20 +6184,6 @@
    "cycle": "월",
    "online": "Y",
    "regdate": "20240105",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00000867",
-   "title": "방과후학교 자유수강권",
-   "desc": "방과후학교 수업을 통해 저소득층 자녀의 지속적이며 실직적인 교육기회를 확대하고 공교육 활성화 및 저소득층의 교육격차 해소를 돕습니다.",
-   "thema": "교육,보호·돌봄",
-   "dept": "교육부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000867&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "수시",
-   "online": "Y",
-   "regdate": "20210903",
    "first_seen": "",
    "is_new": false
   },
@@ -6394,20 +6436,6 @@
    "cycle": "수시",
    "online": "N",
    "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00005440",
-   "title": "대중교통비 환급 지원(모두의카드)",
-   "desc": "정기적 대중교통 이용을 지원하여 대중교통을 자주 이용하는 서민·청년층 등의 교통비 부담을 완화하고 대중교통 이용을 촉진합니다.",
-   "thema": "생활지원",
-   "dept": "국토교통부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005440&wlfareInfoReldBztpCd=01",
-   "provide": "기타",
-   "cycle": "월",
-   "online": "N",
-   "regdate": "20240430",
    "first_seen": "",
    "is_new": false
   },
@@ -7364,20 +7392,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00000838",
-   "title": "고용보험 미적용자 출산급여 지원",
-   "desc": "소득활동을 하고 있으나 고용보험의 '출산전후휴가급여'를 지원받지 못하는 출산여성에게 출산급여를 지원합니다.",
-   "thema": "생활지원,임신·출산",
-   "dept": "고용노동부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000838&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "1회성",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00000095",
    "title": "사회보험사각지대해소 사업(두루누리 사회보험료 지원사업)",
    "desc": "소규모 사업 저임금 근로자, 예술인, 노무제공자의 사회보험료를 지원하여 사회보험가입 사각지대 해소 및 사회안전망을 강화합니다.",
@@ -7413,20 +7427,6 @@
    "dept": "보건복지부",
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003179&wlfareInfoReldBztpCd=01",
    "provide": "현물지급",
-   "cycle": "1회성",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00003178",
-   "title": "긴급복지 해산비지원",
-   "desc": "생계곤란 등의 위기상황에 처하여 도움이 필요한 긴급복지 주지원(생계,주거,의료,시설이용) 중인 대상자(가구구구성원 포함) 중 조산(助産) 및 분만 후의 필요한 조치와 보호를 위해 해산비를 지원합니다.",
-   "thema": "신체건강,임신·출산",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003178&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
    "cycle": "1회성",
    "online": "N",
    "regdate": "20210903",
