@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-27 11:27",
+ "updated": "2026-08-28 14:53",
  "items": {
   "WLF00001088": {
    "title": "고위험 임산부 의료비 지원",
@@ -401,6 +401,14 @@
    "title": "큰글자책 보급 지원",
    "first_seen": ""
   },
+  "WLF00001161": {
+   "title": "표준모자보건수첩 제공",
+   "first_seen": ""
+  },
+  "WLF00003224": {
+   "title": "출산육아기 고용안정장려금",
+   "first_seen": ""
+  },
   "WLF00003213": {
    "title": "인플루엔자 국가예방접종 지원사업",
    "first_seen": ""
@@ -741,10 +749,6 @@
    "title": "예술활동준비금 지원",
    "first_seen": ""
   },
-  "WLF00001161": {
-   "title": "표준모자보건수첩 제공",
-   "first_seen": ""
-  },
   "WLF00001107": {
    "title": "지역아동센터 지원",
    "first_seen": ""
@@ -755,10 +759,6 @@
   },
   "WLF00001152": {
    "title": "노숙인등 복지지원",
-   "first_seen": ""
-  },
-  "WLF00003224": {
-   "title": "출산육아기 고용안정장려금",
    "first_seen": ""
   },
   "WLF00003193": {
@@ -801,6 +801,10 @@
    "title": "버팀목전세자금대출",
    "first_seen": ""
   },
+  "WLF00004657": {
+   "title": "부모급여 지원",
+   "first_seen": ""
+  },
   "WLF00001060": {
    "title": "대학생 근로장학금 지원",
    "first_seen": ""
@@ -839,10 +843,6 @@
   },
   "WLF00004661": {
    "title": "청년월세 지원사업",
-   "first_seen": ""
-  },
-  "WLF00004657": {
-   "title": "부모급여 지원",
    "first_seen": ""
   },
   "WLF00004656": {
@@ -3248,6 +3248,34 @@
    "is_new": false
   },
   {
+   "id": "WLF00001161",
+   "title": "표준모자보건수첩 제공",
+   "desc": "표준모자보건수첩 보급으로 임신부터 영유아기까지 각종 검사 및 건강관리 안내, 예방접종, 검진(검사) 등 건강기록 유지, 양육에 대한 필수·객관적 정보 제공으로 모성과 영유아의 건강증진을 도모합니다.",
+   "thema": "신체건강,임신·출산",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001161&wlfareInfoReldBztpCd=01",
+   "provide": "현물지급",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00003224",
+   "title": "출산육아기 고용안정장려금",
+   "desc": "출산전후휴가, 유산·사산 휴가, 육아휴직, 육아기 근로시간 단축 등을 부여(허용)한 사업주에게 장려금, 대체인력 인건비 등을 지원합니다.",
+   "thema": "생활지원,임신·출산",
+   "dept": "고용노동부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003224&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00003213",
    "title": "인플루엔자 국가예방접종 지원사업",
    "desc": "어르신, 임신부 및 어린이의 인플루엔자 접종률 향상과 질병부담 감소를 위해 인플루엔자 예방접종을 국가에서 지원합니다.",
@@ -4438,20 +4466,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00001161",
-   "title": "표준모자보건수첩 제공",
-   "desc": "표준모자보건수첩 보급으로 임신부터 영유아기까지 각종 검사 및 건강관리 안내, 예방접종, 검진(검사) 등 건강기록 유지, 양육에 대한 필수·객관적 정보 제공으로 모성과 영유아의 건강증진을 도모합니다.",
-   "thema": "신체건강,임신·출산",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001161&wlfareInfoReldBztpCd=01",
-   "provide": "현물지급",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00001107",
    "title": "지역아동센터 지원",
    "desc": "방과후 돌봄이 필요한 지역사회 아동의 건전육성을 위하여 보호·교육, 건전한 놀이와 오락의 제공, 보호자와 지역사회의 연계 등 종합적인 복지서비스를 제공합니다.",
@@ -4488,20 +4502,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001152&wlfareInfoReldBztpCd=01",
    "provide": "시설입소",
    "cycle": "월",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00003224",
-   "title": "출산육아기 고용안정장려금",
-   "desc": "출산전후휴가, 유산·사산 휴가, 육아휴직, 육아기 근로시간 단축 등을 부여(허용)한 사업주에게 장려금, 대체인력 인건비 등을 지원합니다.",
-   "thema": "생활지원,임신·출산",
-   "dept": "고용노동부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003224&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "수시",
    "online": "N",
    "regdate": "20210903",
    "first_seen": "",
@@ -4648,6 +4648,20 @@
    "is_new": false
   },
   {
+   "id": "WLF00004657",
+   "title": "부모급여 지원",
+   "desc": "영아기 집중돌봄을 두텁게 지원하여 출산 및 양육으로 인한 경제적 부담을 줄여드립니다.",
+   "thema": "보육",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004657&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "월",
+   "online": "Y",
+   "regdate": "20220103",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00001060",
    "title": "대학생 근로장학금 지원",
    "desc": "저소득층 대학생에게 근로 기회를 제공하고 그에 따른 대가(장학금)를 지급하여 안정적인 학업 여건을 조성합니다.",
@@ -4784,20 +4798,6 @@
    "cycle": "월",
    "online": "Y",
    "regdate": "20220413",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00004657",
-   "title": "부모급여 지원",
-   "desc": "영아기 집중돌봄을 두텁게 지원하여 출산 및 양육으로 인한 경제적 부담을 줄여드립니다.",
-   "thema": "보육",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004657&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "월",
-   "online": "Y",
-   "regdate": "20220103",
    "first_seen": "",
    "is_new": false
   },
