@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-28 14:53",
+ "updated": "2026-08-29 12:25",
  "items": {
   "WLF00001088": {
    "title": "고위험 임산부 의료비 지원",
@@ -1201,6 +1201,10 @@
    "title": "장애인 자립지원 시범사업",
    "first_seen": ""
   },
+  "WLF00005858": {
+   "title": "임신 사전건강관리 지원사업",
+   "first_seen": ""
+  },
   "WLF00003178": {
    "title": "긴급복지 해산비지원",
    "first_seen": ""
@@ -1323,10 +1327,6 @@
   },
   "WLF00000086": {
    "title": "(북한이탈주민) 탈북청소년 교육지원",
-   "first_seen": ""
-  },
-  "WLF00005858": {
-   "title": "임신 사전건강관리 지원사업",
    "first_seen": ""
   },
   "WLF00003172": {
@@ -6048,6 +6048,20 @@
    "is_new": false
   },
   {
+   "id": "WLF00005858",
+   "title": "임신 사전건강관리 지원사업",
+   "desc": "임신 및 출산에 장애가 될 수 있는 건강위험요인의 조기 발견 기회를 제공하고, 임신전 건강관리를 위한 의료.보건학적 지원을 통해 건강한 임신 출산 환경을 조성합니다.",
+   "thema": "임신·출산,서민금융",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005858&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "1회성",
+   "online": "N",
+   "regdate": "20250422",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00003178",
    "title": "긴급복지 해산비지원",
    "desc": "생계곤란 등의 위기상황에 처하여 도움이 필요한 긴급복지 주지원(생계,주거,의료,시설이용) 중인 대상자(가구구구성원 포함) 중 조산(助産) 및 분만 후의 필요한 조치와 보호를 위해 해산비를 지원합니다.",
@@ -6478,20 +6492,6 @@
    "cycle": "분기",
    "online": "N",
    "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00005858",
-   "title": "임신 사전건강관리 지원사업",
-   "desc": "임신 및 출산에 장애가 될 수 있는 건강위험요인의 조기 발견 기회를 제공하고, 임신전 건강관리를 위한 의료.보건학적 지원을 통해 건강한 임신 출산 환경을 조성합니다.",
-   "thema": "임신·출산,서민금융",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005858&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "1회성",
-   "online": "N",
-   "regdate": "20250422",
    "first_seen": "",
    "is_new": false
   },
