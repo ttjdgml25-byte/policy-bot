@@ -8,6 +8,7 @@
 import os
 import re
 import time
+import html as html_mod
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta, timezone
@@ -36,7 +37,10 @@ def _get(path, key, params, timeout=30):
 
 def _text(node, tag):
     t = node.find(tag)
-    return t.get_text(strip=True) if t else ""
+    if not t:
+        return ""
+    # API가 &middot; 같은 문자코드를 그대로 보내므로 실제 문자로 되돌린다
+    return html_mod.unescape(t.get_text(strip=True))
 
 
 def parse_price(txt):
@@ -60,12 +64,17 @@ def price_label(d):
     return f"{p:,}원부터"
 
 
-def _fmt(s):
-    return f"{s[4:6]}.{s[6:8]}" if len(s) == 8 else s
+def _fmt(s, with_year=False):
+    if len(s) != 8:
+        return s
+    return f"{s[0:4]}.{s[4:6]}.{s[6:8]}" if with_year else f"{s[4:6]}.{s[6:8]}"
 
 
 def period_label(d):
-    st, en = _fmt(d.get("start", "")), _fmt(d.get("end", ""))
+    s, e = d.get("start", ""), d.get("end", "")
+    # 시작·종료 연도가 다르면 연도를 함께 표기한다
+    cross = len(s) == 8 and len(e) == 8 and s[0:4] != e[0:4]
+    st, en = _fmt(s, cross), _fmt(e, cross)
     if st and en:
         return f"{st} ~ {en}"
     return st or en or "상시"
