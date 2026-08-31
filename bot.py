@@ -187,6 +187,70 @@ def clean_text(s, maxlen=200):
     return s[:maxlen].strip()
 
 
+API_OK = True          # 복지로 API 정상 여부
+
+# ─────────── 신청·모집 기간 인식 ───────────
+APPLY_KEY = re.compile(r"(신청|모집|접수)\s*(기간|일정)?")
+APPLY_PAT = re.compile(
+    r"(?:['’]?(\d{2,4})\s*[.\-년]\s*)?"
+    r"(\d{1,2})\s*[.\-월]\s*(\d{1,2})\s*[.]?\s*(?:일)?"
+    r"\s*(?:\([^)]{0,8}\))?\s*(?:\d{1,2}:\d{2})?"
+    r"\s*[~\-–]\s*"
+    r"(?:['’]?(\d{2,4})\s*[.\-년]\s*)?"
+    r"(\d{1,2})\s*[.\-월]\s*(\d{1,2})"
+)
+
+
+def _year(y, default):
+    if not y:
+        return default
+    y = int(y)
+    return y if y > 100 else 2000 + y
+
+
+def apply_window(text):
+    """설명문에서 신청·모집 기간을 뽑는다. (시작일, 종료일) 또는 None"""
+    t = text or ""
+    if not APPLY_KEY.search(t):
+        return None
+    m = APPLY_PAT.search(t)
+    if not m:
+        return None
+    y1, m1, d1, y2, m2, d2 = m.groups()
+    try:
+        Y1 = _year(y1, NOW.year)
+        Y2 = _year(y2, Y1)
+        s = datetime(Y1, int(m1), int(d1)).date()
+        e = datetime(Y2, int(m2), int(d2)).date()
+        if e < s:
+            e = datetime(Y2 + 1, int(m2), int(d2)).date()
+        return s, e
+    except ValueError:
+        return None
+
+
+def apply_status(d):
+    """진행중/임박 여부를 판단해 표시 문구를 만든다."""
+    w = apply_window(d.get("desc", ""))
+    if not w:
+        return None
+    s, e = w
+    today = NOW.date()
+    if s <= today <= e:
+        left = (e - today).days
+        tag = "🔥 마감임박" if left <= 7 else "🟢 신청중"
+        return {"kind": "open", "days": left, "tag": tag,
+                "text": f"{tag} · {s.month}/{s.day}~{e.month}/{e.day} (마감 D-{left})",
+                "sort": (0, left)}
+    if today < s:
+        left = (s - today).days
+        if left <= 30:
+            return {"kind": "soon", "days": left, "tag": "📅 곧 시작",
+                    "text": f"📅 {s.month}월 {s.day}일 신청 시작 (D-{left})",
+                    "sort": (1, left)}
+    return None
+
+
 def fetch_detail(serv_id):
     """복지로 상세 API에서 지원대상/지원내용/신청방법을 가져온다."""
     out = {"target": "", "benefit": "", "how": ""}
@@ -591,11 +655,15 @@ def build_message(all_data, new_items, recs):
             msg += "\n"
         msg += "\n"
     else:
-        msg += "🆕 새로 올라온 복지서비스: 오늘은 없어요\n\n"
+        if API_OK:
+            msg += "🆕 새로 올라온 복지서비스: 오늘은 없어요\n\n"
+        else:
+            msg += "🆕 새로 올라온 복지서비스: <b>오늘은 확인하지 못했습니다</b>\n\n"
     if recs:
         msg += f"🎯 오늘의 추천 복지 {len(recs)}건을 카드뉴스로 보내드립니다 👇\n\n"
     msg += "━━━━━━━━━━━━━━━━━━━━\n"
-    msg += f"📊 전체 {len(all_data)}건 | 🆕 신규 {len(new_items)}건 | ✅ 온라인신청 {len(online_items)}건"
+    new_txt = f"🆕 신규 {len(new_items)}건" if API_OK else "🆕 신규 확인못함"
+    msg += f"📊 전체 {len(all_data)}건 | {new_txt} | ✅ 온라인신청 {len(online_items)}건"
     return msg
 
 
@@ -762,8 +830,10 @@ def main():
                          "내일 아침 다시 보내드리겠습니다.")
             return
         print(f"⚠️ API 장애 → 캐시 사용 ({updated} 기준 {len(all_data)}건)")
-        stale_note = f"\n\nℹ️ 복지로 서버 점검으로 <b>{updated} 기준</b> 자료로 안내드립니다."
-        new_items = [d for d in all_data if d.get("is_new")]
+        stale_note = (f"\n\n⚠️ 복지로 서버가 응답하지 않아 <b>{updated} 기준</b> 자료로 안내드립니다.\n"
+                      f"오늘은 신규 복지서비스 확인을 하지 못했습니다.")
+        globals()["API_OK"] = False
+        new_items = []
     else:
         new_items = detect_new(all_data)
 
@@ -788,6 +858,34 @@ def main():
     online_count = len([d for d in all_data if d["online"] == "Y"])
     send_photo(f, f"✅ <b>지금 온라인으로 신청 가능한 복지 {online_count}건</b>\n"
                   f"🔗 <a href=\"{WEB_URL}?online=1\">전체 목록 · 신청 링크 보기</a>")
+
+    # 4-2) 지금 신청할 수 있는 복지 (신청·모집 기간 기준)
+    windows = []
+    for d in all_data:
+        st = apply_status(d)
+        if st:
+            windows.append((st, d))
+    windows.sort(key=lambda x: x[0]["sort"])
+    if windows:
+        opening = [x for x in windows if x[0]["kind"] == "open"]
+        soon = [x for x in windows if x[0]["kind"] == "soon"]
+        wmsg = "📅 <b>지금 신청할 수 있는 복지</b>\n"
+        wmsg += "━━━━━━━━━━━━━━━━━━━━\n\n"
+        if opening:
+            wmsg += f"🟢 <b>신청 접수 중 {len(opening)}건</b>\n\n"
+            for st, d in opening[:6]:
+                wmsg += f"• <b>{esc(d['title'])}</b>\n   {st['text']}\n"
+                if d.get("link"):
+                    wmsg += f"   🔗 {esc(d['link'])}\n"
+                wmsg += "\n"
+        if soon:
+            wmsg += f"📅 <b>곧 시작 {len(soon)}건</b>\n\n"
+            for st, d in soon[:4]:
+                wmsg += f"• <b>{esc(d['title'])}</b>\n   {st['text']}\n\n"
+        wmsg += "💡 신청 기간이 정해진 복지만 추린 목록입니다."
+        send_message(wmsg)
+    else:
+        print("신청기간 인식된 복지 없음")
 
     # 5) 생활 혜택 — 소득 기준 없이 누구나
     try:
