@@ -1,6 +1,10 @@
 {
- "updated": "2026-09-23 08:56",
+ "updated": "2026-09-24 09:08",
  "items": {
+  "WLF00001104": {
+   "title": "한부모가족자녀 교육비 지원",
+   "first_seen": ""
+  },
   "WLF00000026": {
    "title": "장애인자립자금대여",
    "first_seen": ""
@@ -39,10 +43,6 @@
   },
   "WLF00000024": {
    "title": "아이돌봄서비스",
-   "first_seen": ""
-  },
-  "WLF00001104": {
-   "title": "한부모가족자녀 교육비 지원",
    "first_seen": ""
   },
   "WLF00001089": {
@@ -801,6 +801,10 @@
    "title": "버팀목전세자금대출",
    "first_seen": ""
   },
+  "WLF00001175": {
+   "title": "자립준비청년 자립수당 지급",
+   "first_seen": ""
+  },
   "WLF00003256": {
    "title": "외국인근로자 등 의료지원",
    "first_seen": ""
@@ -823,10 +827,6 @@
   },
   "WLF00003254": {
    "title": "청소년방과후아카데미운영지원",
-   "first_seen": ""
-  },
-  "WLF00001175": {
-   "title": "자립준비청년 자립수당 지급",
    "first_seen": ""
   },
   "WLF00003271": {
@@ -1848,6 +1848,20 @@
  },
  "cache": [
   {
+   "id": "WLF00001104",
+   "title": "한부모가족자녀 교육비 지원",
+   "desc": "한부모가족보호대상자에게 고교비(학비)를 지원합니다.",
+   "thema": "교육",
+   "dept": "교육부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001104&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "년",
+   "online": "Y",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00000026",
    "title": "장애인자립자금대여",
    "desc": "저소득 장애인의 소규모 창업 및 출퇴근용 자동차 구입 비용을 장기 저리로 대여하여 생업의 기반을 다지고 편리하게 이동할 수 있도록 지원합니다.",
@@ -1982,20 +1996,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01",
    "provide": "기타",
    "cycle": "수시",
-   "online": "Y",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00001104",
-   "title": "한부모가족자녀 교육비 지원",
-   "desc": "한부모가족보호대상자에게 고교비(학비)를 지원합니다.",
-   "thema": "교육",
-   "dept": "교육부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001104&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "년",
    "online": "Y",
    "regdate": "20210903",
    "first_seen": "",
@@ -4648,6 +4648,20 @@
    "is_new": false
   },
   {
+   "id": "WLF00001175",
+   "title": "자립준비청년 자립수당 지급",
+   "desc": "자립준비청년(보호종료아동)에게 자립수당을 지급하여 보호종료 후 경제적 부담을 완화하고 복지향상을 통해 안정적 사회정착 및 성공적 자립을 지원합니다.",
+   "thema": "생활지원",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001175&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "월",
+   "online": "Y",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00003256",
    "title": "외국인근로자 등 의료지원",
    "desc": "건강보험, 의료급여 등 각종 의료보장 제도에 의해 지원을 받을 수 없는 외국인근로자 등을 대상으로 입원·수술이 필요한 경우에 의료비를 지원하여 최소한의 건강한 삶의 질 보장합니다.",
@@ -4727,20 +4741,6 @@
    "provide": "프로그램/서비스(서비스)",
    "cycle": "년",
    "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00001175",
-   "title": "자립준비청년 자립수당 지급",
-   "desc": "자립준비청년(보호종료아동)에게 자립수당을 지급하여 보호종료 후 경제적 부담을 완화하고 복지향상을 통해 안정적 사회정착 및 성공적 자립을 지원합니다.",
-   "thema": "생활지원",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001175&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "월",
-   "online": "Y",
    "regdate": "20210903",
    "first_seen": "",
    "is_new": false
