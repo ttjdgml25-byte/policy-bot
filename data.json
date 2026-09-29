@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-28 09:10",
+ "updated": "2026-09-29 10:22",
  "items": {
   "WLF00001104": {
    "title": "한부모가족자녀 교육비 지원",
@@ -1601,12 +1601,12 @@
    "title": "다문화보육료지원",
    "first_seen": ""
   },
-  "WLF00006318": {
-   "title": "경계선지능청년지원 사업",
-   "first_seen": ""
-  },
   "WLF00006315": {
    "title": "가족전용상담전화",
+   "first_seen": ""
+  },
+  "WLF00006318": {
+   "title": "경계선지능청년지원 사업",
    "first_seen": ""
   },
   "WLF00006266": {
@@ -7448,20 +7448,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00006318",
-   "title": "경계선지능청년지원 사업",
-   "desc": "경계선 지능인 청년의 특성·욕구를 고려한 맞춤형 취업 프로그램 제공하여 직업역량 강화 및 노동을 통한 자립을 지원합니다.",
-   "thema": "서민금융",
-   "dept": "고용노동부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006318&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "1회성",
-   "online": "N",
-   "regdate": "20260610",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00006315",
    "title": "가족전용상담전화",
    "desc": "가족유형별, 특성별 생애주기 맞춤형 상담, 정보제공 등 수행, 종합적·전문적 가족정책 및 정보제공 상담으로 다양한 가족을 지원합니다.",
@@ -7470,6 +7456,20 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006315&wlfareInfoReldBztpCd=01",
    "provide": "기타",
    "cycle": "수시",
+   "online": "N",
+   "regdate": "20260610",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006318",
+   "title": "경계선지능청년지원 사업",
+   "desc": "경계선 지능인 청년의 특성·욕구를 고려한 맞춤형 취업 프로그램 제공하여 직업역량 강화 및 노동을 통한 자립을 지원합니다.",
+   "thema": "서민금융",
+   "dept": "고용노동부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006318&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "1회성",
    "online": "N",
    "regdate": "20260610",
    "first_seen": "",
