@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-06 10:59",
+ "updated": "2026-10-07 10:09",
  "items": {
   "WLF00000781": {
    "title": "여성청소년 생리용품 지원",
@@ -801,6 +801,14 @@
    "title": "버팀목전세자금대출",
    "first_seen": ""
   },
+  "WLF00003254": {
+   "title": "청소년방과후아카데미운영지원",
+   "first_seen": ""
+  },
+  "WLF00003283": {
+   "title": "아동통합서비스지원(드림스타트사업)",
+   "first_seen": ""
+  },
   "WLF00001175": {
    "title": "자립준비청년 자립수당 지급",
    "first_seen": ""
@@ -823,10 +831,6 @@
   },
   "WLF00004658": {
    "title": "과학문화 바우처 지원",
-   "first_seen": ""
-  },
-  "WLF00003254": {
-   "title": "청소년방과후아카데미운영지원",
    "first_seen": ""
   },
   "WLF00003271": {
@@ -1085,10 +1089,6 @@
    "title": "취업 후 상환 학자금대출",
    "first_seen": ""
   },
-  "WLF00003283": {
-   "title": "아동통합서비스지원(드림스타트사업)",
-   "first_seen": ""
-  },
   "WLF00001020": {
    "title": "북한이탈주민 자산형성지원제도(미래행복통장)",
    "first_seen": ""
@@ -1201,6 +1201,14 @@
    "title": "장애인 자립지원 시범사업",
    "first_seen": ""
   },
+  "WLF00006251": {
+   "title": "중증장애인확인서 발급",
+   "first_seen": ""
+  },
+  "WLF00006212": {
+   "title": "환경오염피해 구제급여",
+   "first_seen": ""
+  },
   "WLF00005858": {
    "title": "임신 사전건강관리 지원사업",
    "first_seen": ""
@@ -1275,10 +1283,6 @@
   },
   "WLF00000814": {
    "title": "노후공공임대주택시설개선",
-   "first_seen": ""
-  },
-  "WLF00006212": {
-   "title": "환경오염피해 구제급여",
    "first_seen": ""
   },
   "WLF00000093": {
@@ -1431,10 +1435,6 @@
   },
   "WLF00006252": {
    "title": "근로지원인 지원",
-   "first_seen": ""
-  },
-  "WLF00006251": {
-   "title": "중증장애인확인서 발급",
    "first_seen": ""
   },
   "WLF00006250": {
@@ -1601,6 +1601,50 @@
    "title": "다문화보육료지원",
    "first_seen": ""
   },
+  "WLF00006310": {
+   "title": "개인회생 파산 종합지원(지원센터)",
+   "first_seen": ""
+  },
+  "WLF00006314": {
+   "title": "사회통합프로그램",
+   "first_seen": ""
+  },
+  "WLF00006311": {
+   "title": "법문화교육(교육센터)",
+   "first_seen": ""
+  },
+  "WLF00006317": {
+   "title": "발달장애인 자기주도 재직자 훈련",
+   "first_seen": ""
+  },
+  "WLF00006324": {
+   "title": "무료법률구조",
+   "first_seen": ""
+  },
+  "WLF00006331": {
+   "title": "자살예방센터 운영",
+   "first_seen": ""
+  },
+  "WLF00006333": {
+   "title": "건강보험 산정특례",
+   "first_seen": ""
+  },
+  "WLF00006309": {
+   "title": "법률구조",
+   "first_seen": ""
+  },
+  "WLF00006298": {
+   "title": "자동차사고 피해자 지원사업",
+   "first_seen": ""
+  },
+  "WLF00006308": {
+   "title": "무료법률상담",
+   "first_seen": ""
+  },
+  "WLF00006294": {
+   "title": "장애인 등록 신청",
+   "first_seen": ""
+  },
   "WLF00006315": {
    "title": "가족전용상담전화",
    "first_seen": ""
@@ -1613,14 +1657,6 @@
    "title": "청년미래적금",
    "first_seen": ""
   },
-  "WLF00006324": {
-   "title": "무료법률구조",
-   "first_seen": ""
-  },
-  "WLF00006298": {
-   "title": "자동차사고 피해자 지원사업",
-   "first_seen": ""
-  },
   "WLF00006335": {
    "title": "유아 단계적 무상교육·보육 실현",
    "first_seen": ""
@@ -1629,20 +1665,8 @@
    "title": "장애인거주시설 이용",
    "first_seen": ""
   },
-  "WLF00006333": {
-   "title": "건강보험 산정특례",
-   "first_seen": ""
-  },
   "WLF00006332": {
    "title": "아동 입원진료비 지원",
-   "first_seen": ""
-  },
-  "WLF00006331": {
-   "title": "자살예방센터 운영",
-   "first_seen": ""
-  },
-  "WLF00006309": {
-   "title": "법률구조",
    "first_seen": ""
   },
   "WLF00006319": {
@@ -1653,20 +1677,8 @@
    "title": "경남동행론(직접대출)",
    "first_seen": ""
   },
-  "WLF00006317": {
-   "title": "발달장애인 자기주도 재직자 훈련",
-   "first_seen": ""
-  },
   "WLF00006316": {
    "title": "전문기술인재장학금",
-   "first_seen": ""
-  },
-  "WLF00006311": {
-   "title": "법문화교육(교육센터)",
-   "first_seen": ""
-  },
-  "WLF00006314": {
-   "title": "사회통합프로그램",
    "first_seen": ""
   },
   "WLF00006313": {
@@ -1675,14 +1687,6 @@
   },
   "WLF00006312": {
    "title": "성매매 방지 및 피해자 지원",
-   "first_seen": ""
-  },
-  "WLF00006310": {
-   "title": "개인회생 파산 종합지원(지원센터)",
-   "first_seen": ""
-  },
-  "WLF00006308": {
-   "title": "무료법률상담",
    "first_seen": ""
   },
   "WLF00006307": {
@@ -1727,10 +1731,6 @@
   },
   "WLF00006293": {
    "title": "4·19혁명공로수당",
-   "first_seen": ""
-  },
-  "WLF00006294": {
-   "title": "장애인 등록 신청",
    "first_seen": ""
   },
   "WLF00006296": {
@@ -4648,6 +4648,34 @@
    "is_new": false
   },
   {
+   "id": "WLF00003254",
+   "title": "청소년방과후아카데미운영지원",
+   "desc": "방과후 돌봄이 필요한 취약계층 청소년에게 체험활동, 학습지원, 급식, 상담 등 종합서비스 제공을 통한 건강한 성장과 자립을 지원합니다.",
+   "thema": "생활지원,교육",
+   "dept": "성평등가족부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003254&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "년",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00003283",
+   "title": "아동통합서비스지원(드림스타트사업)",
+   "desc": "취약계층 아동에게 맞춤형 통합서비스를 제공하여 아동의 건강한 성장과 발달을 도모합니다.",
+   "thema": "신체건강,정신건강,생활지원,안전·위기",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003283&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00001175",
    "title": "자립준비청년 자립수당 지급",
    "desc": "자립준비청년(보호종료아동)에게 자립수당을 지급하여 보호종료 후 경제적 부담을 완화하고 복지향상을 통해 안정적 사회정착 및 성공적 자립을 지원합니다.",
@@ -4728,20 +4756,6 @@
    "cycle": "1회성",
    "online": "N",
    "regdate": "20220325",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00003254",
-   "title": "청소년방과후아카데미운영지원",
-   "desc": "방과후 돌봄이 필요한 취약계층 청소년에게 체험활동, 학습지원, 급식, 상담 등 종합서비스 제공을 통한 건강한 성장과 자립을 지원합니다.",
-   "thema": "생활지원,교육",
-   "dept": "성평등가족부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003254&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "년",
-   "online": "N",
-   "regdate": "20210903",
    "first_seen": "",
    "is_new": false
   },
@@ -5642,20 +5656,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00003283",
-   "title": "아동통합서비스지원(드림스타트사업)",
-   "desc": "취약계층 아동에게 맞춤형 통합서비스를 제공하여 아동의 건강한 성장과 발달을 도모합니다.",
-   "thema": "신체건강,정신건강,생활지원,안전·위기",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003283&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00001020",
    "title": "북한이탈주민 자산형성지원제도(미래행복통장)",
    "desc": "북향민이 경제활동 소득 중 일정 금액을 저축하면 정부가 동일한 금액을 저축해 주는 사업으로, 북향민의 취업, 사업 등의 경제활동을 높여 우리 사회에 안정적으로 정착할 수 있도록 경제적 기반 마련을 지원합니다.",
@@ -6048,6 +6048,34 @@
    "is_new": false
   },
   {
+   "id": "WLF00006251",
+   "title": "중증장애인확인서 발급",
+   "desc": "「장애인고용촉진 및 직업재활법」 상 중증장애인 여부를 확인하는 서류로서, 중증장애인여부를 '중증장애인 확인서'로 별도 확인할 수 있습니다.",
+   "thema": "신체건강,일자리",
+   "dept": "고용노동부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006251&wlfareInfoReldBztpCd=01",
+   "provide": "기타",
+   "cycle": "1회성",
+   "online": "N",
+   "regdate": "20260413",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006212",
+   "title": "환경오염피해 구제급여",
+   "desc": "환경오염피해자의 환경오염으로 인한 피해 입증 및 손해배상이 어려운 피해자들에게 신속하고 실효적인 피해구제를 통해 경제적인 부담을 줄여줍니다.",
+   "thema": "신체건강,서민금융",
+   "dept": "기후에너지환경부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006212&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20260313",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00005858",
    "title": "임신 사전건강관리 지원사업",
    "desc": "임신 및 출산에 장애가 될 수 있는 건강위험요인의 조기 발견 기회를 제공하고, 임신전 건강관리를 위한 의료.보건학적 지원을 통해 건강한 임신 출산 환경을 조성합니다.",
@@ -6310,20 +6338,6 @@
    "cycle": "년",
    "online": "N",
    "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006212",
-   "title": "환경오염피해 구제급여",
-   "desc": "환경오염피해자의 환경오염으로 인한 피해 입증 및 손해배상이 어려운 피해자들에게 신속하고 실효적인 피해구제를 통해 경제적인 부담을 줄여줍니다.",
-   "thema": "신체건강,서민금융",
-   "dept": "기후에너지환경부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006212&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20260313",
    "first_seen": "",
    "is_new": false
   },
@@ -6854,20 +6868,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006252&wlfareInfoReldBztpCd=01",
    "provide": "현금지급,프로그램/서비스(서비스)",
    "cycle": "월",
-   "online": "N",
-   "regdate": "20260413",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006251",
-   "title": "중증장애인확인서 발급",
-   "desc": "「장애인고용촉진 및 직업재활법」 상 중증장애인 여부를 확인하는 서류로서, 중증장애인여부를 '중증장애인 확인서'로 별도 확인할 수 있습니다.",
-   "thema": "신체건강,일자리",
-   "dept": "고용노동부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006251&wlfareInfoReldBztpCd=01",
-   "provide": "기타",
-   "cycle": "1회성",
    "online": "N",
    "regdate": "20260413",
    "first_seen": "",
@@ -7448,6 +7448,160 @@
    "is_new": false
   },
   {
+   "id": "WLF00006310",
+   "title": "개인회생 파산 종합지원(지원센터)",
+   "desc": "감당할 수 없는 빚으로 개인회생, 개인파산 및 면책 제도 이용을 원하는 국민을 지원합니다.",
+   "thema": "서민금융,법률",
+   "dept": "법무부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006310&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20260608",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006314",
+   "title": "사회통합프로그램",
+   "desc": "이민자가 우리 사회 구성원으로 적응·자립하는데 필수적인 기본 소양(한국어 및 한국 사회 이해)을 체계적으로 함양할 수 있도록 마련한 사회통합교육으로, 법무부장관이 지정한 운영기관에서 소정의 교육을 이수한 이민자에게 체류허가 및 영주자격, 국적 부여 등 이민정책과 연계하여 혜택을 제공하는 핵심적인 이민자 사회통합정책입니다.",
+   "thema": "교육,법률",
+   "dept": "법무부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006314&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "년",
+   "online": "N",
+   "regdate": "20260608",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006311",
+   "title": "법문화교육(교육센터)",
+   "desc": "다문화가족, 북한이탈주민, 장애인, 농업인, 청소년 등에 맞춤형, 체험형 법교육 프로그램을 진행합니다.",
+   "thema": "교육,법률",
+   "dept": "법무부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006311&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20260608",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006317",
+   "title": "발달장애인 자기주도 재직자 훈련",
+   "desc": "발달장애 근로자에게 직업생활 유지를 위한 직무능력 향상 및 기초 소양 훈련 프로그램을 제공합니다.",
+   "thema": "일자리,교육",
+   "dept": "고용노동부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006317&wlfareInfoReldBztpCd=01",
+   "provide": "기타",
+   "cycle": "년",
+   "online": "N",
+   "regdate": "20260610",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006324",
+   "title": "무료법률구조",
+   "desc": "사회적, 경제적 약자(기준 중위소득 125% 이하 국민 등)에 대한 무료법률구조를 지원합니다.",
+   "thema": "법률",
+   "dept": "법무부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006324&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20260618",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006331",
+   "title": "자살예방센터 운영",
+   "desc": "지역별 자살의 특성과 욕구에 적합한 서비스가 제공될 수 있도록 지역 내 유관기관 간 연계, 서비스 체계 구축 마련, 고위험군 발굴·개입·사후관리 등을 통해 자살예방을 도모합니다.",
+   "thema": "정신건강,안전·위기",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006331&wlfareInfoReldBztpCd=01",
+   "provide": "기타",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20260622",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006333",
+   "title": "건강보험 산정특례",
+   "desc": "암 등 중증질환, 희귀질환, 중증난치질환자의 의료비 부담을 완화하여 필수의료 보장을 강화합니다.",
+   "thema": "신체건강,보호·돌봄",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006333&wlfareInfoReldBztpCd=01",
+   "provide": "현물지급",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20260622",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006309",
+   "title": "법률구조",
+   "desc": "경제적으로 어렵거나 법률 지식이 부족해 법의 보호를 충분히 받지 못하는 국민의 기본적 인권 옹호를 위해 법률상담, 소송 대리 및 형사변호 등 법률 서비스를 지원합니다.",
+   "thema": "법률",
+   "dept": "법무부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006309&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20260608",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006298",
+   "title": "자동차사고 피해자 지원사업",
+   "desc": "자동차사고(교통사고)로 인한 사망 또는 중증후유장애로 인해 피해자 본인과 그 가족이 겪는 경제적·생활상의 어려움을 완화하고 생활안정을 지원합니다.",
+   "thema": "정신건강,생활지원,교육,서민금융",
+   "dept": "국토교통부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006298&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급,현금대여(융자),현물지급,프로그램/서비스(서비스),자원봉사",
+   "cycle": "년",
+   "online": "N",
+   "regdate": "20260605",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006308",
+   "title": "무료법률상담",
+   "desc": "경제적으로 어렵거나 법을 잘 몰라 법의 보호를 충분히 받지 못하는 국민을 지원합니다.",
+   "thema": "법률",
+   "dept": "법무부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006308&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "수시",
+   "online": "N",
+   "regdate": "20260608",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
+   "id": "WLF00006294",
+   "title": "장애인 등록 신청",
+   "desc": "장애인복지법 제32조에 따라 본인, 법정대리인 또는 보호자가 거주지 읍,면,동 행정복지센터에 장애인 등록을 신청할 수 있습니다.",
+   "thema": "",
+   "dept": "보건복지부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006294&wlfareInfoReldBztpCd=01",
+   "provide": "기타",
+   "cycle": "1회성",
+   "online": "N",
+   "regdate": "20260602",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00006315",
    "title": "가족전용상담전화",
    "desc": "가족유형별, 특성별 생애주기 맞춤형 상담, 정보제공 등 수행, 종합적·전문적 가족정책 및 정보제공 상담으로 다양한 가족을 지원합니다.",
@@ -7490,34 +7644,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00006324",
-   "title": "무료법률구조",
-   "desc": "사회적, 경제적 약자(기준 중위소득 125% 이하 국민 등)에 대한 무료법률구조를 지원합니다.",
-   "thema": "법률",
-   "dept": "법무부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006324&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20260618",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006298",
-   "title": "자동차사고 피해자 지원사업",
-   "desc": "자동차사고(교통사고)로 인한 사망 또는 중증후유장애로 인해 피해자 본인과 그 가족이 겪는 경제적·생활상의 어려움을 완화하고 생활안정을 지원합니다.",
-   "thema": "서민금융",
-   "dept": "국토교통부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006298&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급,현금대여(융자),현물지급,프로그램/서비스(서비스),자원봉사",
-   "cycle": "년",
-   "online": "N",
-   "regdate": "20260605",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00006335",
    "title": "유아 단계적 무상교육·보육 실현",
    "desc": "국가책임형 유아교육·보육 실현 및 학부모 양육비 부담 경감을 위해, ’25년 5세를 시작으로 ’27년 3~5세까지 단계적 무상교육·보육을 지원합니다.",
@@ -7546,20 +7672,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00006333",
-   "title": "건강보험 산정특례",
-   "desc": "암 등 중증질환, 희귀질환, 중증난치질환자의 의료비 부담을 완화하여 필수의료 보장을 강화합니다.",
-   "thema": "신체건강,보호·돌봄",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006333&wlfareInfoReldBztpCd=01",
-   "provide": "현물지급",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20260622",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00006332",
    "title": "아동 입원진료비 지원",
    "desc": "만 15세 이하 아동 입원 진료비 본인부담금을 지원하는 국가책임제 및 건강보험 보장을 강화합니다.",
@@ -7570,34 +7682,6 @@
    "cycle": "수시",
    "online": "N",
    "regdate": "20260622",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006331",
-   "title": "자살예방센터 운영",
-   "desc": "지역별 자살의 특성과 욕구에 적합한 서비스가 제공될 수 있도록 지역 내 유관기관 간 연계, 서비스 체계 구축 마련, 고위험군 발굴·개입·사후관리 등을 통해 자살예방을 도모합니다.",
-   "thema": "정신건강,안전·위기",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006331&wlfareInfoReldBztpCd=01",
-   "provide": "기타",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20260622",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006309",
-   "title": "법률구조",
-   "desc": "경제적으로 어렵거나 법률 지식이 부족해 법의 보호를 충분히 받지 못하는 국민의 기본적 인권 옹호를 위해 법률상담, 소송 대리 및 형사변호 등 법률 서비스를 지원합니다.",
-   "thema": "법률",
-   "dept": "법무부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006309&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20260608",
    "first_seen": "",
    "is_new": false
   },
@@ -7630,20 +7714,6 @@
    "is_new": false
   },
   {
-   "id": "WLF00006317",
-   "title": "발달장애인 자기주도 재직자 훈련",
-   "desc": "발달장애 근로자에게 직업생활 유지를 위한 직무능력 향상 및 기초 소양 훈련 프로그램을 제공합니다.",
-   "thema": "일자리,교육",
-   "dept": "고용노동부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006317&wlfareInfoReldBztpCd=01",
-   "provide": "기타",
-   "cycle": "년",
-   "online": "N",
-   "regdate": "20260610",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
    "id": "WLF00006316",
    "title": "전문기술인재장학금",
    "desc": "취업역량 개발노력이 우수한 전문대 학생이 안정적으로 학업 및 자기개발에 정진할 수 있도록 지원합니다.",
@@ -7654,34 +7724,6 @@
    "cycle": "반기",
    "online": "N",
    "regdate": "20260610",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006311",
-   "title": "법문화교육(교육센터)",
-   "desc": "다문화가족, 북한이탈주민, 장애인, 농업인, 청소년 등에 맞춤형, 체험형 법교육 프로그램을 진행합니다.",
-   "thema": "교육,법률",
-   "dept": "법무부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006311&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20260608",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006314",
-   "title": "사회통합프로그램",
-   "desc": "이민자가 우리 사회 구성원으로 적응·자립하는데 필수적인 기본 소양(한국어 및 한국 사회 이해)을 체계적으로 함양할 수 있도록 마련한 사회통합교육으로, 법무부장관이 지정한 운영기관에서 소정의 교육을 이수한 이민자에게 체류허가 및 영주자격, 국적 부여 등 이민정책과 연계하여 혜택을 제공하는 핵심적인 이민자 사회통합정책입니다.",
-   "thema": "교육,법률",
-   "dept": "법무부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006314&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "년",
-   "online": "N",
-   "regdate": "20260608",
    "first_seen": "",
    "is_new": false
   },
@@ -7708,34 +7750,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006312&wlfareInfoReldBztpCd=01",
    "provide": "현금지급,기타",
    "cycle": "월",
-   "online": "N",
-   "regdate": "20260608",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006310",
-   "title": "개인회생 파산 종합지원(지원센터)",
-   "desc": "감당할 수 없는 빚으로 개인회생, 개인파산 및 면책 제도 이용을 원하는 국민을 지원합니다.",
-   "thema": "서민금융,법률",
-   "dept": "법무부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006310&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "수시",
-   "online": "N",
-   "regdate": "20260608",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006308",
-   "title": "무료법률상담",
-   "desc": "경제적으로 어렵거나 법을 잘 몰라 법의 보호를 충분히 받지 못하는 국민을 지원합니다.",
-   "thema": "법률",
-   "dept": "법무부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006308&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
-   "cycle": "수시",
    "online": "N",
    "regdate": "20260608",
    "first_seen": "",
@@ -7890,20 +7904,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006293&wlfareInfoReldBztpCd=01",
    "provide": "현금지급",
    "cycle": "월",
-   "online": "N",
-   "regdate": "20260602",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00006294",
-   "title": "장애인 등록 신청",
-   "desc": "장애인복지법 제32조에 따라 본인, 법정대리인 또는 보호자가 거주지 읍,면,동 행정복지센터에 장애인 등록을 신청할 수 있습니다.",
-   "thema": "생활지원,보호·돌봄,법률",
-   "dept": "보건복지부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006294&wlfareInfoReldBztpCd=01",
-   "provide": "기타",
-   "cycle": "1회성",
    "online": "N",
    "regdate": "20260602",
    "first_seen": "",
