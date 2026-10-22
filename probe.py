@@ -1,70 +1,80 @@
 # -*- coding: utf-8 -*-
-"""복지로 상세 API 전체 필드 확인 — 신청기한 필드를 찾는다."""
+"""지자체 복지서비스 API 탐색 — 지역 파라미터와 응답 필드를 찾는다."""
 import os
 import requests
 from bs4 import BeautifulSoup
 
 KEY = os.environ.get("DATA_API_KEY", "")
-BASE = "https://apis.data.go.kr/B554287/NationalWelfareInformationsV001"
-LIST = BASE + "/NationalWelfarelistV001"
-DETAIL = BASE + "/NationalWelfaredetailedV001"
+BASE = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations"
+LIST = BASE + "/LcgvWelfarelist"
+DETAIL = BASE + "/LcgvWelfaredetailed"
 
 
-def get(url, params, timeout=40):
+def call(label, url, params, show_body=False):
     p = dict(params)
     p["serviceKey"] = KEY
-    r = requests.get(url, params=p, timeout=timeout)
-    return BeautifulSoup(r.content, "xml"), r
+    try:
+        r = requests.get(url, params=p, timeout=40)
+        soup = BeautifulSoup(r.content, "xml")
+        code = soup.find("resultCode")
+        msg = soup.find("resultMsg") or soup.find("errMsg") or soup.find("returnAuthMsg")
+        tc = soup.find("totalCount")
+        rows = soup.find_all("servList") or soup.find_all("item")
+        print(f"[{label}] HTTP {r.status_code} / code={code.get_text(strip=True) if code else '?'} "
+              f"/ msg={msg.get_text(strip=True)[:40] if msg else '-'} "
+              f"/ total={tc.get_text(strip=True) if tc else '?'} / rows={len(rows)}")
+        if show_body:
+            body = r.content.decode("utf-8", "ignore")
+            if KEY and KEY[:10] in body:
+                body = body.replace(KEY, "***")
+            print("   원문:", body[:400].replace("\n", " "))
+        return rows
+    except Exception as e:
+        print(f"[{label}] 예외 {type(e).__name__}: {e}")
+        return []
 
 
 if __name__ == "__main__":
-    print("=== 1) 목록 API 상태 ===")
-    soup, r = get(LIST, {"pageNo": "1", "numOfRows": "30", "srchKeyCode": "003"})
-    print(f"HTTP {r.status_code} / {len(r.content)} bytes")
-    for t in ["resultCode", "resultMsg", "totalCount"]:
-        el = soup.find(t)
-        if el:
-            print(f"  {t} = {el.get_text(strip=True)}")
-    rows = soup.find_all("servList")
-    print(f"  servList {len(rows)}건")
+    print("=== 1) 기본 호출 ===")
+    rows = call("기본", LIST, {"pageNo": "1", "numOfRows": "10"}, show_body=True)
 
-    ids = []
-    for it in rows:
-        sid = it.find("servId")
-        nm = it.find("servNm")
-        if sid is not None:
-            ids.append((sid.get_text(strip=True), nm.get_text(strip=True) if nm else ""))
+    print("\n=== 2) 첫 항목 전체 필드 ===")
+    if rows:
+        for ch in rows[0].find_all(recursive=False):
+            print(f"   {ch.name:<22} = {ch.get_text(strip=True)[:70]}")
+    else:
+        print("   항목 없음")
 
-    print("\n=== 2) 상세 API 전체 필드 (앞 3건) ===")
-    for sid, nm in ids[:3]:
-        soup, r = get(DETAIL, {"callTp": "D", "servId": sid})
-        print(f"\n--- {sid} {nm[:28]} / HTTP {r.status_code} ---")
-        root = soup.find("wantedDtl") or soup.find("response") or soup
-        seen = 0
-        for el in root.find_all():
-            if el.find_all():
-                continue
-            val = el.get_text(strip=True)
-            if not val:
-                continue
-            print(f"    {el.name:<22} = {val[:110]}")
-            seen += 1
-            if seen > 45:
-                print("    ...")
-                break
+    print("\n=== 3) 지역 파라미터 후보 테스트 (경기 안양) ===")
+    cands = [
+        {"ctpvNm": "경기도"}, {"ctpvNm": "경기"},
+        {"sidoNm": "경기도"}, {"siDoNm": "경기도"},
+        {"ctpvNm": "경기도", "sggNm": "안양시"},
+        {"ctpvNm": "경기도", "siGunGuNm": "안양시"},
+        {"sggNm": "안양시"},
+        {"searchWrd": "안양"},
+    ]
+    for c in cands:
+        call(str(c), LIST, dict({"pageNo": "1", "numOfRows": "5"}, **c))
 
-    print("\n=== 3) 날짜/기한처럼 보이는 필드만 재확인 ===")
-    import re
-    for sid, nm in ids[:8]:
-        soup, r = get(DETAIL, {"callTp": "D", "servId": sid})
-        hits = []
-        for el in soup.find_all():
-            if el.find_all():
-                continue
-            v = el.get_text(strip=True)
-            if not v:
-                continue
-            if re.search(r"\d{4}[-.]\d{1,2}|\d{1,2}\s*월\s*\d{1,2}|기한|기간|접수일|마감", v) or \
-               re.search(r"Ymd|Dt$|Date|term|Term|기한", el.name):
-                hits.append(f"{el.name}={v[:60]}")
-        print(f"  {nm[:22]:<24} {' | '.join(hits[:4]) if hits else '(없음)'}")
+    print("\n=== 4) 상세조회 ===")
+    if rows:
+        sid = rows[0].find("servId")
+        if sid:
+            sid = sid.get_text(strip=True)
+            p = {"servId": sid, "serviceKey": KEY}
+            r = requests.get(DETAIL, params=p, timeout=40)
+            soup = BeautifulSoup(r.content, "xml")
+            print(f"   servId={sid} HTTP {r.status_code}")
+            n = 0
+            for el in soup.find_all():
+                if el.find_all():
+                    continue
+                v = el.get_text(strip=True)
+                if not v:
+                    continue
+                print(f"   {el.name:<22} = {v[:70]}")
+                n += 1
+                if n > 30:
+                    print("   ...")
+                    break
