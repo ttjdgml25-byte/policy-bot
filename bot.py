@@ -18,6 +18,7 @@ from datetime import datetime, timedelta, timezone
 from PIL import Image, ImageDraw, ImageFont
 import culture
 import benefits
+import local_welfare
 
 # ─────────────────────────── 기본 설정 ───────────────────────────
 KST = timezone(timedelta(hours=9))
@@ -843,6 +844,57 @@ def main():
     send_message(build_message(all_data, new_items, recs) + stale_note,
                  keyboard=build_keyboard())
 
+    # 1-2) 우리 동네 복지 — 과천·의왕·안양 (지자체 API, 실시간 갱신)
+    try:
+        local_items = local_welfare.fetch_all(API_KEY)
+    except Exception as ex:
+        print(f"지역 복지 오류: {ex}")
+        local_items = None
+    if local_items:
+        lnew, lupd, lfirst = local_welfare.detect(local_items)
+        picks = local_welfare.pick_daily(local_items, 3)
+        try:
+            local_welfare.enrich(API_KEY, picks)
+        except Exception as ex:
+            print(f"지역 복지 상세 오류: {ex}")
+        lmsg = "🏘 <b>우리 동네 복지</b> (과천·의왕·안양)\n"
+        lmsg += "━━━━━━━━━━━━━━━━━━━━\n\n"
+        if lnew:
+            lmsg += f"🆕 <b>새로 생긴 복지 {len(lnew)}건</b>\n"
+            for d in lnew[:5]:
+                lmsg += f"• [{esc(d['city'])}] <b>{esc(d['title'])}</b>\n"
+            lmsg += "\n"
+        if lupd:
+            lmsg += f"🔄 <b>내용이 바뀐 복지 {len(lupd)}건</b>\n"
+            for d in lupd[:5]:
+                lmsg += f"• [{esc(d['city'])}] {esc(d['title'])}\n"
+            lmsg += "\n"
+        if not lnew and not lupd:
+            if lfirst:
+                lmsg += "오늘부터 과천·의왕·안양 복지를 추적합니다.\n\n"
+            else:
+                lmsg += "오늘은 새로 생기거나 바뀐 동네 복지가 없습니다.\n\n"
+        lmsg += "📌 <b>오늘의 우리 동네 복지</b>\n\n"
+        for d in picks:
+            lmsg += f"• [{esc(d['city'])}] <b>{esc(d['title'])}</b>\n"
+            if d.get("benefit"):
+                lmsg += f"   💰 {esc(d['benefit'][:70])}\n"
+            if d.get("target_detail"):
+                lmsg += f"   👤 {esc(d['target_detail'][:70])}\n"
+            if d.get("how"):
+                lmsg += f"   📝 {esc(d['how'])} 신청\n"
+            if d.get("tel"):
+                lmsg += f"   ☎ {esc(d['tel'])}\n"
+            if d.get("link"):
+                lmsg += f"   🔗 {esc(d['link'])}\n"
+            lmsg += "\n"
+        lmsg += f"📊 과천·의왕·안양 복지 총 {len(local_items)}건"
+        send_message(lmsg)
+    else:
+        send_message("🏘 <b>우리 동네 복지</b> (과천·의왕·안양)\n"
+                     "━━━━━━━━━━━━━━━━━━━━\n\n"
+                     "지자체 복지 정보를 불러오지 못했습니다. 내일 다시 확인합니다.")
+
     # 2) 신규 복지 카드뉴스 (최대 5건, 내용에 따라 1~2장)
     for i, d in enumerate(new_items[:5]):
         paths, detail = make_cards(d, f"card_new_{i}", badge="NEW 신규복지")
@@ -914,7 +966,7 @@ def main():
         cmsg += f"🆓 무료 {free_n}건 · 💸 1만원 이하 {len(cul) - free_n}건\n"
         cmsg += "📍 과천·의왕·안양 우선 안내"
         send_message(cmsg)
-        for d in culture.pick_daily(cul, 2):
+        for d in culture.pick_daily(cul, 1):
             cap = (f"🎟 <b>{esc(d['title'])}</b>\n"
                    f"💰 <b>{esc(culture.price_label(d))}</b>\n"
                    f"📍 {esc(d.get('sigungu') or d.get('area'))} · {esc(d.get('place',''))}\n"
