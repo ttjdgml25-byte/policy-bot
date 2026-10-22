@@ -1,64 +1,30 @@
-=== 1) 기본 호출 ===
-[기본] HTTP 200 / code=0 / msg=- / total=4826 / rows=10
-   원문: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><wantedList><totalCount>4826</totalCount><pageNo>1</pageNo><numOfRows>10</numOfRows><resultCode>0</resultCode><resultMessage>SUCCESS</resultMessage><servList><aplyMtdNm>방문</aplyMtdNm><bizChrDeptNm>전남광주통합특별시 해남군 복지정책과</bizChrDeptNm><ctpvNm>전남광주통합특별시</ctpvNm><inqNum>72</inqNum><intrsThemaNmArray>서민금융</intrsThemaNmArray><lastModYmd>20261022</last
+  과천시: 16건
+  의왕시: 19건
+  안양시: 22건
 
-=== 2) 첫 항목 전체 필드 ===
-   aplyMtdNm              = 방문
-   bizChrDeptNm           = 전남광주통합특별시 해남군 복지정책과
-   ctpvNm                 = 전남광주통합특별시
-   inqNum                 = 72
-   intrsThemaNmArray      = 서민금융
-   lastModYmd             = 20261022
-   servDgst               = 여행 기회가 적은 저소득층 장애인 가정의 여행비를 지원함으로써 가족 간 유대감 제고 및 장애인 복지 실현
-   servDtlLink            = https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do
-   servId                 = WLF00006803
-   servNm                 = 장애인가족사랑여행지원사업
-   sggNm                  = 해남군
-   sprtCycNm              = 1회성
-   srvPvsnNm              = 현금지급
-   trgterIndvdlNmArray    = 저소득, 장애인
-
-=== 3) 지역 파라미터 후보 테스트 (경기 안양) ===
-[{'ctpvNm': '경기도'}] HTTP 200 / code=0 / msg=- / total=691 / rows=5
-[{'ctpvNm': '경기'}] HTTP 200 / code=0 / msg=- / total=691 / rows=5
-[{'sidoNm': '경기도'}] HTTP 200 / code=0 / msg=- / total=4826 / rows=5
-[{'siDoNm': '경기도'}] HTTP 200 / code=0 / msg=- / total=4826 / rows=5
-[{'ctpvNm': '경기도', 'sggNm': '안양시'}] HTTP 200 / code=0 / msg=- / total=22 / rows=5
-[{'ctpvNm': '경기도', 'siGunGuNm': '안양시'}] HTTP 200 / code=0 / msg=- / total=691 / rows=5
-[{'sggNm': '안양시'}] HTTP 200 / code=0 / msg=- / total=22 / rows=5
-[{'searchWrd': '안양'}] HTTP 200 / code=0 / msg=- / total=5 / rows=5
-
-=== 4) 상세조회 ===
-   servId=WLF00006803 HTTP 200
-   resultCode             = 0
-   resultMessage          = SUCCESS
-   servId                 = WLF00006803
-   servNm                 = 장애인가족사랑여행지원사업
-   enfcBgngYmd            = 20230101
-   enfcEndYmd             = 99991231
-   bizChrDeptNm           = 전남광주통합특별시 해남군 복지정책과
-   ctpvNm                 = 전남광주통합특별시
-   sggNm                  = 해남군
-   servDgst               = 여행 기회가 적은 저소득층 장애인 가정의 여행비를 지원함으로써 가족 간 유대감 제고 및 장애인 복지 실현
-   trgterIndvdlNmArray    = 장애인, 저소득
-   intrsThemaNmArray      = 서민금융
-   sprtCycNm              = 1회성
-   srvPvsnNm              = 현금지급
-   aplyMtdNm              = 방문
-   sprtTrgtCn             = 관내 저소득층(기준중위소득 120%이내) 장애인 가족
-   slctCritCn             = 기준 중위소득 120%
-   alwServCn              = 가구당 30만원 이내
-   aplyMtdCn              = 읍면사무소 방문하여 신청서 및 개인정보제공 및 활용동의서, 등본 , 통장사본 제출
-   inqNum                 = 72
-   lastModYmd             = 20261022
-   wlfareInfoDtlCd        = 010
-   wlfareInfoReldCn       = 061-530-5308
-   wlfareInfoReldNm       = 해남군 복지정책과
-   wlfareInfoDtlCd        = 030
-   wlfareInfoReldNm       = 해남군 장애인 차별금지 및 인권보장에 관란 조례
-   wlfareInfoDtlCd        = 040
-   wlfareInfoReldCn       = https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?
-   wlfareInfoReldNm       = 장애인가족사랑여행신청서.hwp
-   wlfareInfoDtlCd        = 040
-   wlfareInfoReldCn       = https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?
-   ...
+총 57건
+  [과천시] 출산·입양장려금 지원                      | 임신·출산, 서민금융, 입   | 방문, 인터넷  | 수정 20260828
+  [과천시] 행려자 관리                           | 안전·위기            |          | 수정 20260822
+  [과천시] 다자녀 양육바우처 지원                     |                  | 방문       | 수정 20260819
+  [과천시] 임신축하금 지원사업                       | 서민금융, 임신·출산      | 방문       | 수정 20260815
+  [과천시] 신혼부부 주택전세자금 대출이자 지원              | 서민금융             | 방문       | 수정 20260815
+  [과천시] 태아기형아검사 지원사업                     | 입양·위탁, 임신·출산     | 방문       | 수정 20260815
+  [과천시] 초등학교 입학축하금 지원                    | 서민금융, 교육         | 방문, 인터넷  | 수정 20260812
+  [과천시] 장애인가정 출산지원금                      | 서민금융, 임신·출산      | 방문       | 수정 20260812
+  [과천시] 국민기초생활 보장지원(월동난방비, 대학생전공교재비, 이   | 서민금융             |          | 수정 20260812
+  [과천시] 새 생명 탄생 출산축하용품 지원                | 임신·출산            | 방문       | 수정 20260811
+  [과천시] 저소득 노인 사회활동 장려금                  | 서민금융             | 방문       | 수정 20260729
+  [과천시] 효행장려금 지원                         | 서민금융             | 방문       | 수정 20260729
+  [과천시] 청년 면접정장 무료대여사업                   | 서민금융, 일자리        | 인터넷      | 수정 20250806
+  [과천시] 교통약자이동지원센터 운영                    |                  | 방문, 전화, 모바일, 인터넷 | 수정 20250806
+  [과천시] 참전유공자 등에 대한 위문금 지급               | 서민금융             | 방문       | 수정 20230728
+  [과천시] 국가유공자 의료비 지원                     |                  | 방문       | 수정 20230728
+  [의왕시] 출산장려금 지원                         | 임신·출산, 서민금융      | 인터넷, 방문  | 수정 20260829
+  [의왕시] 의왕시 화장장려금 지원                     | 서민금융, 안전·위기      | 방문       | 수정 20260815
+  [의왕시] 기초생활수급자 명절 위로금 지원                | 서민금융, 일자리        |          | 수정 20260813
+  [의왕시] 장애인가정 출산지원금                      | 서민금융             | 방문       | 수정 20260729
+  [의왕시] 아이돌봄 신규 및 120시간 이용자 확대지원         | 서민금융, 입양·위탁      | 방문, 전화   | 수정 20260724
+  [의왕시] 아픈아이 홈케어                         | 서민금융             | 전화, 방문   | 수정 20260723
+  [의왕시] 의왕시 초등학교 입학축하금 지원                | 교육, 서민금융         | 방문, 인터넷  | 수정 20260723
+  [의왕시] 저소득층건강보험료지원                      | 신체건강             |          | 수정 20260723
+  [의왕시] 청소년보호활동 지원                       |                  |          | 수정 20260723
