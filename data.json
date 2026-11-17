@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16 10:29",
+ "updated": "2026-11-17 13:16",
  "items": {
   "WLF00000781": {
    "title": "여성청소년 생리용품 지원",
@@ -401,6 +401,10 @@
    "title": "큰글자책 보급 지원",
    "first_seen": ""
   },
+  "WLF00003192": {
+   "title": "다문화가족 방문교육 서비스",
+   "first_seen": ""
+  },
   "WLF00001161": {
    "title": "표준모자보건수첩 제공",
    "first_seen": ""
@@ -463,10 +467,6 @@
   },
   "WLF00003195": {
    "title": "발달재활서비스",
-   "first_seen": ""
-  },
-  "WLF00003192": {
-   "title": "다문화가족 방문교육 서비스",
    "first_seen": ""
   },
   "WLF00003191": {
@@ -801,6 +801,10 @@
    "title": "버팀목전세자금대출",
    "first_seen": ""
   },
+  "WLF00004639": {
+   "title": "전기요금 복지할인",
+   "first_seen": ""
+  },
   "WLF00003254": {
    "title": "청소년방과후아카데미운영지원",
    "first_seen": ""
@@ -1007,10 +1011,6 @@
   },
   "WLF00001180": {
    "title": "학대피해아동 쉼터 설치 및 운영",
-   "first_seen": ""
-  },
-  "WLF00004639": {
-   "title": "전기요금 복지할인",
    "first_seen": ""
   },
   "WLF00005036": {
@@ -3248,6 +3248,20 @@
    "is_new": false
   },
   {
+   "id": "WLF00003192",
+   "title": "다문화가족 방문교육 서비스",
+   "desc": "집합교육 참여가 어려운 다문화 가정에 방문하여 한국어 교육, 부모 교육, 자녀생활 교육을 제공하고 다문화 가족의 정착과 자녀양육을 돕습니다.",
+   "thema": "생활지원,교육",
+   "dept": "성평등가족부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003192&wlfareInfoReldBztpCd=01",
+   "provide": "프로그램/서비스(서비스)",
+   "cycle": "월",
+   "online": "Y",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00001161",
    "title": "표준모자보건수첩 제공",
    "desc": "표준모자보건수첩 보급으로 임신부터 영유아기까지 각종 검사 및 건강관리 안내, 예방접종, 검진(검사) 등 건강기록 유지, 양육에 대한 필수·객관적 정보 제공으로 모성과 영유아의 건강증진을 도모합니다.",
@@ -3465,20 +3479,6 @@
    "dept": "보건복지부",
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003195&wlfareInfoReldBztpCd=01",
    "provide": "전자바우처(바우처)",
-   "cycle": "월",
-   "online": "Y",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00003192",
-   "title": "다문화가족 방문교육 서비스",
-   "desc": "집합교육 참여가 어려운 다문화 가정에 방문하여 한국어 교육, 부모 교육, 자녀생활 교육을 제공하고 다문화 가족의 정착과 자녀양육을 돕습니다.",
-   "thema": "생활지원,교육",
-   "dept": "성평등가족부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003192&wlfareInfoReldBztpCd=01",
-   "provide": "프로그램/서비스(서비스)",
    "cycle": "월",
    "online": "Y",
    "regdate": "20210903",
@@ -4648,6 +4648,20 @@
    "is_new": false
   },
   {
+   "id": "WLF00004639",
+   "title": "전기요금 복지할인",
+   "desc": "기초생활수급자, 차상위계층, 기초연금수급자, 장애인, 국가유공자의 전기요금 부담을 경감하고자 요금감면을 지원합니다.",
+   "thema": "생활지원",
+   "dept": "기후에너지환경부",
+   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004639&wlfareInfoReldBztpCd=01",
+   "provide": "현금지급",
+   "cycle": "월",
+   "online": "N",
+   "regdate": "20210903",
+   "first_seen": "",
+   "is_new": false
+  },
+  {
    "id": "WLF00003254",
    "title": "청소년방과후아카데미운영지원",
    "desc": "방과후 돌봄이 필요한 취약계층 청소년에게 체험활동, 학습지원, 급식, 상담 등 종합서비스 제공을 통한 건강한 성장과 자립을 지원합니다.",
@@ -5370,20 +5384,6 @@
    "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001180&wlfareInfoReldBztpCd=01",
    "provide": "시설입소",
    "cycle": "수시",
-   "online": "N",
-   "regdate": "20210903",
-   "first_seen": "",
-   "is_new": false
-  },
-  {
-   "id": "WLF00004639",
-   "title": "전기요금 복지할인",
-   "desc": "기초생활수급자, 차상위계층, 기초연금수급자, 장애인, 국가유공자의 전기요금 부담을 경감하고자 요금감면을 지원합니다.",
-   "thema": "생활지원",
-   "dept": "기후에너지환경부",
-   "link": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004639&wlfareInfoReldBztpCd=01",
-   "provide": "현금지급",
-   "cycle": "월",
    "online": "N",
    "regdate": "20210903",
    "first_seen": "",
